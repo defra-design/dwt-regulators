@@ -1,0 +1,1366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>R-02 Carrier Activity</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#E9E9E9;font-family:'Segoe UI','Segoe UI Web',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;color:#252423}
+button{font-family:inherit}
+button:focus-visible{outline:2px solid #118DFF;outline-offset:1px}
+.tile{background:#FFFFFF;border:1px solid #E1DFDD;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.06);padding:14px 16px;box-sizing:border-box;min-width:0}
+.vt{margin:0 0 2px;font-size:14px;font-weight:600;color:#252423}
+.vs{margin:0 0 10px;font-size:12px;color:#605E5C}
+.sec{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:8px 0 -2px}
+.secn{font-size:12px;font-weight:600;color:#FFFFFF;background:#12239E;border-radius:2px;padding:1px 7px}
+.sect{font-size:16px;font-weight:600;color:#252423;margin:0}
+.secd{font-size:12.5px;color:#605E5C}
+.th{font-size:12px;font-weight:600;color:#252423;padding:8px 8px;border-bottom:1px solid #8A8886;display:flex;align-items:flex-end;min-width:0}
+.td{font-size:13px;padding:7px 8px;border-bottom:1px solid #EDEBE9;display:flex;align-items:center;min-width:0}
+.num{justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-family:Consolas,'SFMono-Regular',Menlo,monospace;font-size:12.5px}
+.badge{display:inline-block;padding:1px 6px;border-radius:2px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.lnk{background:none;border:0;padding:0;color:#0F6CBD;cursor:pointer;font-size:12.5px;text-decoration:underline;text-align:left}
+.pbtn{background:#FFFFFF;border:1px solid #8A8886;border-radius:2px;padding:5px 10px;font-size:12.5px;cursor:pointer;color:#252423;white-space:nowrap}
+.sortb{background:none;border:0;padding:0;font:inherit;font-weight:600;color:#252423;cursor:pointer;text-align:right;width:100%}
+.bar{flex:1;height:14px;background:#F3F2F1;position:relative;min-width:40px}
+.lbl{font-size:11px;font-weight:600;color:#605E5C;text-transform:uppercase;letter-spacing:0.04em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column">
+
+<div style="background: #252423; color: #FFFFFF; padding: 10px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<span style="font-size: 13px; color: #C8C6C4">DWT Regulator Reports</span>
+<span aria-hidden="true" style="color: #8A8886">›</span>
+<span style="font-size: 13px; font-weight: 600">R-02 Carrier Activity &amp; Registration Report</span>
+<span style="font-size: 11px; font-weight: 600; background: #FFF4CE; color: #5C4400; padding: 2px 8px; border-radius: 2px">Illustrative mock-up · invented data</span>
+<span style="margin-left: auto; font-size: 12px; color: #C8C6C4">Data refreshed 5 Oct 2026, 06:00</span>
+</div>
+
+<main style="flex: 1; width: 100%; max-width: 1340px; margin: 0 auto; padding: 16px 20px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
+<sc-if value="{{showBack}}" hint-placeholder-val="{{false}}">
+<button onClick="{{back}}" aria-label="{{backLabel}}" title="{{backLabel}}" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #8A8886; background: #FFFFFF; cursor: pointer; font-size: 17px; line-height: 1; color: #252423; margin-top: 2px">←</button>
+</sc-if>
+<div style="min-width: 0">
+<h1 style="margin: 0; font-size: 22px; font-weight: 600; line-height: 1.25">{{pageTitle}}</h1>
+<div style="margin-top: 6px; font-size: 13px; color: #605E5C">Showing: <strong style="color: #252423">{{showing}}</strong></div>
+<div style="margin-top: 3px; font-size: 12px; color: #605E5C">{{showingSub}}</div>
+</div>
+</div>
+<div class="tile" style="flex: 1 1 230px; padding: 10px 14px">
+<div style="font-size: 11px; color: #605E5C">Date range</div>
+<div style="font-size: 14px; font-weight: 600; margin-top: 2px">13 Jul 2026 to 4 Oct 2026</div>
+<div style="font-size: 11px; color: #605E5C; margin-top: 2px">12 weeks · all weights in tonnes</div>
+</div>
+</div>
+
+<sc-if value="{{isSummary}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{anyOpen}}" hint-placeholder-val="{{false}}"><button aria-label="Close filter" tabindex="-1" onClick="{{closeOpen}}" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 25; background: transparent; border: 0; padding: 0; cursor: default"></button></sc-if>
+
+<section aria-label="Slicers" class="tile" style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; padding: 12px 16px">
+<div style="flex: 3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Location of receiving site</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{locSlicers}}" as="sl" hint-placeholder-count="3">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 2 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Receiving site</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{opSlicers}}" as="sl" hint-placeholder-count="2">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Carrier and movement</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{mvSlicers}}" as="sl" hint-placeholder-count="3">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin-left: auto">
+<span style="font-size: 12px; color: #605E5C">{{scopeLine}}</span>
+<button class="pbtn" onClick="{{clearAll}}">Clear all slicers</button>
+</div>
+</section>
+
+<sc-if value="{{oneCarrier}}" hint-placeholder-val="{{false}}">
+<div class="tile" style="border-left: 4px solid #118DFF; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 16px">
+<span style="font-size: 13px">One carrier is selected in the slicers: <strong class="mono">{{oneCarrierId}}</strong>.</span>
+<button class="pbtn" style="background: #118DFF; color: #FFFFFF; border-color: #118DFF" onClick="{{openOneCarrier}}">Open Carrier detail ›</button>
+</div>
+</sc-if>
+
+<div class="sec"><span class="secn">1</span><h2 class="sect">Overview</h2><span class="secd">Movements reported by receiving sites in this scope, and how many came with carrier registration details.</span></div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{kpis}}" as="k" hint-placeholder-count="8">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1; {{k.valStyle}}">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}<sc-if value="{{k.hasTip}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="margin-left: 5px; display: inline-flex; width: 15px; height: 15px; border-radius: 50%; border: 1px solid #605E5C; font-size: 10px; align-items: center; justify-content: center; color: #605E5C; vertical-align: 1px">i</span></sc-if></div>
+<div style="font-size: 11.5px; margin-top: 4px; min-height: 16px; {{k.noteStyle}}">{{k.note}}</div>
+</div>
+</sc-for>
+</div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">Movements received over time</h3><p class="vs">{{trendNote}}</p></div>
+<div style="display: flex; gap: 14px; font-size: 12px; color: #605E5C; align-items: center">
+<sc-for list="{{trendLegend}}" as="lg" hint-placeholder-count="2"><span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{lg.color}}"></span>{{lg.label}}</span></sc-for>
+</div>
+</div>
+<div style="position: relative; height: 200px; margin: 4px 0 0 52px">
+<sc-for list="{{trendGrid}}" as="g" hint-placeholder-count="5">
+<div style="position: absolute; left: 0; right: 0; bottom: {{g.pos}}; border-top: 1px solid {{g.line}}"><span style="position: absolute; right: 100%; margin-right: 6px; top: -8px; font-size: 11px; color: #605E5C; white-space: nowrap">{{g.label}}</span></div>
+</sc-for>
+<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; gap: 12px; padding: 0 6px">
+<sc-for list="{{trend}}" as="c" hint-placeholder-count="12">
+<div title="{{c.tip}}" style="flex: 1; height: 100%; display: flex; flex-direction: column-reverse">
+<sc-for list="{{c.segs}}" as="sg" hint-placeholder-count="2"><div style="height: {{sg.h}}; background: {{sg.bg}}"></div></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: 12px; margin-left: 52px; padding: 5px 6px 0">
+<sc-for list="{{trend}}" as="c" hint-placeholder-count="12"><div style="flex: 1; text-align: center; font-size: 11px; color: #605E5C">{{c.label}}</div></sc-for>
+</div>
+<p style="font-size: 11.5px; color: #605E5C; margin: 10px 0 0">Weekly. Bucket size follows the date range: daily for ranges under 5 weeks, weekly up to 6 months, monthly beyond that.</p>
+</div>
+
+<div class="sec"><span class="secn">2</span><h2 class="sect">Carriers</h2><span class="secd">Carriers identified by their CBD registration number. Open one to see where it delivers and its movements.</span></div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">{{carTitle}}</h3><p class="vs">{{carNote}}</p></div>
+</div>
+<div role="table" aria-label="Carriers" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 120px minmax(190px, 1.8fr) 84px 92px minmax(150px, 1.5fr) 96px minmax(110px, 1fr) 118px 116px; min-width: 1180px">
+<div role="columnheader" class="th">CBD registration</div>
+<div role="columnheader" class="th">Name most often entered</div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortV}}">Name variants{{arrV}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortN}}">Movements{{arrN}}</button></div>
+<div role="columnheader" class="th"><button class="sortb" style="text-align: left" onClick="{{sortW}}">Weight (t){{arrW}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortS}}">Receiving sites{{arrS}}</button></div>
+<div role="columnheader" class="th">Nations</div>
+<div role="columnheader" class="th num">Road moves without vehicle reg.</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{carRows}}" as="r" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 120px minmax(190px, 1.8fr) 84px 92px minmax(150px, 1.5fr) 96px minmax(110px, 1fr) 118px 116px; min-width: 1180px">
+<div role="cell" class="td mono" style="font-weight: 600">{{r.id}}</div>
+<div role="cell" class="td">{{r.name}}</div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.varStyle}}">{{r.variants}}</span></div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{r.bar}}; background: #118DFF"></div></div><span style="min-width: 52px; text-align: right; font-variant-numeric: tabular-nums">{{r.w}}</span></div>
+<div role="cell" class="td num">{{r.sites}}</div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.nations}}</div>
+<div role="cell" class="td num">{{r.noVeh}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.open}}" aria-label="{{r.openLabel}}">Carrier detail ›</button></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px">
+<p style="font-size: 11.5px; color: #605E5C; margin: 0">Carrier detail is a drill-through page; the button stands in for right-click › Drill through. Amber name variants mean the same registration was entered under four or more names.</p>
+<sc-if value="{{carShowMore}}" hint-placeholder-val="{{false}}"><button class="pbtn" onClick="{{carToggle}}">{{carMoreLabel}}</button></sc-if>
+</div>
+</div>
+
+<div class="sec"><span class="secn">3</span><h2 class="sect">Movements without carrier registration details</h2><span class="secd">As reported by receiving sites. Registration details are not mandatory if the site gives a reason.</span></div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 2 1 380px">
+<h3 class="vt">Reason given by the receiving site</h3>
+<p class="vs">{{reasonNote}}</p>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{reasons}}" as="q" hint-placeholder-count="5">
+<div>
+<div style="display: flex; justify-content: space-between; gap: 10px; font-size: 13px"><span>{{q.label}}</span><span style="font-variant-numeric: tabular-nums; color: #605E5C">{{q.n}} · {{q.pct}}</span></div>
+<div style="height: 10px; background: #F3F2F1; margin-top: 4px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.bar}}; background: #E66C37"></div></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{hasUn}}" hint-placeholder-val="{{true}}"><button class="pbtn" style="margin-top: 14px" onClick="{{openUnAll}}">{{unAllLabel}}</button></sc-if>
+</div>
+<div class="tile" style="flex: 3 1 560px">
+<h3 class="vt">Receiving sites reporting movements without registration details</h3>
+<p class="vs">{{unSitesNote}}</p>
+<div role="table" aria-label="Receiving sites reporting movements without registration details" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) 92px 96px minmax(150px, 1.4fr) 112px; min-width: 680px">
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th num">Share of site's movements</div>
+<div role="columnheader" class="th">Most common reason</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{unSites}}" as="r" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) 92px 96px minmax(150px, 1.4fr) 112px; min-width: 680px">
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><span style="font-weight: 600">{{r.name}}</span><span class="mono" style="font-size: 11.5px; color: #605E5C">{{r.permit}}</span></div>
+<div role="cell" class="td num">{{r.un}}</div>
+<div role="cell" class="td num">{{r.pct}}</div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.reason}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.open}}" aria-label="{{r.openLabel}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{unSitesMore}}" hint-placeholder-val="{{false}}"><div style="margin-top: 10px; text-align: right"><button class="pbtn" onClick="{{unSitesToggle}}">{{unSitesMoreLabel}}</button></div></sc-if>
+</div>
+</div>
+
+</sc-if>
+
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{false}}">
+<div class="tile" style="padding: 40px; text-align: center">
+<p style="margin: 0 0 6px; font-size: 15px; font-weight: 600">{{emptyTitle}}</p>
+<p style="margin: 0 0 16px; font-size: 13px; color: #605E5C">{{emptyText}}</p>
+<button class="pbtn" onClick="{{goSummary}}">Go to Summary</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isCarrier}}" hint-placeholder-val="{{false}}">
+
+<div class="tile">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px 18px">
+<sc-for list="{{profile}}" as="p" hint-placeholder-count="6">
+<div style="min-width: 0"><div style="font-size: 11.5px; color: #605E5C">{{p.label}}</div><div style="font-size: 13.5px; font-weight: 600; margin-top: 1px; {{p.style}}">{{p.value}}</div></div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{cKpis}}" as="k" hint-placeholder-count="8">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1; {{k.valStyle}}">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}<sc-if value="{{k.hasTip}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="margin-left: 5px; display: inline-flex; width: 15px; height: 15px; border-radius: 50%; border: 1px solid #605E5C; font-size: 10px; align-items: center; justify-content: center; color: #605E5C; vertical-align: 1px">i</span></sc-if></div>
+<div style="font-size: 11.5px; margin-top: 4px; min-height: 16px; {{k.noteStyle}}">{{k.note}}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 0 1 340px">
+<h3 class="vt">Where this carrier delivers</h3>
+<p class="vs">One dot per receiving site, sized by tonnage. Schematic, not to scale.</p>
+<div style="position: relative; width: 292px; height: 440px; margin: 4px auto 0">
+<svg width="292" height="440" viewBox="0 0 292 440" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<path d="M78.7 424.4 L96.0 427.2 L118.7 411.1 L137.4 413.4 L150.7 395.0 L177.4 399.6 L196.1 392.7 L209.4 392.7 L236.1 392.7 L257.5 383.5 L268.1 372.0 L254.8 360.5 L246.8 358.2 L262.8 344.4 L277.5 312.2 L273.5 293.8 L238.8 291.5 L233.4 284.6 L238.8 266.2 L228.1 259.3 L217.4 229.4 L204.1 215.6 L193.4 197.2 L188.1 169.6 L177.4 153.5 L161.4 148.9 L150.7 151.2 L161.4 137.4 L164.1 123.6 L177.4 105.2 L182.8 82.2 L177.4 73.0 L137.4 73.0 L124.1 63.8 L148.1 31.6 L150.7 29.3 L97.4 31.6 L94.7 45.4 L78.7 63.8 L81.4 91.4 L70.7 114.4 L81.4 132.8 L78.7 160.4 L81.4 183.4 L100.0 165.0 L108.1 174.2 L97.4 204.1 L113.4 211.0 L134.7 201.8 L150.7 199.5 L140.1 220.2 L150.7 238.6 L153.4 257.0 L149.4 270.8 L142.7 273.1 L124.1 275.4 L108.1 270.8 L105.4 280.0 L116.1 289.2 L104.0 298.4 L121.4 307.6 L121.4 321.4 L108.1 330.6 L89.4 342.1 L97.4 353.6 L116.1 351.3 L126.7 355.9 L145.4 362.8 L158.7 355.9 L150.7 372.0 L118.7 372.0 L110.7 381.2 L97.4 399.6 Z" fill="#F3F2F1" stroke="#C8C6C4" stroke-width="1"></path>
+<path d="M73.4 243.2 L85.4 229.4 L84.0 211.0 L76.0 201.8 L68.0 188.0 L57.4 185.7 L38.7 185.7 L33.3 197.2 L22.7 211.0 L14.7 222.5 L28.0 234.0 L44.0 229.4 L54.7 240.9 L65.4 240.9 Z" fill="#F3F2F1" stroke="#C8C6C4" stroke-width="1"></path>
+</svg>
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="6">
+<button title="{{d.tip}}" aria-label="{{d.tip}}" onClick="{{d.pick}}" style="position: absolute; left: {{d.left}}; top: {{d.top}}; width: {{d.size}}; height: {{d.size}}; border-radius: 50%; padding: 0; cursor: pointer; {{d.style}}"></button>
+</sc-for>
+</div>
+</div>
+<div class="tile" style="flex: 1 1 520px">
+<h3 class="vt">Receiving sites this carrier delivered to</h3>
+<p class="vs">Select a site, or a dot on the map, to list its movements below.</p>
+<div role="table" aria-label="Receiving sites for this carrier" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) minmax(130px, 1.2fr) 88px minmax(140px, 1.4fr); min-width: 600px">
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">Region</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th">Weight (t)</div>
+</div>
+<sc-for list="{{cSites}}" as="r" hint-placeholder-count="6">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) minmax(130px, 1.2fr) 88px minmax(140px, 1.4fr); min-width: 600px; {{r.rowStyle}}">
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><button class="lnk" style="font-weight: 600; font-size: 13px" onClick="{{r.pick}}" aria-pressed="{{r.on}}">{{r.name}}</button><span class="mono" style="font-size: 11.5px; color: #605E5C">{{r.permit}}</span></div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.region}}</div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{r.bar}}; background: #118DFF"></div></div><span style="min-width: 52px; text-align: right; font-variant-numeric: tabular-nums">{{r.w}}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 1 1 420px">
+<h3 class="vt">Names entered for this registration</h3>
+<p class="vs">Free-text carrier names as typed on submissions. Select one to list its movements.</p>
+<div role="table" aria-label="Carrier names entered">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 88px 150px">
+<div role="columnheader" class="th">Name as entered</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th">Check</div>
+</div>
+<sc-for list="{{cNames}}" as="r" hint-placeholder-count="3">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 88px 150px; {{r.rowStyle}}">
+<div role="cell" class="td"><button class="lnk" style="font-size: 13px" onClick="{{r.pick}}" aria-pressed="{{r.on}}">{{r.name}}</button></div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td"><span class="badge" style="{{r.flagStyle}}">{{r.flag}}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+<div class="tile" style="flex: 1 1 420px">
+<h3 class="vt">Vehicle registrations used</h3>
+<p class="vs">{{vehNote}}</p>
+<div role="table" aria-label="Vehicle registrations">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 88px">
+<div role="columnheader" class="th">Vehicle registration</div>
+<div role="columnheader" class="th">Means of transport</div>
+<div role="columnheader" class="th num">Movements</div>
+</div>
+<sc-for list="{{cVeh}}" as="r" hint-placeholder-count="4">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 120px 88px; {{r.rowStyle}}">
+<div role="cell" class="td"><button class="lnk mono" onClick="{{r.pick}}" aria-pressed="{{r.on}}">{{r.veh}}</button></div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.tr}}</div>
+<div role="cell" class="td num">{{r.n}}</div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{noVeh}}" hint-placeholder-val="{{false}}"><p style="font-size: 13px; color: #605E5C; margin: 10px 0 0">None recorded. This carrier's movements in scope are not by road, so no vehicle registration is required.</p></sc-if>
+</div>
+</div>
+
+<sc-if value="{{hasMatches}}" hint-placeholder-val="{{false}}">
+<div class="tile" style="border-left: 4px solid #E66C37">
+<h3 class="vt">Possibly this carrier: movements without registration details</h3>
+<p class="vs">{{matchNote}}</p>
+<div role="table" aria-label="Possible matches" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 132px 108px minmax(200px, 1.6fr) minmax(160px, 1.3fr) 110px minmax(170px, 1.4fr) 80px; min-width: 1000px">
+<div role="columnheader" class="th">Waste tracking ID</div>
+<div role="columnheader" class="th">Received</div>
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">Name as entered</div>
+<div role="columnheader" class="th">Vehicle reg.</div>
+<div role="columnheader" class="th">Reason given</div>
+<div role="columnheader" class="th num">Weight (t)</div>
+</div>
+<sc-for list="{{matches}}" as="m" hint-placeholder-count="5">
+<div role="row" style="display: grid; grid-template-columns: 132px 108px minmax(200px, 1.6fr) minmax(160px, 1.3fr) 110px minmax(170px, 1.4fr) 80px; min-width: 1000px">
+<div role="cell" class="td mono">{{m.id}}</div>
+<div role="cell" class="td">{{m.date}}</div>
+<div role="cell" class="td">{{m.site}}</div>
+<div role="cell" class="td">{{m.name}}</div>
+<div role="cell" class="td mono">{{m.veh}}</div>
+<div role="cell" class="td" style="font-size: 12.5px">{{m.reason}}</div>
+<div role="cell" class="td num">{{m.w}}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">Individual waste movements</h3><p class="vs">{{cMvCount}}</p></div>
+<sc-if value="{{cHasFilter}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 8px; background: #EAF4FF; border: 1px solid #9DCBFF; border-radius: 2px; padding: 4px 6px 4px 10px; font-size: 12.5px">
+<span>Filtered by: <strong>{{cFilterLabel}}</strong></span>
+<button class="pbtn" style="padding: 2px 8px" onClick="{{cClear}}">Clear</button>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{cHasSel}}" hint-placeholder-val="{{false}}">
+<div style="border: 2px solid #118DFF; border-radius: 4px; padding: 14px 16px; margin: 4px 0 12px; background: #F7FBFF">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap">
+<div><div style="font-size: 11.5px; color: #605E5C">Waste movement</div><div class="mono" style="font-size: 16px; font-weight: 600">{{cSelId}}</div></div>
+<button class="pbtn" onClick="{{cCloseSel}}">Close</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px 18px; margin-top: 10px">
+<sc-for list="{{cSelFields}}" as="sf" hint-placeholder-count="9">
+<div style="min-width: 0"><div style="font-size: 11.5px; color: #605E5C">{{sf.label}}</div><div style="font-size: 13px; font-weight: 600; margin-top: 1px; {{sf.style}}">{{sf.value}}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div role="table" aria-label="Individual waste movements" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 132px 104px minmax(190px, 1.6fr) minmax(170px, 1.4fr) 104px 112px 96px 78px 70px; min-width: 1100px">
+<div role="columnheader" class="th">Waste tracking ID</div>
+<div role="columnheader" class="th">Received</div>
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">Name as entered</div>
+<div role="columnheader" class="th">Vehicle reg.</div>
+<div role="columnheader" class="th">Means of transport</div>
+<div role="columnheader" class="th">EWC code</div>
+<div role="columnheader" class="th num">Weight (t)</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{cMoves}}" as="m" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 132px 104px minmax(190px, 1.6fr) minmax(170px, 1.4fr) 104px 112px 96px 78px 70px; min-width: 1100px; {{m.rowStyle}}">
+<div role="cell" class="td mono">{{m.id}}</div>
+<div role="cell" class="td">{{m.date}}</div>
+<div role="cell" class="td">{{m.site}}</div>
+<div role="cell" class="td"><span style="{{m.nameStyle}}">{{m.name}}</span></div>
+<div role="cell" class="td mono"><span style="{{m.vehStyle}}">{{m.veh}}</span></div>
+<div role="cell" class="td" style="font-size: 12.5px">{{m.tr}}</div>
+<div role="cell" class="td mono">{{m.code}}</div>
+<div role="cell" class="td num">{{m.w}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" style="padding: 3px 10px" onClick="{{m.view}}" aria-label="{{m.viewLabel}}">View</button></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px">
+<span style="font-size: 12px; color: #605E5C">Show</span>
+<sc-for list="{{cLimitBtns}}" as="b" hint-placeholder-count="3"><button aria-pressed="{{b.on}}" onClick="{{b.pick}}" style="padding: 3px 12px; font-size: 12.5px; border-radius: 2px; cursor: pointer; {{b.style}}">{{b.label}}</button></sc-for>
+<span style="font-size: 12px; color: #605E5C">The full list is available through Export data.</span>
+</div>
+</div>
+
+</sc-if>
+
+<sc-if value="{{isUnreg}}" hint-placeholder-val="{{false}}">
+
+<div class="tile" style="border-left: 4px solid #118DFF; padding: 12px 16px">
+<p style="margin: 0; font-size: 13px">Carrier registration details are not mandatory. A receiving site can submit a movement without them if it gives a reason, so these figures describe what sites reported, not whether carriers are registered. A possible match means the same vehicle registration appears on movements that do carry registration details.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{uKpis}}" as="k" hint-placeholder-count="4">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1; {{k.valStyle}}">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}</div>
+<div style="font-size: 11.5px; margin-top: 4px; min-height: 16px; {{k.noteStyle}}">{{k.note}}</div>
+</div>
+</sc-for>
+</div>
+
+<div class="tile">
+<h3 class="vt">Reason given by the receiving site</h3>
+<p class="vs">Select a reason to filter the list below.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px 18px">
+<sc-for list="{{uReasons}}" as="q" hint-placeholder-count="5">
+<button onClick="{{q.pick}}" aria-pressed="{{q.on}}" style="text-align: left; border: 1px solid {{q.border}}; background: {{q.bg}}; border-radius: 2px; padding: 8px 10px; cursor: pointer; font-family: inherit">
+<div style="display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: #252423"><span>{{q.label}}</span><span style="font-variant-numeric: tabular-nums; color: #605E5C">{{q.n}}</span></div>
+<div style="height: 8px; background: #F3F2F1; margin-top: 6px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.bar}}; background: #E66C37"></div></div>
+</button>
+</sc-for>
+</div>
+</div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">Movements without carrier registration details</h3><p class="vs">{{uMvCount}}</p></div>
+<sc-if value="{{uHasFilter}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 8px; background: #EAF4FF; border: 1px solid #9DCBFF; border-radius: 2px; padding: 4px 6px 4px 10px; font-size: 12.5px">
+<span>Filtered by: <strong>{{uFilterLabel}}</strong></span>
+<button class="pbtn" style="padding: 2px 8px" onClick="{{uClear}}">Clear</button>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{uHasSel}}" hint-placeholder-val="{{false}}">
+<div style="border: 2px solid #118DFF; border-radius: 4px; padding: 14px 16px; margin: 4px 0 12px; background: #F7FBFF">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap">
+<div><div style="font-size: 11.5px; color: #605E5C">Waste movement</div><div class="mono" style="font-size: 16px; font-weight: 600">{{uSelId}}</div></div>
+<button class="pbtn" onClick="{{uCloseSel}}">Close</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px 18px; margin-top: 10px">
+<sc-for list="{{uSelFields}}" as="sf" hint-placeholder-count="9">
+<div style="min-width: 0"><div style="font-size: 11.5px; color: #605E5C">{{sf.label}}</div><div style="font-size: 13px; font-weight: 600; margin-top: 1px; {{sf.style}}">{{sf.value}}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div role="table" aria-label="Movements without carrier registration details" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 128px 100px minmax(180px, 1.5fr) minmax(150px, 1.3fr) 100px 96px minmax(160px, 1.3fr) 72px 118px 66px; min-width: 1240px">
+<div role="columnheader" class="th">Waste tracking ID</div>
+<div role="columnheader" class="th">Received</div>
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">Name as entered</div>
+<div role="columnheader" class="th">Vehicle reg.</div>
+<div role="columnheader" class="th">Transport</div>
+<div role="columnheader" class="th">Reason given</div>
+<div role="columnheader" class="th num">Weight (t)</div>
+<div role="columnheader" class="th">Possible match</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{uMoves}}" as="m" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 128px 100px minmax(180px, 1.5fr) minmax(150px, 1.3fr) 100px 96px minmax(160px, 1.3fr) 72px 118px 66px; min-width: 1240px; {{m.rowStyle}}">
+<div role="cell" class="td mono">{{m.id}}</div>
+<div role="cell" class="td">{{m.date}}</div>
+<div role="cell" class="td">{{m.site}}</div>
+<div role="cell" class="td"><span style="{{m.nameStyle}}">{{m.name}}</span></div>
+<div role="cell" class="td mono"><span style="{{m.vehStyle}}">{{m.veh}}</span></div>
+<div role="cell" class="td" style="font-size: 12.5px">{{m.tr}}</div>
+<div role="cell" class="td" style="font-size: 12.5px">{{m.reason}}</div>
+<div role="cell" class="td num">{{m.w}}</div>
+<div role="cell" class="td"><sc-if value="{{m.hasMatch}}" hint-placeholder-val="{{false}}"><button class="lnk mono" onClick="{{m.openMatch}}" aria-label="{{m.matchLabel}}">{{m.match}}</button></sc-if><sc-if value="{{m.noMatch}}" hint-placeholder-val="{{true}}"><span style="color: #8A8886">None</span></sc-if></div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" style="padding: 3px 10px" onClick="{{m.view}}" aria-label="{{m.viewLabel}}">View</button></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px">
+<span style="font-size: 12px; color: #605E5C">Show</span>
+<sc-for list="{{uLimitBtns}}" as="b" hint-placeholder-count="3"><button aria-pressed="{{b.on}}" onClick="{{b.pick}}" style="padding: 3px 12px; font-size: 12.5px; border-radius: 2px; cursor: pointer; {{b.style}}">{{b.label}}</button></sc-for>
+<span style="font-size: 12px; color: #605E5C">The full list is available through Export data.</span>
+</div>
+</div>
+
+</sc-if>
+
+</main>
+
+<nav aria-label="Report pages" style="position: sticky; bottom: 0; z-index: 40; display: flex; gap: 2px; align-items: stretch; border-top: 1px solid #C8C6C4; background: #F3F2F1; padding: 0 20px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button onClick="{{t.go}}" aria-current="{{t.cur}}" style="padding: 9px 18px; border: 0; cursor: pointer; font-size: 13px; {{t.style}}">{{t.label}}</button>
+</sc-for>
+<span style="margin-left: auto; align-self: center; font-size: 11.5px; color: #605E5C">Carrier detail and the movements page are drill-through pages</span>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":2600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      f: { nation: [], region: [], la: [], site: [], permit: [], carrier: [], transport: [], regd: [] },
+      q: {}, open: null, page: 'summary', prev: 'summary', carrierId: null, unSite: null, unAll: false,
+      cSort: 'n', cAll: false, usAll: false,
+      cF: null, cLimit: 10, cSel: null,
+      uF: null, uLimit: 10, uSel: null
+    };
+    this._m = null;
+  }
+
+  rng(seed) {
+    let a = seed >>> 0;
+    return () => {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  dims() {
+    return [
+      { k: 'nation', label: 'Nation', grp: 'loc', lvl: 'site' },
+      { k: 'region', label: 'Region', grp: 'loc', lvl: 'site' },
+      { k: 'la', label: 'Local authority', grp: 'loc', lvl: 'site' },
+      { k: 'site', label: 'Receiving site', grp: 'op', lvl: 'site' },
+      { k: 'permit', label: 'Permit number', grp: 'op', lvl: 'site' },
+      { k: 'carrier', label: 'Carrier registration', grp: 'mv', lvl: 'mv' },
+      { k: 'transport', label: 'Means of transport', grp: 'mv', lvl: 'mv' },
+      { k: 'regd', label: 'Registration details', grp: 'mv', lvl: 'mv' }
+    ];
+  }
+
+  sval(st, k) { return k === 'site' ? st.id : st[k]; }
+
+  mval(m, k) {
+    if (k === 'carrier') return m.car;
+    if (k === 'transport') return m.tr;
+    return m.car ? 'Provided' : 'Not provided';
+  }
+
+  siteOk(st, f, upto) {
+    const D = this.dims();
+    for (let i = 0; i < Math.min(upto, D.length); i++) {
+      const d = D[i];
+      if (d.lvl !== 'site') continue;
+      const sel = f[d.k];
+      if (sel && sel.length && sel.indexOf(this.sval(st, d.k)) === -1) return false;
+    }
+    return true;
+  }
+
+  mvOk(m, f, upto, skip) {
+    const D = this.dims();
+    for (let i = 0; i < Math.min(upto, D.length); i++) {
+      const d = D[i];
+      if (d.lvl !== 'mv' || (skip && skip.indexOf(d.k) !== -1)) continue;
+      const sel = f[d.k];
+      if (sel && sel.length && sel.indexOf(this.mval(m, d.k)) === -1) return false;
+    }
+    return true;
+  }
+
+  options(f, k) {
+    const M = this.model();
+    const D = this.dims();
+    const i = D.findIndex((d) => d.k === k);
+    const d = D[i];
+    const mp = new Map();
+    if (d.lvl === 'site') {
+      M.sites.forEach((st) => {
+        if (!this.siteOk(st, f, i)) return;
+        const v = this.sval(st, k);
+        const o = mp.get(v) || { v, w: 0, n: 0 };
+        o.w += st.wT; o.n += st.moves.length;
+        mp.set(v, o);
+      });
+    } else {
+      M.sites.forEach((st) => {
+        if (!this.siteOk(st, f, i)) return;
+        st.moves.forEach((m) => {
+          if (!this.mvOk(m, f, i)) return;
+          const v = this.mval(m, k);
+          if (v == null) return;
+          const o = mp.get(v) || { v, w: 0, n: 0 };
+          o.w += m.w; o.n += 1;
+          mp.set(v, o);
+        });
+      });
+    }
+    return Array.from(mp.values());
+  }
+
+  setFilter(dim, vals) {
+    const D = this.dims();
+    const nf = {};
+    D.forEach((d) => { nf[d.k] = (this.state.f[d.k] || []).slice(); });
+    nf[dim] = vals;
+    const di = D.findIndex((d) => d.k === dim);
+    D.forEach((d, i) => {
+      if (i <= di || nf[d.k].length === 0) return;
+      const ok = {};
+      this.options(nf, d.k).forEach((o) => { ok[o.v] = true; });
+      nf[d.k] = nf[d.k].filter((v) => ok[v]);
+    });
+    this.setState({ f: nf, cAll: false, usAll: false });
+  }
+
+  toggleVal(dim, v) {
+    const cur = (this.state.f[dim] || []).slice();
+    const i = cur.indexOf(v);
+    if (i === -1) cur.push(v); else cur.splice(i, 1);
+    this.setFilter(dim, cur);
+  }
+
+  top() { try { window.scrollTo(0, 0); } catch (e) { /* ignore */ } }
+
+  go(page) { this.setState({ page, open: null }); this.top(); }
+
+  openCarrier(id) {
+    this.setState({ page: 'carrier', prev: this.state.page === 'carrier' ? this.state.prev : this.state.page, carrierId: id, open: null, cF: null, cSel: null, cLimit: 10 });
+    this.top();
+  }
+
+  openUnreg(siteId) {
+    this.setState({ page: 'unreg', prev: 'summary', unSite: siteId, unAll: siteId == null, open: null, uF: null, uSel: null, uLimit: 10 });
+    this.top();
+  }
+
+  model() {
+    if (this._m) return this._m;
+    const r = this.rng(20261013);
+    const LET = 'ABCDEFGHJKLMNOPRSTUVWXYZ';
+    const L = (n) => { let s = ''; for (let i = 0; i < n; i++) s += LET.charAt(Math.floor(r() * LET.length)); return s; };
+    const EA1 = 'EA: Greater Manchester, Merseyside and Cheshire';
+    const LAS = {
+      England: [
+        ['Manchester', 'M', 'Manchester', EA1, 53.48, -2.24], ['Salford', 'M', 'Manchester', EA1, 53.49, -2.29],
+        ['Liverpool', 'L', 'Liverpool', EA1, 53.41, -2.98], ['Knowsley', 'L', 'Liverpool', EA1, 53.45, -2.85],
+        ['Leeds', 'LS', 'Leeds', 'EA: Yorkshire', 53.80, -1.55], ['Wakefield', 'WF', 'Wakefield', 'EA: Yorkshire', 53.68, -1.50],
+        ['Sheffield', 'S', 'Sheffield', 'EA: Yorkshire', 53.38, -1.47], ['Rotherham', 'S', 'Rotherham', 'EA: Yorkshire', 53.43, -1.36],
+        ['Newcastle upon Tyne', 'NE', 'Newcastle upon Tyne', 'EA: North East', 54.98, -1.61], ['Gateshead', 'NE', 'Gateshead', 'EA: North East', 54.95, -1.60],
+        ['Birmingham', 'B', 'Birmingham', 'EA: West Midlands', 52.49, -1.89], ['Sandwell', 'B', 'West Bromwich', 'EA: West Midlands', 52.51, -2.01],
+        ['Coventry', 'CV', 'Coventry', 'EA: West Midlands', 52.41, -1.51], ['Nottingham', 'NG', 'Nottingham', 'EA: East Midlands', 52.95, -1.15],
+        ['Wandsworth', 'SW', 'London', 'EA: Thames', 51.46, -0.19], ['Newham', 'E', 'London', 'EA: Thames', 51.53, 0.03],
+        ['Bristol', 'BS', 'Bristol', 'EA: Wessex', 51.45, -2.59], ['Southampton', 'SO', 'Southampton', 'EA: Solent and South Downs', 50.91, -1.40],
+        ['Plymouth', 'PL', 'Plymouth', 'EA: Devon and Cornwall', 50.38, -4.14]
+      ],
+      Scotland: [
+        ['Glasgow City', 'G', 'Glasgow', 'SEPA: West', 55.86, -4.25], ['North Lanarkshire', 'ML', 'Motherwell', 'SEPA: West', 55.86, -3.98],
+        ['City of Edinburgh', 'EH', 'Edinburgh', 'SEPA: East', 55.95, -3.19], ['West Lothian', 'EH', 'Livingston', 'SEPA: East', 55.90, -3.55],
+        ['Aberdeen City', 'AB', 'Aberdeen', 'SEPA: North', 57.15, -2.09], ['Aberdeenshire', 'AB', 'Inverurie', 'SEPA: North', 57.29, -2.38]
+      ],
+      Wales: [
+        ['Blaenau Gwent', 'NP', 'Ebbw Vale', 'NRW: South-East', 51.78, -3.20], ['Caerphilly', 'CF', 'Caerphilly', 'NRW: South-East', 51.58, -3.22],
+        ['Monmouthshire', 'NP', 'Monmouth', 'NRW: South-East', 51.81, -2.72], ['Newport', 'NP', 'Newport', 'NRW: South-East', 51.58, -3.00],
+        ['Torfaen', 'NP', 'Pontypool', 'NRW: South-East', 51.70, -3.04], ['Bridgend', 'CF', 'Bridgend', 'NRW: South-Central', 51.50, -3.58],
+        ['Cardiff', 'CF', 'Cardiff', 'NRW: South-Central', 51.48, -3.18], ['Merthyr Tydfil', 'CF', 'Merthyr Tydfil', 'NRW: South-Central', 51.75, -3.38],
+        ['Rhondda Cynon Taf', 'CF', 'Pontypridd', 'NRW: South-Central', 51.60, -3.34], ['Vale of Glamorgan', 'CF', 'Barry', 'NRW: South-Central', 51.40, -3.27],
+        ['Carmarthenshire', 'SA', 'Carmarthen', 'NRW: South-West', 51.86, -4.31], ['Neath Port Talbot', 'SA', 'Port Talbot', 'NRW: South-West', 51.59, -3.78],
+        ['Pembrokeshire', 'SA', 'Haverfordwest', 'NRW: South-West', 51.80, -4.97], ['Swansea', 'SA', 'Swansea', 'NRW: South-West', 51.62, -3.94],
+        ['Ceredigion', 'SY', 'Aberystwyth', 'NRW: Mid', 52.41, -4.08], ['Powys', 'LD', 'Llandrindod Wells', 'NRW: Mid', 52.24, -3.38],
+        ['Denbighshire', 'LL', 'Rhyl', 'NRW: North-East', 53.32, -3.49], ['Flintshire', 'CH', 'Deeside', 'NRW: North-East', 53.21, -3.05],
+        ['Wrexham', 'LL', 'Wrexham', 'NRW: North-East', 53.05, -2.99], ['Conwy', 'LL', 'Llandudno', 'NRW: North-West', 53.32, -3.83],
+        ['Gwynedd', 'LL', 'Bangor', 'NRW: North-West', 53.23, -4.13], ['Isle of Anglesey', 'LL', 'Holyhead', 'NRW: North-West', 53.31, -4.63]
+      ],
+      'Northern Ireland': [
+        ['Belfast', 'BT', 'Belfast', 'NIEA: Northern Ireland', 54.60, -5.93], ['Lisburn and Castlereagh', 'BT', 'Lisburn', 'NIEA: Northern Ireland', 54.51, -6.04],
+        ['Armagh City, Banbridge and Craigavon', 'BT', 'Craigavon', 'NIEA: Northern Ireland', 54.45, -6.39]
+      ]
+    };
+    const NRW = ['NRW: South-East', 'NRW: South-Central', 'NRW: South-West', 'NRW: Mid', 'NRW: North-East', 'NRW: North-West'];
+    const ORGS = { England: ['Pennine Resource Group Ltd', 'Northgate Waste Solutions', 'Mersey Aggregates Ltd', 'Humber Reclamation Co', 'Wessex Environmental Services', 'Midlands Metal Recyclers', 'Thames Bulk Handling'], Scotland: ['Clyde Materials Recovery', 'Forth Waste Management'], Wales: ['Taff Valley Recycling', 'Severn Valley Recycling Ltd'], 'Northern Ireland': ['Lagan Recycling'] };
+    const TYPES = ['MRF', 'Transfer Station', 'Treatment Centre', 'Recycling Park', 'Waste Park', 'Depot', 'Bulk Handling', 'Landfill Site', 'Metals Yard', 'Skip Yard'];
+    const MODS = ['Riverside', 'Canalside', 'North', 'Gate', 'Quay', 'Vale', 'Junction', 'Mill', 'Southside', 'Heath'];
+    const NATIONS = [
+      { n: 'England', share: 0.78, count: 46, pool: 200 },
+      { n: 'Scotland', share: 0.11, count: 9, pool: 40 },
+      { n: 'Wales', share: 0.07, count: 18, pool: 46 },
+      { n: 'Northern Ireland', share: 0.04, count: 5, pool: 26 }
+    ];
+    const CODES = [['17 05 04', 22, 3.2], ['17 09 04', 16, 4.0], ['19 12 12', 18, 2.6], ['20 03 01', 11, 2.4], ['15 01 06', 7, 1.8], ['17 01 07', 20, 1.4], ['19 12 02', 12, 1.0], ['20 02 01', 6, 0.9], ['16 01 03', 8, 0.6], ['19 12 11*', 14, 0.9], ['17 06 05*', 6, 0.5]];
+    const cTot = CODES.reduce((a, c) => a + c[2], 0);
+    const pickCode = () => { let v = r() * cTot; for (let i = 0; i < CODES.length; i++) { v -= CODES[i][2]; if (v <= 0) return i; } return 0; };
+    const REASONS = [['One-off movement', 0.32], ['Waste producer carrying own waste', 0.24], ['Exempt from registration', 0.18], ['Registration applied for', 0.11], ['Other', 0.15]];
+    const pickReason = () => { let v = r(); for (let i = 0; i < REASONS.length; i++) { v -= REASONS[i][1]; if (v <= 0) return REASONS[i][0]; } return 'Other'; };
+    const FREE = ['Local skip firm', 'Collected by customer', 'Driver - cash job', '[Unknown haulier]', 'Own vehicle', 'Man with van', 'N/A', 'Various', 'Self', 'Customer delivered', 'TBC'];
+    const W1 = ['Pennine', 'Northway', 'Calder', 'Ridings', 'Kestrel', 'Dalesway', 'Brightwater', 'Tidewater', 'Moorland', 'Severn', 'Mersey', 'Tyne', 'Clyde', 'Forth', 'Lagan', 'Taff', 'Humber', 'Wessex', 'Solent', 'Trent', 'Cheviot', 'Mendip', 'Fenland', 'Wolds', 'Marches', 'Cambrian', 'Grampian', 'Antrim', 'Mourne', 'Gower', 'Hall', 'Greenway', 'Redline', 'Swift', 'Ironbridge'];
+    const W2 = ['Haulage', 'Logistics', 'Transport', 'Waste Carriers', 'Skip Hire', 'Freight', 'Bulk Transport', 'Recycling Services', 'Tipper Hire', 'Waste Management', 'Plant & Haulage'];
+    const PRE = ['', '', '', '', 'A1 ', 'J & M ', 'R. ', 'Hall & Sons ', 'D & S ', 'K. '];
+
+    const vehToCar = {};
+    const newVeh = () => {
+      for (;;) {
+        const v = L(2) + String(10 + Math.floor(r() * 66)) + ' ' + L(3);
+        if (!vehToCar[v]) return v;
+      }
+    };
+    const usedIds = {};
+    const usedNames = {};
+    const carriers = {};
+    const pools = {};
+    NATIONS.forEach((nat) => {
+      pools[nat.n] = [];
+      for (let i = 0; i < nat.pool; i++) {
+        let id;
+        do { id = 'CBDU' + (100000 + Math.floor(r() * 899999)); } while (usedIds[id]);
+        usedIds[id] = true;
+        let base;
+        do { base = PRE[Math.floor(r() * PRE.length)] + W1[Math.floor(r() * W1.length)] + ' ' + W2[Math.floor(r() * W2.length)]; } while (usedNames[base]);
+        usedNames[base] = true;
+        const canon = base + (r() < 0.6 ? ' Ltd' : '');
+        const vars = [{ t: canon, p: 6 }];
+        const nv = Math.floor(Math.pow(r(), 1.6) * 4);
+        const forms = [base.toUpperCase() + (canon.endsWith(' Ltd') ? ' LTD' : ''), base, canon.replace(' Ltd', ' Limited') + (canon.endsWith(' Ltd') ? '' : ' Ltd'), canon + '.', base.split(' ').slice(0, -1).join(' ')];
+        for (let j = 0; j < nv; j++) vars.push({ t: forms[j % forms.length], p: 1 + r() * 2 });
+        if (r() < 0.22) vars.push({ t: r() < 0.5 ? base.split(' ')[0] + '**' : '[' + canon + ']', p: 0.6 + r() });
+        const vSum = vars.reduce((a, v) => a + v.p, 0);
+        const nVeh = 1 + Math.floor(Math.pow(r(), 1.5) * 7);
+        const veh = [];
+        for (let j = 0; j < nVeh; j++) { const v = newVeh(); vehToCar[v] = id; veh.push(v); }
+        const mr = r();
+        const modes = mr < 0.9 ? ['Road'] : (mr < 0.95 ? ['Road', 'Rail'] : (mr < 0.98 ? ['Road', 'Sea'] : ['Inland waterway']));
+        const c = { id, name: canon, vars, vSum, veh, modes, nation: nat.n };
+        carriers[id] = c;
+        pools[nat.n].push(c);
+      }
+    });
+    const pickVar = (c) => { let v = r() * c.vSum; for (let i = 0; i < c.vars.length; i++) { v -= c.vars[i].p; if (v <= 0) return c.vars[i].t; } return c.name; };
+
+    const sites = [];
+    const NATIONAL_T = 612400;
+    let idc = 0;
+    NATIONS.forEach((nat) => {
+      const las = LAS[nat.n];
+      const raws = [];
+      const mine = [];
+      for (let i = 0; i < nat.count; i++) {
+        let row;
+        if (nat.n === 'Wales' && i < NRW.length) { const wp = las.filter((x) => x[3] === NRW[i]); row = wp[Math.floor(r() * wp.length)]; }
+        else row = las[Math.floor(Math.pow(r(), 1.25) * las.length)];
+        let name = row[0] + ' ' + MODS[Math.floor(r() * MODS.length)] + ' ' + TYPES[Math.floor(r() * TYPES.length)];
+        while (sites.some((x) => x.name === name) || mine.some((x) => x.name === name)) name = name + ' 2';
+        const pre = nat.n === 'Scotland' ? 'SCA' : (nat.n === 'Northern Ireland' ? 'NIEA' : 'EPR');
+        const permit = pre === 'NIEA' ? 'NIEA/' + L(2) + (1000 + Math.floor(r() * 8999)) : pre + '/' + L(2) + (1000 + Math.floor(r() * 8999)) + L(2);
+        const og = ORGS[nat.n];
+        raws.push(Math.pow(r(), 2.2) + 0.05);
+        mine.push({
+          name, permit, nation: nat.n, region: row[3], la: row[0], city: row[2], area: row[1], org: og[Math.floor(r() * og.length)],
+          postcode: row[1] + (1 + Math.floor(r() * 28)) + ' ' + (1 + Math.floor(r() * 9)) + L(2),
+          lat: row[4] + (r() - 0.5) * 0.12, lon: row[5] + (r() - 0.5) * 0.18,
+          regMiss: 0.02 + Math.pow(r(), 1.5) * 0.24, vehMiss: 0.005 + r() * 0.05
+        });
+      }
+      const rs = raws.reduce((a, b) => a + b, 0);
+      mine.forEach((st, i) => {
+        st.wT = (NATIONAL_T * nat.share * raws[i]) / rs;
+        st.id = idc++;
+        sites.push(st);
+      });
+    });
+
+    const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const start = Date.UTC(2026, 6, 13);
+    const dayLabel = (d, yr) => { const dt = new Date(start + d * 86400000); return dt.getUTCDate() + ' ' + MON[dt.getUTCMonth()] + (yr ? ' ' + dt.getUTCFullYear() : ''); };
+
+    sites.forEach((st) => {
+      const own = pools[st.nation];
+      const nc = 8 + Math.floor(r() * 9);
+      const sc = [];
+      const taken = {};
+      while (sc.length < nc) {
+        const pool = (st.nation !== 'England' && r() < 0.12) || (st.nation === 'England' && r() < 0.06) ? pools[st.nation === 'England' ? 'Wales' : 'England'] : own;
+        const c = pool[Math.floor(r() * pool.length)];
+        if (!taken[c.id]) { taken[c.id] = true; sc.push({ c, p: Math.pow(r(), 1.7) + 0.06 }); }
+      }
+      const pSum = sc.reduce((a, x) => a + x.p, 0);
+      const pickC = () => { let v = r() * pSum; for (let i = 0; i < sc.length; i++) { v -= sc[i].p; if (v <= 0) return sc[i].c; } return sc[0].c; };
+      const n = Math.max(15, Math.round((st.wT / 14.6) * (0.9 + 0.2 * r())));
+      const moves = [];
+      let sumW = 0;
+      for (let k = 0; k < n; k++) {
+        const ci = pickCode();
+        const d = Math.min(83, Math.floor(84 * Math.pow(r(), 0.92)));
+        const w = CODES[ci][1] * (0.45 + 1.1 * r());
+        sumW += w;
+        const id = 'DWT-' + (10000000 + Math.floor(r() * 89999999));
+        if (r() >= st.regMiss) {
+          const c = pickC();
+          const tr = c.modes.length > 1 && r() < 0.25 ? c.modes[1] : c.modes[0];
+          const veh = tr === 'Road' ? (r() < st.vehMiss ? '' : c.veh[Math.floor(r() * c.veh.length)]) : '';
+          moves.push({ k, d, ci, w, id, car: c.id, name: pickVar(c), tr, veh, reason: '', s: st.id });
+        } else {
+          const hidden = r() < 0.55 ? pickC() : null;
+          const tr = r() < 0.93 ? 'Road' : (r() < 0.5 ? 'Inland waterway' : 'Rail');
+          const name = hidden && r() < 0.55 ? pickVar(hidden) : FREE[Math.floor(r() * FREE.length)];
+          let veh = '';
+          if (tr === 'Road') veh = hidden && hidden.modes[0] === 'Road' && r() < 0.75 ? hidden.veh[Math.floor(r() * hidden.veh.length)] : (r() < 0.6 ? newVeh() : '');
+          moves.push({ k, d, ci, w, id, car: null, name, tr, veh, reason: pickReason(), s: st.id });
+        }
+      }
+      const fW = st.wT / sumW;
+      moves.forEach((m) => { m.w = m.w * fW; });
+      moves.sort((p, q) => (q.d - p.d) || (q.k - p.k));
+      st.moves = moves;
+    });
+
+    const weeks = [];
+    for (let i = 0; i < 12; i++) weeks.push(dayLabel(i * 7, false));
+    this._m = { sites, carriers, vehToCar, CODES, weeks, dayLabel, NRW, REASONS };
+    return this._m;
+  }
+
+  niceMax(v) {
+    if (v <= 0) return 4;
+    const q = v / 4;
+    const p = Math.pow(10, Math.floor(Math.log10(q)));
+    const m = q / p;
+    const n = [1, 2, 2.5, 5, 10].find((x) => m <= x) || 10;
+    return n * p * 4;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const M = this.model();
+    const U = M.sites;
+    const D = this.dims();
+    const f = s.f;
+    const fmt = (n) => Math.round(n).toLocaleString('en-GB');
+    const fmt1 = (n) => (Math.round(n * 10) / 10).toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const pct = (n) => (isFinite(n) ? (Math.round(n * 10) / 10).toFixed(1) : '0.0') + '%';
+    const labelOf = (k, v) => (k === 'site' ? U[v].name : v);
+    const AMBER = 'background:#FFF4CE;color:#6B4E00';
+    const SEL_ROW = 'background:#EAF4FF;box-shadow:inset 3px 0 0 #118DFF';
+    const isArtefact = (nm) => /\*\*|\[|\]/.test(nm);
+    const card = (label, value, note, tip, level) => ({
+      label, value, note: note || '', tip: tip || '', hasTip: !!tip,
+      valStyle: level === 'amber' ? 'color:#8A6100' : 'color:#252423',
+      noteStyle: level === 'amber' ? 'color:#8A6100;font-weight:600' : 'color:#605E5C'
+    });
+    const limitBtns = (cur, key) => [10, 25, 100].map((n) => ({
+      label: String(n), on: cur === n,
+      style: cur === n ? 'background:#252423;color:#FFFFFF;border:1px solid #252423' : 'background:#FFFFFF;color:#252423;border:1px solid #8A8886',
+      pick: () => this.setState({ [key]: n })
+    }));
+    const setD = D.filter((d) => f[d.k].length > 0);
+    const listOf = (k) => {
+      const vals = f[k].map((v) => labelOf(k, v));
+      return vals.length > 3 ? vals.slice(0, 3).join(', ') + ' and ' + (vals.length - 3) + ' more' : vals.join(', ');
+    };
+    const carried = (skip) => setD.filter((d) => skip.indexOf(d.k) === -1).map((d) => d.label + ': ' + listOf(d.k));
+    const scopeSites = U.filter((st) => this.siteOk(st, f, 99));
+    const tabStyle = (on) => (on ? 'background:#FFFFFF;font-weight:600;color:#252423;box-shadow:inset 0 3px 0 #118DFF' : 'background:transparent;color:#605E5C');
+
+    const out = {
+      isSummary: s.page === 'summary',
+      isCarrier: s.page === 'carrier' && !!s.carrierId,
+      isUnreg: s.page === 'unreg' && (s.unSite != null || s.unAll),
+      showBack: s.page !== 'summary',
+      backLabel: 'Back to ' + (s.prev === 'unreg' && s.page === 'carrier' ? 'movements without registration details' : 'Summary'),
+      back: () => this.go(s.page === 'carrier' && s.prev === 'unreg' ? 'unreg' : 'summary'),
+      goSummary: () => this.go('summary'),
+      tabs: [
+        { label: 'Summary', go: () => this.go('summary'), cur: s.page === 'summary' ? 'page' : 'false', style: tabStyle(s.page === 'summary') },
+        { label: 'Carrier detail', go: () => this.go('carrier'), cur: s.page === 'carrier' ? 'page' : 'false', style: tabStyle(s.page === 'carrier') },
+        { label: 'Movements without registration details', go: () => this.go('unreg'), cur: s.page === 'unreg' ? 'page' : 'false', style: tabStyle(s.page === 'unreg') }
+      ]
+    };
+    out.isEmpty = !out.isSummary && !out.isCarrier && !out.isUnreg;
+    out.emptyTitle = s.page === 'carrier' ? 'No carrier selected' : 'No receiving site selected';
+    out.emptyText = s.page === 'carrier' ? 'Carrier detail is a drill-through page. Open it from a carrier on the Summary page.' : 'This is a drill-through page. Open it from the Summary page, section 3.';
+    if (out.isEmpty) { out.pageTitle = s.page === 'carrier' ? 'Carrier detail' : 'Movements without carrier registration details'; out.showing = 'Nothing selected'; out.showingSub = ''; }
+
+    if (s.page === 'summary') {
+      out.pageTitle = 'Carrier Activity & Registration Report';
+      out.showing = setD.length ? setD.map((d) => d.label + ': ' + listOf(d.k)).join(' · ') : 'DWT national: all four nations combined';
+      out.showingSub = 'Location slicers use the location of the receiving site. Everything on this page follows the slicers.';
+      out.anyOpen = !!s.open;
+      out.closeOpen = () => this.setState({ open: null, q: {} });
+      out.clearAll = () => this.setState({ f: { nation: [], region: [], la: [], site: [], permit: [], carrier: [], transport: [], regd: [] }, q: {}, open: null });
+
+      const mkSlicer = (d, i, n, grp) => {
+        const sel = f[d.k];
+        const isSet = sel.length > 0;
+        const isOpen = s.open === d.k;
+        const searchable = true;
+        const optStyle = (on) => ({ bg: on ? '#EAF4FF' : '#FFFFFF', tick: on ? '✓' : '', box: on ? 'border:1px solid #252423;background:#252423' : 'border:1px solid #605E5C;background:#FFFFFF' });
+        let opts = [];
+        let noMatch = false;
+        const qs = ((s.q || {})[d.k] || '').trim().toLowerCase();
+        if (isOpen) {
+          const permitSite = {};
+          if (d.k === 'permit') U.forEach((st) => { permitSite[st.permit] = st.name; });
+          const subOf = (o) => (d.k === 'permit' ? permitSite[o.v] : (d.k === 'carrier' ? M.carriers[o.v].name : (D[i].lvl === 'mv' ? fmt(o.n) + ' moves' : fmt(o.w) + ' t')));
+          let all = this.options(f, d.k);
+          const ro = (v) => M.NRW.indexOf(v);
+          all.sort((p, q) => {
+            if (d.k === 'nation' || d.k === 'transport' || d.k === 'regd') return q.n - p.n;
+            if (d.k === 'carrier') return q.n - p.n;
+            if (d.k === 'region' && ro(p.v) !== -1 && ro(q.v) !== -1) return ro(p.v) - ro(q.v);
+            return String(labelOf(d.k, p.v)).localeCompare(String(labelOf(d.k, q.v)));
+          });
+          if (qs) all = all.filter((o) => (String(labelOf(d.k, o.v)) + ' ' + (subOf(o) || '')).toLowerCase().indexOf(qs) !== -1);
+          noMatch = !!qs && all.length === 0;
+          const allSt = optStyle(!isSet);
+          opts = (qs ? [] : [{ label: 'Select all', sub: '', labelStyle: 'font-weight: 600', on: !isSet, bg: allSt.bg, tick: allSt.tick, box: allSt.box, pick: () => this.setFilter(d.k, []) }]).concat(all.slice(0, 300).map((o) => {
+            const on = sel.indexOf(o.v) !== -1;
+            const st2 = optStyle(on);
+            return {
+              label: labelOf(d.k, o.v), sub: subOf(o),
+              labelStyle: (d.k === 'permit' || d.k === 'carrier') ? 'font-family: Consolas, Menlo, monospace; font-size: 12.5px' : '',
+              on, bg: st2.bg, tick: st2.tick, box: st2.box, pick: () => this.toggleVal(d.k, o.v)
+            };
+          }));
+        }
+        return {
+          label: d.label,
+          value: !isSet ? 'All' : (sel.length === 1 ? labelOf(d.k, sel[0]) : sel.length + ' selected'),
+          isSet, clearLabel: 'Clear ' + d.label + ' slicer', clear: () => this.setFilter(d.k, []),
+          open: isOpen, toggle: () => this.setState({ open: isOpen ? null : d.k, q: {} }),
+          boxStyle: isSet ? 'background:#FFFFFF;border:1px solid #118DFF;color:#252423;font-weight:600' : 'background:#FFFFFF;border:1px solid #8A8886;color:#252423',
+          pos: (grp === 'mv' && i === n - 1) ? 'right: 0' : 'left: 0',
+          searchable, q: (s.q || {})[d.k] || '',
+          placeholder: d.k === 'permit' ? 'Search permit or site' : (d.k === 'carrier' ? 'Search registration or name' : 'Search ' + d.label.toLowerCase()),
+          searchLabel: 'Search ' + d.label + ' slicer',
+          onKey: (e) => { if (e && e.key === 'Escape') this.setState({ open: null, q: {} }); },
+          onSearch: (e) => { const v = e && e.target ? e.target.value : ''; this.setState({ q: Object.assign({}, this.state.q, { [d.k]: v }) }); },
+          noMatch, opts
+        };
+      };
+      ['loc', 'op', 'mv'].forEach((g) => {
+        const ds = D.filter((d) => d.grp === g);
+        out[g + 'Slicers'] = ds.map((d) => mkSlicer(d, ds.indexOf(d), ds.length, g));
+      });
+
+      const T = { n: 0, w: 0, un: 0, unW: 0, unMatch: 0, roadN: 0, roadNoVeh: 0 };
+      const wk = [];
+      for (let i = 0; i < 12; i++) wk.push([0, 0]);
+      const car = new Map();
+      const reasons = {};
+      const siteUn = [];
+      let sitesWith = 0;
+      scopeSites.forEach((st) => {
+        let sn = 0;
+        let su = 0;
+        const rs = {};
+        st.moves.forEach((m) => {
+          if (!this.mvOk(m, f, 99)) return;
+          sn++; T.n++; T.w += m.w;
+          const b = Math.floor(m.d / 7);
+          if (m.tr === 'Road') { T.roadN++; if (!m.veh) T.roadNoVeh++; }
+          if (m.car) {
+            wk[b][0]++;
+            let a = car.get(m.car);
+            if (!a) { a = { id: m.car, n: 0, w: 0, sites: {}, nat: {}, names: {}, roadN: 0, roadNoVeh: 0 }; car.set(m.car, a); }
+            a.n++; a.w += m.w; a.sites[st.id] = 1; a.nat[st.nation] = 1; a.names[m.name] = (a.names[m.name] || 0) + 1;
+            if (m.tr === 'Road') { a.roadN++; if (!m.veh) a.roadNoVeh++; }
+          } else {
+            wk[b][1]++; T.un++; T.unW += m.w; su++;
+            reasons[m.reason] = (reasons[m.reason] || 0) + 1;
+            rs[m.reason] = (rs[m.reason] || 0) + 1;
+            if (m.veh && M.vehToCar[m.veh]) T.unMatch++;
+          }
+        });
+        if (sn) sitesWith++;
+        if (su) siteUn.push({ st, un: su, n: sn, rs });
+      });
+      out.scopeLine = fmt(sitesWith) + ' receiving sites · ' + fmt(T.n) + ' movements in scope';
+      const onlyCar = f.carrier.length === 1 ? f.carrier[0] : null;
+      out.oneCarrier = !!onlyCar;
+      out.oneCarrierId = onlyCar || '';
+      out.openOneCarrier = () => { if (onlyCar) this.openCarrier(onlyCar); };
+
+      const unP = T.n ? (T.un / T.n) * 100 : 0;
+      out.kpis = [
+        card('Movements', fmt(T.n), 'Reported by receiving sites'),
+        card('Weight received', fmt(T.w) + ' t', ''),
+        card('Carriers identified', fmt(car.size), 'Distinct CBD registrations'),
+        card('Receiving sites reporting', fmt(sitesWith), ''),
+        card('Number of movements without carrier registration details', fmt(T.un), pct(unP) + ' of all movements', 'Carrier registration details are not mandatory. A receiving site can submit a movement without them if it gives a reason, so this is not a measure of carrier compliance.'),
+        card('Weight in those movements', fmt(T.unW) + ' t', pct(T.w ? (T.unW / T.w) * 100 : 0) + ' of all weight'),
+        card('Possible carrier matches', fmt(T.unMatch), 'Same vehicle registration seen on movements with registration details', 'A movement without registration details whose vehicle registration also appears on movements submitted with a carrier registration.'),
+        card('Road movements without a vehicle registration', fmt(T.roadNoVeh), pct(T.roadN ? (T.roadNoVeh / T.roadN) * 100 : 0) + ' of road movements', 'Vehicle registration is only required when the means of transport is road.')
+      ];
+
+      const tot = wk.map((b) => b[0] + b[1]);
+      const mx = Math.max.apply(null, tot.concat([1]));
+      const yMax = this.niceMax(mx);
+      out.trendGrid = [0, 0.25, 0.5, 0.75, 1].map((q) => ({ pos: (q * 100) + '%', label: fmt(yMax * q), line: q === 0 ? '#8A8886' : '#EDEBE9' }));
+      out.trend = wk.map((b, i) => ({
+        label: M.weeks[i],
+        tip: 'Week commencing ' + M.weeks[i] + ': ' + fmt(tot[i]) + ' movements, ' + fmt(b[1]) + ' without carrier registration details',
+        segs: [{ h: ((b[0] / yMax) * 100).toFixed(2) + '%', bg: '#118DFF' }, { h: ((b[1] / yMax) * 100).toFixed(2) + '%', bg: '#E66C37' }]
+      }));
+      out.trendLegend = [{ color: '#118DFF', label: 'With carrier registration details' }, { color: '#E66C37', label: 'Without carrier registration details' }];
+      out.trendNote = 'Weekly movement counts. Busiest week commencing ' + M.weeks[tot.indexOf(mx)] + ': ' + fmt(mx) + ' movements.';
+
+      const rows = Array.from(car.values()).map((a) => {
+        const names = Object.keys(a.names).sort((p, q) => a.names[q] - a.names[p]);
+        return { a, names, v: names.length, s: Object.keys(a.sites).length };
+      });
+      const keyOf = { n: (x) => x.a.n, w: (x) => x.a.w, s: (x) => x.s, v: (x) => x.v };
+      rows.sort((p, q) => keyOf[s.cSort](q) - keyOf[s.cSort](p) || q.a.n - p.a.n);
+      ['N', 'W', 'S', 'V'].forEach((Lt) => {
+        const k = Lt.toLowerCase();
+        out['sort' + Lt] = () => this.setState({ cSort: k });
+        out['arr' + Lt] = s.cSort === k ? ' ▼' : '';
+      });
+      const sortName = { n: 'movements', w: 'weight', s: 'receiving sites', v: 'name variants' }[s.cSort];
+      out.carTitle = 'Carriers (' + fmt(rows.length) + ')';
+      out.carNote = 'Carriers with registration details on at least one movement in scope. Sorted by ' + sortName + ', highest first. Select a column heading to re-sort.';
+      const lim = s.cAll ? Math.min(rows.length, 200) : 15;
+      out.carShowMore = rows.length > 15;
+      out.carMoreLabel = s.cAll ? 'Show top 15 only' : 'Show more (' + Math.min(rows.length, 200) + ')';
+      out.carToggle = () => this.setState({ cAll: !s.cAll });
+      const cw = Math.max.apply(null, rows.map((x) => x.a.w).concat([1]));
+      out.carRows = rows.slice(0, lim).map((x) => ({
+        id: x.a.id, name: x.names[0], variants: String(x.v), varStyle: x.v >= 4 ? AMBER : '',
+        n: fmt(x.a.n), w: fmt(x.a.w), bar: ((x.a.w / cw) * 100).toFixed(1) + '%', sites: String(x.s),
+        nations: Object.keys(x.a.nat).join(', '),
+        noVeh: x.a.roadN ? fmt(x.a.roadNoVeh) + ' (' + pct((x.a.roadNoVeh / x.a.roadN) * 100) + ')' : 'No road moves',
+        openLabel: 'Open Carrier detail for ' + x.a.id,
+        open: () => this.openCarrier(x.a.id)
+      }));
+
+      const rk = M.REASONS.map((x) => x[0]).filter((k) => reasons[k]);
+      const rMax = Math.max.apply(null, rk.map((k) => reasons[k]).concat([1]));
+      out.reasons = rk.sort((p, q) => reasons[q] - reasons[p]).map((k) => ({ label: k, n: fmt(reasons[k]), pct: pct((reasons[k] / T.un) * 100), bar: ((reasons[k] / rMax) * 100).toFixed(1) + '%' }));
+      out.hasUn = T.un > 0;
+      out.reasonNote = T.un ? fmt(T.un) + ' movements without carrier registration details in this scope.' : 'No movements without carrier registration details in this scope.';
+      out.unAllLabel = 'View all ' + fmt(T.un) + ' movements ›';
+      out.openUnAll = () => this.openUnreg(null);
+      siteUn.sort((p, q) => q.un - p.un);
+      const ul = s.usAll ? siteUn.length : 8;
+      out.unSitesMore = siteUn.length > 8;
+      out.unSitesMoreLabel = s.usAll ? 'Show top 8 only' : 'Show all ' + siteUn.length + ' sites';
+      out.unSitesToggle = () => this.setState({ usAll: !s.usAll });
+      out.unSitesNote = siteUn.length + ' receiving sites reported at least one movement without carrier registration details. Sorted by number of movements.';
+      out.unSites = siteUn.slice(0, ul).map((x) => {
+        const top = Object.keys(x.rs).sort((p, q) => x.rs[q] - x.rs[p])[0];
+        return {
+          name: x.st.name, permit: x.st.permit, un: fmt(x.un), pct: pct((x.un / x.n) * 100), reason: top,
+          openLabel: 'View movements without registration details for ' + x.st.name,
+          open: () => this.openUnreg(x.st.id)
+        };
+      });
+    }
+
+    if (out.isCarrier) {
+      const c = M.carriers[s.carrierId];
+      const skipMv = ['carrier', 'regd'];
+      const mine = [];
+      const matchMv = [];
+      scopeSites.forEach((st) => st.moves.forEach((m) => {
+        if (!this.mvOk(m, f, 99, skipMv)) return;
+        if (m.car === c.id) mine.push(m);
+        else if (!m.car && m.veh && M.vehToCar[m.veh] === c.id) matchMv.push(m);
+      }));
+      mine.sort((p, q) => (q.d - p.d) || (q.k - p.k));
+      out.pageTitle = 'Carrier detail: ' + c.id;
+      out.showing = 'Carrier registration: ' + c.id + ' (drill-through)';
+      const cr = carried(['carrier', 'regd']);
+      out.showingSub = cr.length ? 'Carried over from the Summary slicers: ' + cr.join(' · ') : 'Opened from DWT national, all four nations combined.';
+      const bySite = {};
+      const byName = {};
+      const byVeh = {};
+      let w = 0;
+      let roadN = 0;
+      let roadNoVeh = 0;
+      const nat = {};
+      const modes = {};
+      mine.forEach((m) => {
+        w += m.w;
+        const bs = bySite[m.s] || (bySite[m.s] = { n: 0, w: 0 });
+        bs.n++; bs.w += m.w;
+        byName[m.name] = (byName[m.name] || 0) + 1;
+        if (m.veh) { const bv = byVeh[m.veh] || (byVeh[m.veh] = { n: 0, tr: m.tr }); bv.n++; }
+        if (m.tr === 'Road') { roadN++; if (!m.veh) roadNoVeh++; }
+        nat[U[m.s].nation] = 1;
+        modes[m.tr] = 1;
+      });
+      const names = Object.keys(byName).sort((p, q) => byName[q] - byName[p]);
+      const vehs = Object.keys(byVeh).sort((p, q) => byVeh[q].n - byVeh[p].n);
+      const sIds = Object.keys(bySite).map(Number).sort((p, q) => bySite[q].w - bySite[p].w);
+      const first = mine.length ? M.dayLabel(mine[mine.length - 1].d, true) : '';
+      const last = mine.length ? M.dayLabel(mine[0].d, true) : '';
+      const arte = names.filter(isArtefact).length;
+      out.profile = [
+        { label: 'CBD registration', value: c.id, style: 'font-family: Consolas, Menlo, monospace' },
+        { label: 'Name most often entered', value: names[0] || c.name, style: '' },
+        { label: 'Names entered', value: names.length + (arte ? ' (' + arte + ' with possible formatting artefacts)' : ''), style: names.length >= 4 ? 'color:#8A6100' : '' },
+        { label: 'Means of transport', value: Object.keys(modes).join(', ') || 'None in scope', style: '' },
+        { label: 'First movement in range', value: first || 'None', style: '' },
+        { label: 'Latest movement in range', value: last || 'None', style: '' }
+      ];
+      out.cKpis = [
+        card('Movements', fmt(mine.length), ''),
+        card('Weight delivered', fmt(w) + ' t', ''),
+        card('Receiving sites', String(sIds.length), ''),
+        card('Nations', String(Object.keys(nat).length), Object.keys(nat).join(', ')),
+        card('Vehicle registrations used', String(vehs.length), ''),
+        card('Names entered for this registration', String(names.length), names.length >= 4 ? 'Many variations: check the list below' : '', '', names.length >= 4 ? 'amber' : ''),
+        card('Road movements without a vehicle registration', fmt(roadNoVeh), roadN ? pct((roadNoVeh / roadN) * 100) + ' of road movements' : 'No road movements', 'Vehicle registration is only required when the means of transport is road.'),
+        card('Possible matches without registration details', fmt(matchMv.length), 'Movements using one of this carrier’s vehicles', 'Movements submitted without carrier registration details whose vehicle registration matches a vehicle this carrier used on registered movements.', matchMv.length ? 'amber' : '')
+      ];
+      const proj = (lon, lat) => ({ x: (lon + 8.5) * 46 * 0.58 + 4, y: (59.2 - lat) * 46 + 4 });
+      const sMax = Math.max.apply(null, sIds.map((id) => bySite[id].w).concat([1]));
+      const cf = s.cF;
+      out.dots = sIds.slice().reverse().map((id) => {
+        const st = U[id];
+        const p = proj(st.lon, st.lat);
+        const sz = 8 + 22 * Math.sqrt(bySite[id].w / sMax);
+        const on = !!cf && cf.k === 'site' && cf.v === id;
+        return {
+          left: (p.x - sz / 2).toFixed(1) + 'px', top: (p.y - sz / 2).toFixed(1) + 'px', size: sz.toFixed(1) + 'px',
+          style: on ? 'background:rgba(230,108,55,0.85);border:2px solid #A4401B' : 'background:rgba(17,141,255,0.55);border:1px solid #0B5CAD',
+          tip: st.name + ': ' + fmt1(bySite[id].w) + ' t, ' + bySite[id].n + ' movements',
+          pick: () => this.setState({ cF: on ? null : { k: 'site', v: id }, cSel: null })
+        };
+      });
+      out.cSites = sIds.map((id) => {
+        const on = !!cf && cf.k === 'site' && cf.v === id;
+        return {
+          name: U[id].name, permit: U[id].permit, region: U[id].region, n: fmt(bySite[id].n), w: fmt1(bySite[id].w),
+          bar: ((bySite[id].w / sMax) * 100).toFixed(1) + '%', on, rowStyle: on ? SEL_ROW : '',
+          pick: () => this.setState({ cF: on ? null : { k: 'site', v: id }, cSel: null })
+        };
+      });
+      out.cNames = names.map((nm) => {
+        const on = !!cf && cf.k === 'name' && cf.v === nm;
+        const art = isArtefact(nm);
+        return {
+          name: nm, n: fmt(byName[nm]), on, rowStyle: on ? SEL_ROW : '',
+          flag: art ? 'Formatting artefact?' : (nm === names[0] ? 'Most common' : 'Variant'),
+          flagStyle: art ? AMBER : (nm === names[0] ? 'background:#DFF6DD;color:#0E700E' : 'background:#F3F2F1;color:#605E5C'),
+          pick: () => this.setState({ cF: on ? null : { k: 'name', v: nm }, cSel: null })
+        };
+      });
+      out.vehNote = vehs.length + ' vehicle registrations on this carrier’s movements. Vehicle registration is only required for road. Select one to list its movements.';
+      out.noVeh = vehs.length === 0;
+      out.cVeh = vehs.slice(0, 12).map((v) => {
+        const on = !!cf && cf.k === 'veh' && cf.v === v;
+        return { veh: v, tr: byVeh[v].tr, n: fmt(byVeh[v].n), on, rowStyle: on ? SEL_ROW : '', pick: () => this.setState({ cF: on ? null : { k: 'veh', v }, cSel: null }) };
+      });
+      out.hasMatches = matchMv.length > 0;
+      out.matchNote = matchMv.length + ' movements were submitted without carrier registration details but used a vehicle this carrier used on registered movements. Showing the latest ' + Math.min(10, matchMv.length) + '.';
+      matchMv.sort((p, q) => q.d - p.d);
+      out.matches = matchMv.slice(0, 10).map((m) => ({ id: m.id, date: M.dayLabel(m.d, true), site: U[m.s].name, name: m.name, veh: m.veh, reason: m.reason, w: fmt1(m.w) }));
+      const test = (m) => !cf || (cf.k === 'site' ? m.s === cf.v : (cf.k === 'name' ? m.name === cf.v : m.veh === cf.v));
+      const fl = mine.filter(test);
+      const shown = fl.slice(0, s.cLimit);
+      out.cHasFilter = !!cf;
+      out.cFilterLabel = !cf ? '' : (cf.k === 'site' ? U[cf.v].name : (cf.k === 'name' ? 'Name "' + cf.v + '"' : 'Vehicle ' + cf.v));
+      out.cClear = () => this.setState({ cF: null, cSel: null });
+      out.cMvCount = 'Showing ' + shown.length + ' of ' + fmt(fl.length) + ' movements' + (cf ? ' that match the filter' : ' for this carrier') + ', newest first.';
+      out.cLimitBtns = limitBtns(s.cLimit, 'cLimit');
+      out.cMoves = shown.map((m) => ({
+        id: m.id, date: M.dayLabel(m.d, true), site: U[m.s].name, name: m.name,
+        nameStyle: isArtefact(m.name) ? AMBER + ';padding:1px 4px' : '',
+        veh: m.veh || (m.tr === 'Road' ? 'Missing' : 'Not required'),
+        vehStyle: m.veh ? '' : (m.tr === 'Road' ? AMBER + ';padding:1px 4px;font-family:inherit;font-size:12px' : 'color:#8A8886;font-family:inherit;font-size:12px'),
+        tr: m.tr, code: M.CODES[m.ci][0], w: fmt1(m.w),
+        rowStyle: s.cSel === m.id ? SEL_ROW : '',
+        viewLabel: 'View movement ' + m.id, view: () => this.setState({ cSel: m.id })
+      }));
+      const sm = s.cSel ? mine.find((m) => m.id === s.cSel) : null;
+      out.cHasSel = !!sm;
+      out.cSelId = sm ? sm.id : '';
+      out.cCloseSel = () => this.setState({ cSel: null });
+      out.cSelFields = sm ? [
+        { label: 'Received', value: M.dayLabel(sm.d, true), style: '' },
+        { label: 'Receiving site', value: U[sm.s].name + ' (' + U[sm.s].permit + ')', style: '' },
+        { label: 'Carrier CBD registration', value: sm.car, style: '' },
+        { label: 'Carrier name as entered', value: sm.name, style: isArtefact(sm.name) ? 'color:#8A6100' : '' },
+        { label: 'Means of transport', value: sm.tr, style: '' },
+        { label: 'Vehicle registration', value: sm.veh || (sm.tr === 'Road' ? 'Missing (required for road)' : 'Not required'), style: !sm.veh && sm.tr === 'Road' ? 'color:#8A6100' : '' },
+        { label: 'EWC code', value: M.CODES[sm.ci][0], style: '' },
+        { label: 'Weight', value: fmt1(sm.w) + ' t', style: '' }
+      ] : [];
+    }
+
+    if (out.isUnreg) {
+      const one = s.unSite != null ? U[s.unSite] : null;
+      const skipMv = ['carrier', 'regd'];
+      const sites = one ? [one] : scopeSites;
+      let all = 0;
+      const list = [];
+      sites.forEach((st) => st.moves.forEach((m) => {
+        if (!this.mvOk(m, f, 99, skipMv)) return;
+        all++;
+        if (!m.car) list.push(m);
+      }));
+      list.sort((p, q) => (q.d - p.d) || (q.k - p.k));
+      out.pageTitle = 'Movements without carrier registration details' + (one ? ': ' + one.name : '');
+      out.showing = one ? 'Receiving site: ' + one.name + ' (' + one.permit + ')' : (setD.length ? setD.filter((d) => skipMv.indexOf(d.k) === -1).map((d) => d.label + ': ' + listOf(d.k)).join(' · ') || 'DWT national: all four nations combined' : 'DWT national: all four nations combined');
+      const cr = carried(['carrier', 'regd', 'site', 'permit']);
+      out.showingSub = one ? (cr.length ? 'Carried over from the Summary slicers: ' + cr.join(' · ') : 'Drill-through from the Summary page.') : 'All receiving sites in the current scope.';
+      let w = 0;
+      let match = 0;
+      const rc = {};
+      list.forEach((m) => { w += m.w; rc[m.reason] = (rc[m.reason] || 0) + 1; if (m.veh && M.vehToCar[m.veh]) match++; });
+      out.uKpis = [
+        card('Number of movements without carrier registration details', fmt(list.length), '', 'Carrier registration details are not mandatory if the site gives a reason.'),
+        card('Share of movements', pct(all ? (list.length / all) * 100 : 0), 'of ' + fmt(all) + ' movements ' + (one ? 'at this site' : 'in scope')),
+        card('Weight', fmt(w) + ' t', ''),
+        card('Possible carrier matches', fmt(match), 'Vehicle registration also seen on registered movements', '', match ? 'amber' : '')
+      ];
+      const uf = s.uF;
+      const rk = Object.keys(rc).sort((p, q) => rc[q] - rc[p]);
+      const rMax = Math.max.apply(null, rk.map((k) => rc[k]).concat([1]));
+      out.uReasons = rk.map((k) => {
+        const on = !!uf && uf.k === 'reason' && uf.v === k;
+        return {
+          label: k, n: fmt(rc[k]) + ' · ' + pct((rc[k] / list.length) * 100), bar: ((rc[k] / rMax) * 100).toFixed(1) + '%', on,
+          bg: on ? '#EAF4FF' : '#FFFFFF', border: on ? '#118DFF' : '#E1DFDD',
+          pick: () => this.setState({ uF: on ? null : { k: 'reason', v: k }, uSel: null })
+        };
+      });
+      const test = (m) => !uf || (uf.k === 'reason' ? m.reason === uf.v : true);
+      const fl = list.filter(test);
+      const shown = fl.slice(0, s.uLimit);
+      out.uHasFilter = !!uf;
+      out.uFilterLabel = uf ? 'Reason "' + uf.v + '"' : '';
+      out.uClear = () => this.setState({ uF: null, uSel: null });
+      out.uMvCount = 'Showing ' + shown.length + ' of ' + fmt(fl.length) + ' movements, newest first. Select a possible match to open that carrier.';
+      out.uLimitBtns = limitBtns(s.uLimit, 'uLimit');
+      out.uMoves = shown.map((m) => {
+        const mc = m.veh ? M.vehToCar[m.veh] : null;
+        return {
+          id: m.id, date: M.dayLabel(m.d, true), site: U[m.s].name, name: m.name,
+          nameStyle: isArtefact(m.name) ? AMBER + ';padding:1px 4px' : '',
+          veh: m.veh || (m.tr === 'Road' ? 'Missing' : 'Not required'),
+          vehStyle: m.veh ? '' : (m.tr === 'Road' ? AMBER + ';padding:1px 4px;font-family:inherit;font-size:12px' : 'color:#8A8886;font-family:inherit;font-size:12px'),
+          tr: m.tr, reason: m.reason, w: fmt1(m.w),
+          hasMatch: !!mc, noMatch: !mc, match: mc || '', matchLabel: mc ? 'Open Carrier detail for possible match ' + mc : '',
+          openMatch: () => { if (mc) this.openCarrier(mc); },
+          rowStyle: s.uSel === m.id ? SEL_ROW : '',
+          viewLabel: 'View movement ' + m.id, view: () => this.setState({ uSel: m.id })
+        };
+      });
+      const sm = s.uSel ? list.find((m) => m.id === s.uSel) : null;
+      out.uHasSel = !!sm;
+      out.uSelId = sm ? sm.id : '';
+      out.uCloseSel = () => this.setState({ uSel: null });
+      if (sm) {
+        const mc = sm.veh ? M.vehToCar[sm.veh] : null;
+        out.uSelFields = [
+          { label: 'Received', value: M.dayLabel(sm.d, true), style: '' },
+          { label: 'Receiving site', value: U[sm.s].name + ' (' + U[sm.s].permit + ')', style: '' },
+          { label: 'Carrier CBD registration', value: 'Not provided', style: '' },
+          { label: 'Reason given', value: sm.reason, style: '' },
+          { label: 'Carrier name as entered', value: sm.name, style: isArtefact(sm.name) ? 'color:#8A6100' : '' },
+          { label: 'Means of transport', value: sm.tr, style: '' },
+          { label: 'Vehicle registration', value: sm.veh || (sm.tr === 'Road' ? 'Missing (required for road)' : 'Not required'), style: !sm.veh && sm.tr === 'Road' ? 'color:#8A6100' : '' },
+          { label: 'Possible match', value: mc ? mc + ' (' + M.carriers[mc].name + ')' : 'None found', style: mc ? 'color:#0B5CAD' : '' },
+          { label: 'EWC code and weight', value: M.CODES[sm.ci][0] + ' · ' + fmt1(sm.w) + ' t', style: '' }
+        ];
+      } else {
+        out.uSelFields = [];
+      }
+    }
+    return out;
+  }
+}
+</script>
+
+</body>
+</html>
