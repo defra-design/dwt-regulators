@@ -11,12 +11,18 @@ main{max-width:860px;margin:0 auto;padding:28px 20px 40px}
 h1{font-size:26px;margin:0 0 6px}
 p{font-size:15px;line-height:1.5;color:#3B3A39;margin:0 0 14px}
 .note{background:#FFF4CE;color:#5C4400;padding:10px 14px;border-radius:2px;font-size:14px;margin:0 0 22px}
+.source{background:#fff;border:1px solid #E1DFDD;border-left:4px solid #12239E;border-radius:4px;padding:14px 18px;margin:0 0 14px}
+.source-h{font-size:15px;font-weight:600;margin:0 0 6px}
+.source p{margin:0;font-size:14.5px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 a.card{display:block;background:#fff;border:1px solid #E1DFDD;border-radius:4px;padding:18px 20px;text-decoration:none;color:#252423;box-shadow:0 1px 2px rgba(0,0,0,.06)}
 a.card:hover,a.card:focus-visible{border-color:#118DFF;outline:none;box-shadow:0 0 0 2px #118DFF}
 .tag{font-size:12px;font-weight:600;color:#12239E;letter-spacing:.04em;text-transform:uppercase}
 .t{font-size:18px;font-weight:600;margin:6px 0 8px}
 .d{font-size:14px;color:#605E5C;line-height:1.45;margin:0}
+h2{font-size:18px;margin:28px 0 10px}
+a.card.ur{border-top:4px solid #5C2D91}
+a.card.ur .tag{color:#5C2D91}
 </style>
 </head>
 <body>
@@ -24,10 +30,21 @@ a.card:hover,a.card:focus-visible{border-color:#118DFF;outline:none;box-shadow:0
 <main>
 <h1>Power BI report prototypes</h1>
 <p>Clickable mock-ups for co-design and user research. They show layout, filters and drill-down, not the final Power BI build.</p>
-<p class="note">Illustrative only: every site, carrier, permit and figure is invented sample data.</p>
+<div class="source">
+<div class="source-h">Data source: Receipt of Waste submissions only</div>
+<p>All the reports are built solely on data submitted to Digital Waste Tracking through the Receipt of Waste service (the API and spreadsheet upload) by receiving sites. They do not include data from other sources, such as permit records, the carrier, broker and dealer register, consignee returns, waste returns or producer and collection data. Where a report refers to these, for example a carrier registration number or a consignment code, it shows what the receiving site submitted, not a check against another system.</p>
+</div>
+<p class="note">Illustrative only: every site, carrier, permit and figure in these prototypes is invented sample data.</p>
+<h2>Individual reports</h2>
 <div class="cards">
 <a class="card" href="r01/"><div class="tag">R-01</div><div class="t">Receiving Site Intake Dashboard</div><p class="d">Waste received from DWT national down to a single receiving site and its individual waste movements.</p></a>
 <a class="card" href="r02/"><div class="tag">R-02</div><div class="t">Carrier Activity &amp; Registration Report</div><p class="d">Carriers by registration number, movements without carrier registration details, and drill-down to a carrier and its movements.</p></a>
+<a class="card" href="r03/"><div class="tag">R-03</div><div class="t">Hazardous Waste &amp; POPs Intake Report</div><p class="d">Hazardous waste and POPs received, with a view switch, data assurance checks and drill-down to a site and its movements.</p></a>
+<a class="card" href="r04/"><div class="tag">R-04</div><div class="t">Receiver Submission Activity Report</div><p class="d">For policy leads and senior users: who is submitting data, periods of inactivity and changes in reporting, with drill-down to a receiver and its submissions.</p></a>
+</div>
+<h2>For user research</h2>
+<div class="cards">
+<a class="card ur" href="ur/"><div class="tag">User research prototype</div><div class="t">Receipt of Waste: combined site view</div><p class="d">R-01, R-02 and R-03 combined into one report, navigated from a site-level perspective: general, hazardous waste, POPs and carrier information together, with drill-through to individual movements.</p></a>
 </div>
 </main>
 </body>
