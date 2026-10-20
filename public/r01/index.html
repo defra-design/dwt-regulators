@@ -98,9 +98,9 @@ button:focus-visible{outline:2px solid #118DFF;outline-offset:1px}
 </sc-for>
 </div>
 </div>
-<div style="flex: 3 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="flex: 2 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <div class="lbl">Operator</div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
 <sc-for list="{{opSlicers}}" as="sl" hint-placeholder-count="2">
 <div style="position: relative; min-width: 0">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
@@ -539,7 +539,6 @@ class Component extends DCLogic {
       { k: 'city', label: 'City', grp: 'loc' },
       { k: 'area', label: 'Postcode area', grp: 'loc' },
       { k: 'org', label: 'Organisation', grp: 'op' },
-      { k: 'site', label: 'Receiving site', grp: 'op' },
       { k: 'permit', label: 'Permit number', grp: 'op' }
     ];
   }
@@ -947,7 +946,7 @@ class Component extends DCLogic {
       out.locSlicers = loc.map((d, i) => mkSlicer(d, i, loc.length, 'loc'));
       out.opSlicers = op.map((d, i) => mkSlicer(d, i, op.length, 'op'));
 
-      const only = scope.length === 1 && (f.site.length > 0 || f.permit.length > 0) ? scope[0] : null;
+      const only = scope.length === 1 && f.permit.length > 0 ? scope[0] : null;
       out.oneSite = !!only;
       out.oneSiteName = only ? only.name + ' (' + only.permit + ')' : '';
       out.openOneSite = () => { if (only) this.openSite(only.id); };

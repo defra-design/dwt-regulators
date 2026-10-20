@@ -1376,7 +1376,7 @@ class Component extends DCLogic {
       R.forEach((a) => { T.subs += a.subs.size; T.n += a.n; T.w += a.w; bandN[bi(a.band)]++; if (a.quiet) quiet++; if (a.st.isNew) newR++; });
       const nR = R.length;
       out.scopeLine = fmt(nR) + ' receivers · ' + fmt(T.subs) + ' submissions in scope';
-      const onlySite = R.length === 1 && (f.site.length || f.permit.length) ? R[0].st : null;
+      const onlySite = R.length === 1 && f.permit.length ? R[0].st : null;
       out.oneSite = !!onlySite;
       out.oneSiteName = onlySite ? onlySite.name + ' (' + onlySite.permit + ')' : '';
       out.openOneSite = () => { if (onlySite) this.openRcv(onlySite.id); };
