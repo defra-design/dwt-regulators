@@ -10,8 +10,10 @@ Contents
   r03/support.js    Runtime the prototype needs (keep it next to index.html)
   r04/index.html    R-04 Receiver Submission Activity Report
   r04/support.js    Runtime the prototype needs (keep it next to index.html)
-  ur/index.html     Receipt of Waste: combined site view (User Research prototype)
+  ur/index.html     Receipt of Waste: combined site view, version 1.0 (User Research prototype, as used in round 1)
   ur/support.js     Runtime the prototype needs (keep it next to index.html)
+  ur-v1-1/index.html  Receipt of Waste: combined site view, version 1.1 (User Research prototype)
+  ur-v1-1/support.js  Runtime the prototype needs (keep it next to index.html)
 
 Data source
   All reports use Receipt of Waste submissions only. All data in these
