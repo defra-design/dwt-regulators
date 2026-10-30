@@ -1,0 +1,1675 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Receipt of Waste Combined (UR) v1.1</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0;background:#E9E9E9;font-family:'Segoe UI','Segoe UI Web',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;color:#252423}
+button{font-family:inherit}
+button:focus-visible{outline:2px solid #118DFF;outline-offset:1px}
+.tile{background:#FFFFFF;border:1px solid #E1DFDD;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,0.06);padding:14px 16px;box-sizing:border-box;min-width:0}
+.vt{margin:0 0 2px;font-size:14px;font-weight:600;color:#252423}
+.vs{margin:0 0 10px;font-size:12px;color:#605E5C}
+.sec{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:8px 0 -2px}
+.secn{font-size:12px;font-weight:600;color:#FFFFFF;background:#12239E;border-radius:2px;padding:1px 7px}
+.sect{font-size:16px;font-weight:600;color:#252423;margin:0}
+.secd{font-size:12.5px;color:#605E5C}
+.th{font-size:12px;font-weight:600;color:#252423;padding:8px 8px;border-bottom:1px solid #8A8886;display:flex;align-items:flex-end;min-width:0}
+.td{font-size:13px;padding:7px 8px;border-bottom:1px solid #EDEBE9;display:flex;align-items:center;min-width:0}
+.num{justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-family:Consolas,'SFMono-Regular',Menlo,monospace;font-size:12.5px}
+.badge{display:inline-block;padding:1px 6px;border-radius:2px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.lnk{background:none;border:0;padding:0;color:#0F6CBD;cursor:pointer;font-size:12.5px;text-decoration:underline;text-align:left}
+.pbtn{background:#FFFFFF;border:1px solid #8A8886;border-radius:2px;padding:5px 10px;font-size:12.5px;cursor:pointer;color:#252423;white-space:nowrap}
+.sortb{background:none;border:0;padding:0;font:inherit;font-weight:600;color:#252423;cursor:pointer;text-align:right;width:100%}
+.bar{flex:1;height:10px;background:#F3F2F1;position:relative;min-width:40px;max-width:110px}
+.tip{position:relative;display:inline-flex;align-items:center;gap:4px;cursor:help}
+.tip:hover::after,.tip:focus::after,.tip:focus-within::after{content:attr(data-tip);position:absolute;left:calc(100% + 8px);top:-6px;z-index:50;width:280px;padding:7px 9px;background:#252423;color:#FFFFFF;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;font-size:12px;font-weight:400;line-height:1.35;border-radius:3px;box-shadow:0 4px 12px rgba(0,0,0,0.2);white-space:normal;text-align:left;text-transform:none;letter-spacing:0;pointer-events:none}
+.tipl:hover::after,.tipl:focus::after,.tipl:focus-within::after{left:auto;right:0;top:calc(100% + 6px)}
+.sortb.tip{justify-content:flex-end}
+.ii{display:inline-flex;width:14px;height:14px;border-radius:50%;border:1px solid #605E5C;font-size:9.5px;align-items:center;justify-content:center;color:#605E5C;font-weight:600;flex:none}
+.ab{margin:0 0 10px;font-size:12.5px;line-height:1.45;color:#3B3A39}
+.gl{margin:0;font-size:12.5px;line-height:1.4}
+.gl dt{font-weight:600;color:#252423;margin-top:6px}
+.gl dd{margin:1px 0 0;color:#3B3A39}
+.lbl{font-size:11px;font-weight:600;color:#605E5C;text-transform:uppercase;letter-spacing:0.04em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column">
+
+<div style="background: #252423; color: #FFFFFF; padding: 10px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+<span style="font-size: 13px; color: #C8C6C4">Digital Waste Tracking regulator reports</span>
+<span aria-hidden="true" style="color: #8A8886">›</span>
+<span style="font-size: 13px; font-weight: 600">Receipt of Waste: combined site view</span>
+<span style="font-size: 11px; font-weight: 700; background: #E9DDF7; color: #4B1D80; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.03em">USER RESEARCH PROTOTYPE · VERSION 1.1</span>
+<span style="font-size: 11px; font-weight: 600; background: #FFF4CE; color: #5C4400; padding: 2px 8px; border-radius: 2px">Invented sample data</span>
+<span style="margin-left: auto; font-size: 12px; color: #C8C6C4">Data refreshed 1 Oct 2026, 06:00</span>
+<button onClick="{{toggleAbout}}" aria-expanded="{{showAbout}}" style="font-size: 12.5px; padding: 4px 12px; border-radius: 2px; border: 1px solid #C8C6C4; background: #FFFFFF; color: #252423; cursor: pointer">{{aboutLabel}}</button>
+</div>
+
+<main style="flex: 1; width: 100%; max-width: 1340px; margin: 0 auto; padding: 16px 20px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+
+<sc-if value="{{showAbout}}" hint-placeholder-val="{{false}}">
+<section aria-label="About this data" class="tile" style="border-left: 4px solid #12239E; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 28px; padding: 16px 20px">
+<div>
+<h2 class="vt" style="font-size: 15px">About this data</h2>
+<p class="ab">This is a user research prototype of a Power BI report for regulators. It shows Receipt of Waste data from Digital Waste Tracking (DWT), the service that receiving sites use to record the waste they accept. All names, permits and figures are invented.</p>
+<h3 class="vt">Where the data comes from</h3>
+<p class="ab">Each record is one movement: one load of waste received at a permitted site. The receiving site submits it to DWT through its own software or by uploading a spreadsheet, and is expected to do so within 2 days of receiving the waste.</p>
+<h3 class="vt">How up to date it is</h3>
+<p class="ab">The report is refreshed every day. If a site has not submitted, it has no movements for that period. The Receiver Submission Activity report (R-04) shows sites that have stopped submitting.</p>
+<h3 class="vt">The data assurance checks</h3>
+<p class="ab">Checks such as estimated weight or a missing disposal or recovery code are worked out from fields sites already submit. Sites do not enter anything extra for them. The thresholds are placeholders for us to test with you.</p>
+</div>
+<div>
+<h3 class="vt">Terms used</h3>
+<dl class="gl">
+<dt>Movement</dt><dd>One load of waste received at a site.</dd>
+<dt>EWC code</dt><dd>European Waste Catalogue code: the six-digit code that describes the waste. Codes ending in an asterisk (*) are hazardous.</dd>
+<dt>Mirror entry</dt><dd>A pair of EWC codes for the same kind of waste, one hazardous and one not. Which applies depends on an assessment of the waste.</dd>
+<dt>Disposal or recovery code</dt><dd>What the site does with the waste, for example R13 storage or D10 incineration.</dd>
+<dt>Persistent organic pollutants (POPs)</dt><dd>Long-lasting chemicals, found for example in some upholstered seating and electrical equipment. Waste containing them generally has to be destroyed.</dd>
+<dt>Hazardous property (HP) code</dt><dd>Describes why a waste is hazardous, for example HP14 ecotoxic.</dd>
+<dt>Carrier registration (CBD)</dt><dd>The carrier, broker or dealer registration number of the business that moved the waste.</dd>
+<dt>Estimated weight</dt><dd>The receiving site estimated the weight instead of weighing the load, for example from the container size or a typical load. Estimates are allowed, but they are less precise than a weighbridge reading.</dd>
+</dl>
+</div>
+<div>
+<h3 class="vt">What is new in version 1.1</h3>
+<ul class="ab" style="padding-left: 18px">
+<li>A date range, with From and To dates and shortcuts. For a month or less, the chart shows one bar per day.</li>
+<li>Weights in tonnes or kilograms.</li>
+<li>"Filters" instead of "slicers", and terms spelled out instead of acronyms.</li>
+<li>Movements without carrier registration details shown by weight (the default) or by movements.</li>
+<li>EWC code names when you hover over a code.</li>
+<li>An explanation of estimated weight, and a clearer explanation of the chart.</li>
+<li>Smaller weight bars, and fewer columns in the receiving sites table so its buttons stay in view on the right.</li>
+<li>Time of receipt, the waste description and any broker or dealer on each movement.</li>
+<li>This About this data panel.</li>
+</ul>
+</div>
+</section>
+</sc-if>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; gap: 12px; align-items: flex-start">
+<sc-if value="{{showBack}}" hint-placeholder-val="{{false}}">
+<button onClick="{{back}}" aria-label="{{backLabel}}" title="{{backLabel}}" style="flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid #8A8886; background: #FFFFFF; cursor: pointer; font-size: 17px; line-height: 1; color: #252423; margin-top: 2px">←</button>
+</sc-if>
+<div style="min-width: 0">
+<h1 style="margin: 0; font-size: 22px; font-weight: 600; line-height: 1.25">{{pageTitle}}</h1>
+<div style="margin-top: 6px; font-size: 13px; color: #605E5C">Showing: <strong style="color: #252423">{{showing}}</strong></div>
+<div style="margin-top: 3px; font-size: 12px; color: #605E5C">{{showingSub}}</div>
+</div>
+</div>
+<section aria-label="Date range and units" class="tile" style="flex: 1 1 430px; padding: 10px 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap">
+<div style="font-size: 12px; font-weight: 600">Date range: <span style="font-weight: 400">{{drLabel}}</span></div>
+<div style="font-size: 11px; color: #605E5C">Sample data covers 1 Jul to 30 Sep 2026</div>
+</div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap">
+<label style="font-size: 12px; color: #605E5C; display: inline-flex; align-items: center; gap: 6px">From <input type="date" value="{{drFrom}}" min="{{drMin}}" max="{{drMax}}" onChange="{{onFrom}}" style="font-family: inherit; font-size: 12.5px; padding: 3px 6px; border: 1px solid #8A8886; border-radius: 2px"></label>
+<label style="font-size: 12px; color: #605E5C; display: inline-flex; align-items: center; gap: 6px">To <input type="date" value="{{drTo}}" min="{{drMin}}" max="{{drMax}}" onChange="{{onTo}}" style="font-family: inherit; font-size: 12.5px; padding: 3px 6px; border: 1px solid #8A8886; border-radius: 2px"></label>
+</div>
+<div role="group" aria-label="Date range shortcuts" style="display: flex; gap: 5px; flex-wrap: wrap">
+<sc-for list="{{drPresets}}" as="b" hint-placeholder-count="6"><button aria-pressed="{{b.on}}" onClick="{{b.pick}}" style="padding: 2px 9px; font-size: 12px; border-radius: 2px; cursor: pointer; {{b.style}}">{{b.label}}</button></sc-for>
+</div>
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; border-top: 1px solid #EDEBE9; padding-top: 7px">
+<span style="font-size: 12px; color: #605E5C">Show weights in</span>
+<div role="group" aria-label="Weight units" style="display: flex; gap: 5px">
+<sc-for list="{{unitBtns}}" as="b" hint-placeholder-count="2"><button aria-pressed="{{b.on}}" onClick="{{b.pick}}" style="padding: 2px 9px; font-size: 12px; border-radius: 2px; cursor: pointer; {{b.style}}">{{b.label}}</button></sc-for>
+</div>
+<span style="font-size: 11px; color: #605E5C">Receipt of Waste submissions only</span>
+</div>
+</section>
+</div>
+
+<sc-if value="{{isSummary}}" hint-placeholder-val="{{true}}">
+<sc-if value="{{anyOpen}}" hint-placeholder-val="{{false}}"><button aria-label="Close filter" tabindex="-1" onClick="{{closeOpen}}" style="position: fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 25; background: transparent; border: 0; padding: 0; cursor: default"></button></sc-if>
+
+<section aria-label="Filters" class="tile" style="display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; padding: 12px 16px">
+<div style="flex: 3 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Location of receiving site</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{locSlicers}}" as="sl" hint-placeholder-count="3">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 1 1 200px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Receiving site</div>
+<div style="display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{opSlicers}}" as="sl" hint-placeholder-count="1">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 3 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div class="lbl">Waste and carrier</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{mvSlicers}}" as="sl" hint-placeholder-count="3">
+<div style="position: relative; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; margin-bottom: 3px">
+<span style="font-size: 12px; font-weight: 600">{{sl.label}}</span>
+<sc-if value="{{sl.isSet}}" hint-placeholder-val="{{false}}"><button class="lnk" style="font-size: 11px" onClick="{{sl.clear}}" aria-label="{{sl.clearLabel}}">Clear</button></sc-if>
+</div>
+<button onClick="{{sl.toggle}}" aria-expanded="{{sl.open}}" aria-haspopup="listbox" style="width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 2px; cursor: pointer; font-size: 13px; text-align: left; {{sl.boxStyle}}">
+<span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{sl.value}}</span>
+<span aria-hidden="true" style="font-size: 9px; color: #605E5C">▼</span>
+</button>
+<sc-if value="{{sl.open}}" hint-placeholder-val="{{false}}">
+<div role="listbox" aria-multiselectable="true" aria-label="{{sl.label}}" style="position: absolute; z-index: 30; top: 100%; {{sl.pos}}; margin-top: 2px; min-width: 100%; width: max-content; max-width: 380px; max-height: 320px; overflow: auto; background: #FFFFFF; border: 1px solid #C8C6C4; box-shadow: 0 6px 16px rgba(0,0,0,0.18); padding: 4px 0">
+<sc-if value="{{sl.searchable}}" hint-placeholder-val="{{false}}">
+<div style="padding: 6px 10px; position: sticky; top: -4px; background: #FFFFFF; border-bottom: 1px solid #EDEBE9">
+<input type="search" value="{{sl.q}}" onChange="{{sl.onSearch}}" onKeyDown="{{sl.onKey}}" placeholder="{{sl.placeholder}}" aria-label="{{sl.searchLabel}}" style="width: 100%; box-sizing: border-box; padding: 5px 8px; border: 1px solid #8A8886; border-radius: 2px; font-size: 13px; font-family: inherit">
+</div>
+</sc-if>
+<sc-if value="{{sl.noMatch}}" hint-placeholder-val="{{false}}"><div style="padding: 8px 12px; font-size: 12.5px; color: #605E5C">No matches in the current scope.</div></sc-if>
+<sc-for list="{{sl.opts}}" as="o" hint-placeholder-count="4">
+<button role="option" aria-selected="{{o.on}}" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 12px; border: 0; background: {{o.bg}}; cursor: pointer; font-size: 13px; text-align: left; color: #252423">
+<span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 2px; box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; font-weight: 700; color: #FFFFFF; {{o.box}}">{{o.tick}}</span>
+<span style="flex: 1; min-width: 0; {{o.labelStyle}}">{{o.label}}</span>
+<span style="font-size: 11px; color: #605E5C; white-space: nowrap">{{o.sub}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin-left: auto">
+<span style="font-size: 12px; color: #605E5C">{{scopeLine}}</span>
+<button class="pbtn" onClick="{{clearAll}}">Clear all filters</button>
+</div>
+</section>
+
+<sc-if value="{{oneSite}}" hint-placeholder-val="{{false}}">
+<div class="tile" style="border-left: 4px solid #118DFF; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 16px">
+<span style="font-size: 13px">One receiving site matches the filters: <strong>{{oneSiteName}}</strong>.</span>
+<button class="pbtn" style="background: #118DFF; color: #FFFFFF; border-color: #118DFF" onClick="{{openOneSite}}">Open Site detail ›</button>
+</div>
+</sc-if>
+
+<div class="sec"><span class="secn">1</span><h2 class="sect">Overview</h2><span class="secd">All waste received in this scope, and how far the records can be trusted.</span></div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{kpis}}" as="k" hint-placeholder-count="8">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1; {{k.valStyle}}">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}<sc-if value="{{k.hasTip}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="margin-left: 5px; display: inline-flex; width: 15px; height: 15px; border-radius: 50%; border: 1px solid #605E5C; font-size: 10px; align-items: center; justify-content: center; color: #605E5C; vertical-align: 1px">i</span></sc-if></div>
+<div style="font-size: 11.5px; margin-top: 4px; min-height: 16px; {{k.noteStyle}}">{{k.note}}</div>
+</div>
+</sc-for>
+</div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: flex-start">
+<div><h3 class="vt">{{trendTitle}}</h3><p class="vs">{{trendNote}}</p></div>
+<div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+<div style="display: flex; gap: 12px; font-size: 12px; color: #605E5C; align-items: center; flex-wrap: wrap">
+<sc-for list="{{trendLegend}}" as="lg" hint-placeholder-count="2"><span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{lg.color}}"></span><span style="{{lg.style}}">{{lg.label}}</span></span></sc-for>
+</div>
+<div role="group" aria-label="Chart measure" style="display: flex; border: 1px solid #8A8886; border-radius: 2px; overflow: hidden">
+<button aria-pressed="{{isW}}" onClick="{{setW}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; cursor: pointer; {{wBtn}}">Weight</button>
+<button aria-pressed="{{isN}}" onClick="{{setN}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; border-left: 1px solid #8A8886; cursor: pointer; {{nBtn}}">Movements</button>
+</div>
+</div>
+</div>
+<div style="position: relative; height: 190px; margin: 4px 0 0 52px">
+<sc-for list="{{trendGrid}}" as="g" hint-placeholder-count="5">
+<div style="position: absolute; left: 0; right: 0; bottom: {{g.pos}}; border-top: 1px solid {{g.line}}"><span style="position: absolute; right: 100%; margin-right: 6px; top: -8px; font-size: 11px; color: #605E5C; white-space: nowrap">{{g.label}}</span></div>
+</sc-for>
+<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; gap: {{trendGap}}; padding: 0 6px">
+<sc-for list="{{trend}}" as="c" hint-placeholder-count="12">
+<div title="{{c.tip}}" style="flex: 1; height: 100%; display: flex; flex-direction: column-reverse">
+<sc-for list="{{c.segs}}" as="sg" hint-placeholder-count="2"><div style="height: {{sg.h}}; background: {{sg.bg}}"></div></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: {{trendGap}}; margin-left: 52px; padding: 5px 6px 0">
+<sc-for list="{{trend}}" as="c" hint-placeholder-count="12"><div style="flex: 1; text-align: center; font-size: 11px; color: #605E5C">{{c.label}}</div></sc-for>
+</div>
+<p style="font-size: 11.5px; color: #605E5C; margin: 10px 0 0">{{trendExplain}}</p>
+</div>
+
+<div class="sec"><span class="secn">2</span><h2 class="sect">Hazardous waste and persistent organic pollutants (POPs)</h2><span class="secd">Checks that only apply to hazardous waste and to waste containing persistent organic pollutants.</span></div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 1 1 520px">
+<h3 class="vt">Hazardous waste</h3>
+<p class="vs">{{hazNote}}</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px 24px">
+<sc-for list="{{hazChecks}}" as="q" hint-placeholder-count="4">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+<span style="font-size: 13px">{{q.label}}</span>
+<span class="badge" style="{{q.badge}}">{{q.value}}</span>
+</div>
+<div style="height: 8px; background: #F3F2F1; margin-top: 5px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.w}}; background: {{q.color}}"></div></div>
+<div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 4px; font-size: 11.5px; color: #605E5C">
+<span>{{q.limit}}</span>
+<sc-if value="{{q.canDrill}}" hint-placeholder-val="{{true}}"><button class="lnk" style="font-size: 12px; white-space: nowrap" onClick="{{q.pick}}">{{q.drill}}</button></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div class="tile" style="flex: 1 1 520px">
+<h3 class="vt">Persistent organic pollutants (POPs)</h3>
+<p class="vs">{{popNote}}</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px 24px">
+<sc-for list="{{popChecks}}" as="q" hint-placeholder-count="4">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+<span style="font-size: 13px">{{q.label}}</span>
+<span class="badge" style="{{q.badge}}">{{q.value}}</span>
+</div>
+<div style="height: 8px; background: #F3F2F1; margin-top: 5px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.w}}; background: {{q.color}}"></div></div>
+<div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 4px; font-size: 11.5px; color: #605E5C">
+<span>{{q.limit}}</span>
+<sc-if value="{{q.canDrill}}" hint-placeholder-val="{{true}}"><button class="lnk" style="font-size: 12px; white-space: nowrap" onClick="{{q.pick}}">{{q.drill}}</button></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+<div role="table" aria-label="POPs declared" style="margin-top: 12px">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 84px 84px 112px">
+<div role="columnheader" class="th">POP declared</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th num">{{wHead}}</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{popRows}}" as="r" hint-placeholder-count="4">
+<div role="row" style="display: grid; grid-template-columns: minmax(0, 1fr) 84px 84px 112px">
+<div role="cell" class="td">{{r.name}}</div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td num">{{r.w}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.moves}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div class="sec"><span class="secn">3</span><h2 class="sect">Movements without carrier registration details</h2><span class="secd">As reported by receiving sites. Registration details are not mandatory if the site gives a reason.</span>
+<div role="group" aria-label="Show this section by" style="margin-left: auto; display: flex; align-items: center; gap: 8px">
+<span style="font-size: 12px; color: #605E5C">Show by</span>
+<div style="display: flex; border: 1px solid #8A8886; border-radius: 2px; overflow: hidden">
+<button aria-pressed="{{carIsW}}" onClick="{{setCarW}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; cursor: pointer; {{carWBtn}}">Weight</button>
+<button aria-pressed="{{carIsN}}" onClick="{{setCarN}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; border-left: 1px solid #8A8886; cursor: pointer; {{carNBtn}}">Movements</button>
+</div>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{carCards}}" as="k" hint-placeholder-count="3">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px; display: flex; flex-direction: column">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}</div>
+<div style="font-size: 11.5px; margin-top: 4px; color: #605E5C; flex: 1">{{k.note}}</div>
+<sc-if value="{{k.canDrill}}" hint-placeholder-val="{{true}}"><div style="margin-top: 8px"><button class="lnk" style="font-size: 12.5px" onClick="{{k.pick}}">{{k.drill}}</button></div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 2 1 380px">
+<h3 class="vt">Reason given by the receiving site</h3>
+<p class="vs">Select a reason to see its movements.</p>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{reasons}}" as="q" hint-placeholder-count="5">
+<button onClick="{{q.pick}}" style="text-align: left; border: 1px solid #E1DFDD; background: #FFFFFF; border-radius: 2px; padding: 8px 10px; cursor: pointer; font-family: inherit">
+<div style="display: flex; justify-content: space-between; gap: 10px; font-size: 13px; color: #252423"><span>{{q.label}}</span><span style="font-variant-numeric: tabular-nums; color: #605E5C">{{q.n}} · {{q.pct}} ›</span></div>
+<div style="height: 8px; background: #F3F2F1; margin-top: 6px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.bar}}; background: #E66C37"></div></div>
+</button>
+</sc-for>
+</div>
+</div>
+<div class="tile" style="flex: 3 1 560px">
+<h3 class="vt">Receiving sites reporting movements without registration details</h3>
+<p class="vs">{{unSitesNote}}</p>
+<div role="table" aria-label="Receiving sites reporting movements without registration details" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) 104px 96px minmax(150px, 1.4fr) 112px; min-width: 680px">
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th num">{{unHead}}</div>
+<div role="columnheader" class="th num">{{unShareHead}}</div>
+<div role="columnheader" class="th">Most common reason</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{unSites}}" as="r" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: minmax(200px, 2fr) 104px 96px minmax(150px, 1.4fr) 112px; min-width: 680px">
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><span style="font-weight: 600">{{r.name}}</span><span class="mono" style="font-size: 11.5px; color: #605E5C">{{r.permit}}</span></div>
+<div role="cell" class="td num">{{r.un}}</div>
+<div role="cell" class="td num">{{r.pct}}</div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.reason}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.open}}" aria-label="{{r.openLabel}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{unSitesMore}}" hint-placeholder-val="{{false}}"><div style="margin-top: 10px; text-align: right"><button class="pbtn" onClick="{{unSitesToggle}}">{{unSitesMoreLabel}}</button></div></sc-if>
+</div>
+</div>
+
+<div class="sec"><span class="secn">4</span><h2 class="sect">Waste streams</h2><span class="secd">What is being received, by European Waste Catalogue (EWC) code. Select a code to filter the chart above and the receiving sites below.</span></div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">Waste received by EWC code</h3><p class="vs">{{ewcNote}}</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<span class="badge" style="background: #E8F3FF; color: #0B5CAD">Non-hazardous</span>
+<span class="badge" style="background: #FDECE5; color: #A4401B">Absolute hazardous</span>
+<span class="badge" style="background: #FFF4CE; color: #6B4E00">Mirror hazardous</span>
+<span class="badge" style="background: #F3E8F5; color: #6B007B">POPs</span>
+</div>
+</div>
+<div role="table" aria-label="Waste received by EWC code" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 104px 160px minmax(130px, 1.2fr) 88px 92px 116px 124px 112px; min-width: 940px">
+<div role="columnheader" class="th">EWC code</div>
+<div role="columnheader" class="th">Hazard type</div>
+<div role="columnheader" class="th">{{wHead}}</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th num">Receiving sites</div>
+<div role="columnheader" class="th num"><span class="tip tipl" data-tip="Estimated weight: the receiving site estimated the weight instead of weighing the load, for example from the container size or a typical load. Estimates are allowed, but they are less precise than a weighbridge reading.">Estimated weight <span class="ii" aria-hidden="true">i</span></span></div>
+<div role="columnheader" class="th num">Missing disposal or recovery code</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{ewcRows}}" as="r" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 104px 160px minmax(130px, 1.2fr) 88px 92px 116px 124px 112px; min-width: 940px; {{r.rowStyle}}">
+<div role="cell" class="td"><span class="tip" data-tip="{{r.name}}"><button class="lnk mono" style="font-weight: 600" onClick="{{r.pick}}" aria-pressed="{{r.on}}" aria-label="{{r.pickLabel}}">{{r.code}}</button></span></div>
+<div role="cell" class="td" style="gap: 4px; flex-wrap: wrap"><span class="badge" style="{{r.htStyle}}">{{r.ht}}</span><sc-if value="{{r.pops}}" hint-placeholder-val="{{false}}"><span class="badge" style="background: #F3E8F5; color: #6B007B">POPs</span></sc-if></div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{r.bar}}; background: {{r.barColor}}"></div></div><span style="min-width: 60px; text-align: right; font-variant-numeric: tabular-nums">{{r.w}}</span></div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td num">{{r.sites}}</div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.est.style}}">{{r.est.text}}</span></div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.miss.style}}">{{r.miss.text}}</span></div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.moves}}" aria-label="{{r.movesLabel}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ewcMore}}" hint-placeholder-val="{{false}}"><div style="margin-top: 10px; text-align: right"><button class="pbtn" onClick="{{ewcToggle}}">{{ewcMoreLabel}}</button></div></sc-if>
+</div>
+
+<div class="sec"><span class="secn">5</span><h2 class="sect">Receiving sites</h2><span class="secd">Every site in scope. Open a site to see all of its waste, hazardous waste, POPs and carrier information together.</span></div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">{{sitesTitle}}</h3><p class="vs">{{sitesNote}}</p></div>
+<sc-if value="{{hasSumSel}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 8px; background: #EAF4FF; border: 1px solid #9DCBFF; border-radius: 2px; padding: 4px 6px 4px 10px; font-size: 12.5px">
+<span>Filtered by <strong>{{sumSelLabel}}</strong></span>
+<button class="pbtn" style="padding: 2px 8px" onClick="{{clearSumSel}}">Clear</button>
+</div>
+</sc-if>
+</div>
+<div role="table" aria-label="Receiving sites" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: minmax(190px, 2fr) minmax(110px, 1fr) minmax(130px, 1.1fr) 88px 84px 96px 124px 112px; min-width: 940px">
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">Local authority</div>
+<div role="columnheader" class="th"><button class="sortb" style="text-align: left" onClick="{{sortW}}">{{wHead}}{{arrW}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortN}}">Movements{{arrN}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortH}}">Hazardous{{arrH}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortP}}">Movements with POPs{{arrP}}</button></div>
+<div role="columnheader" class="th num"><button class="sortb" onClick="{{sortM}}">Missing disposal or recovery code{{arrM}}</button></div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{siteRows}}" as="r" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: minmax(190px, 2fr) minmax(110px, 1fr) minmax(130px, 1.1fr) 88px 84px 96px 124px 112px; min-width: 940px">
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><span style="font-weight: 600">{{r.name}}</span><span class="mono" style="font-size: 11.5px; color: #605E5C">{{r.permit}} · {{r.postcode}}</span></div>
+<div role="cell" class="td" style="font-size: 12.5px">{{r.la}}</div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{r.bar}}; background: #118DFF"></div></div><span style="min-width: 56px; text-align: right; font-variant-numeric: tabular-nums">{{r.w}}</span></div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td num">{{r.haz}}</div>
+<div role="cell" class="td num">{{r.pops}}</div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.miss.style}}">{{r.miss.text}}</span></div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.open}}" aria-label="{{r.openLabel}}">Site detail ›</button></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px">
+<p style="font-size: 11.5px; color: #605E5C; margin: 0">Site detail and Movements are drill-through pages; the buttons stand in for right-click › Drill through. Filters carry over.</p>
+<sc-if value="{{showMore}}" hint-placeholder-val="{{false}}"><button class="pbtn" onClick="{{toggleAll}}">{{moreLabel}}</button></sc-if>
+</div>
+</div>
+
+</sc-if>
+
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{false}}">
+<div class="tile" style="padding: 40px; text-align: center">
+<p style="margin: 0 0 6px; font-size: 15px; font-weight: 600">{{emptyTitle}}</p>
+<p style="margin: 0 0 16px; font-size: 13px; color: #605E5C">{{emptyText}}</p>
+<button class="pbtn" onClick="{{goSummary}}">Go to Summary</button>
+</div>
+</sc-if>
+
+<sc-if value="{{isSite}}" hint-placeholder-val="{{false}}">
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap">
+<div style="flex: 1 1 600px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px 18px">
+<sc-for list="{{profile}}" as="p" hint-placeholder-count="8">
+<div style="min-width: 0"><div style="font-size: 11.5px; color: #605E5C">{{p.label}}</div><div style="font-size: 13.5px; font-weight: 600; margin-top: 1px">{{p.value}}</div></div>
+</sc-for>
+</div>
+<button class="pbtn" style="background: #118DFF; color: #FFFFFF; border-color: #118DFF" onClick="{{siteAllMoves}}">{{siteAllLabel}}</button>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{sKpis}}" as="k" hint-placeholder-count="8">
+<div class="tile" title="{{k.tip}}" style="padding: 14px 16px 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.1; {{k.valStyle}}">{{k.value}}</div>
+<div style="font-size: 13px; color: #252423; margin-top: 4px">{{k.label}}<sc-if value="{{k.hasTip}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="margin-left: 5px; display: inline-flex; width: 15px; height: 15px; border-radius: 50%; border: 1px solid #605E5C; font-size: 10px; align-items: center; justify-content: center; color: #605E5C; vertical-align: 1px">i</span></sc-if></div>
+<div style="font-size: 11.5px; margin-top: 4px; min-height: 16px; {{k.noteStyle}}">{{k.note}}</div>
+</div>
+</sc-for>
+</div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: flex-start">
+<div><h3 class="vt">{{sTrendTitle}}</h3><p class="vs">{{sTrendNote}}</p></div>
+<div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+<div style="display: flex; gap: 12px; font-size: 12px; color: #605E5C; align-items: center; flex-wrap: wrap">
+<sc-for list="{{sLegend}}" as="lg" hint-placeholder-count="2"><span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{lg.color}}"></span><span style="{{lg.style}}">{{lg.label}}</span></span></sc-for>
+</div>
+<div role="group" aria-label="Chart measure" style="display: flex; border: 1px solid #8A8886; border-radius: 2px; overflow: hidden">
+<button aria-pressed="{{isW}}" onClick="{{setW}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; cursor: pointer; {{wBtn}}">Weight</button>
+<button aria-pressed="{{isN}}" onClick="{{setN}}" style="padding: 4px 12px; font-size: 12.5px; border: 0; border-left: 1px solid #8A8886; cursor: pointer; {{nBtn}}">Movements</button>
+</div>
+</div>
+</div>
+<div style="position: relative; height: 180px; margin: 4px 0 0 52px">
+<sc-for list="{{sTrendGrid}}" as="g" hint-placeholder-count="5">
+<div style="position: absolute; left: 0; right: 0; bottom: {{g.pos}}; border-top: 1px solid {{g.line}}"><span style="position: absolute; right: 100%; margin-right: 6px; top: -8px; font-size: 11px; color: #605E5C; white-space: nowrap">{{g.label}}</span></div>
+</sc-for>
+<div style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; align-items: flex-end; gap: {{sTrendGap}}; padding: 0 6px">
+<sc-for list="{{sTrend}}" as="c" hint-placeholder-count="12">
+<div title="{{c.tip}}" style="flex: 1; height: 100%; display: flex; flex-direction: column-reverse">
+<sc-for list="{{c.segs}}" as="sg" hint-placeholder-count="2"><div style="height: {{sg.h}}; background: {{sg.bg}}"></div></sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display: flex; gap: {{sTrendGap}}; margin-left: 52px; padding: 5px 6px 0">
+<sc-for list="{{sTrend}}" as="c" hint-placeholder-count="12"><div style="flex: 1; text-align: center; font-size: 11px; color: #605E5C">{{c.label}}</div></sc-for>
+</div>
+<p style="font-size: 11.5px; color: #605E5C; margin: 10px 0 0">{{sTrendExplain}}</p>
+</div>
+
+<div class="tile">
+<h3 class="vt">Waste received at this site, by EWC code</h3>
+<p class="vs">Hover over a code to see its name. Select Movements on any row to list them.</p>
+<div role="table" aria-label="Waste received at this site by EWC code" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 104px 160px minmax(130px, 1.2fr) 88px 96px 116px 124px 112px; min-width: 940px">
+<div role="columnheader" class="th">EWC code</div>
+<div role="columnheader" class="th">Hazard type</div>
+<div role="columnheader" class="th">{{wHead}}</div>
+<div role="columnheader" class="th num">Movements</div>
+<div role="columnheader" class="th num">Share of site weight</div>
+<div role="columnheader" class="th num"><span class="tip tipl" data-tip="Estimated weight: the receiving site estimated the weight instead of weighing the load, for example from the container size or a typical load. Estimates are allowed, but they are less precise than a weighbridge reading.">Estimated weight <span class="ii" aria-hidden="true">i</span></span></div>
+<div role="columnheader" class="th num">Missing disposal or recovery code</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{sEwcRows}}" as="r" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: 104px 160px minmax(130px, 1.2fr) 88px 96px 116px 124px 112px; min-width: 940px">
+<div role="cell" class="td mono" style="font-weight: 600"><span class="tip" tabindex="0" data-tip="{{r.name}}">{{r.code}}</span></div>
+<div role="cell" class="td" style="gap: 4px; flex-wrap: wrap"><span class="badge" style="{{r.htStyle}}">{{r.ht}}</span><sc-if value="{{r.pops}}" hint-placeholder-val="{{false}}"><span class="badge" style="background: #F3E8F5; color: #6B007B">POPs</span></sc-if></div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{r.bar}}; background: {{r.barColor}}"></div></div><span style="min-width: 56px; text-align: right; font-variant-numeric: tabular-nums">{{r.w}}</span></div>
+<div role="cell" class="td num">{{r.n}}</div>
+<div role="cell" class="td num">{{r.share}}</div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.est.style}}">{{r.est.text}}</span></div>
+<div role="cell" class="td num"><span style="padding: 1px 4px; {{r.miss.style}}">{{r.miss.text}}</span></div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{r.moves}}" aria-label="{{r.movesLabel}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<div class="tile" style="flex: 1 1 520px">
+<h3 class="vt">Carriers delivering here</h3>
+<p class="vs">{{sCarNote}}</p>
+<div role="table" aria-label="Carriers delivering here">
+<div role="row" style="display: grid; grid-template-columns: 34px minmax(130px, 1.2fr) minmax(120px, 1.2fr) 90px 112px">
+<div role="columnheader" class="th">#</div>
+<div role="columnheader" class="th">Carrier registration (CBD)</div>
+<div role="columnheader" class="th">Movements</div>
+<div role="columnheader" class="th num">{{wHead}}</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{sCarRows}}" as="c" hint-placeholder-count="8">
+<div role="row" style="display: grid; grid-template-columns: 34px minmax(130px, 1.2fr) minmax(120px, 1.2fr) 90px 112px">
+<div role="cell" class="td" style="color: #605E5C">{{c.rank}}</div>
+<div role="cell" class="td mono"><span style="{{c.regStyle}}">{{c.reg}}</span></div>
+<div role="cell" class="td" style="gap: 8px"><div class="bar"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{c.bar}}; background: #12239E"></div></div><span style="min-width: 36px; text-align: right; font-variant-numeric: tabular-nums">{{c.n}}</span></div>
+<div role="cell" class="td num">{{c.w}}</div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" onClick="{{c.moves}}" aria-label="{{c.movesLabel}}">Movements ›</button></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{sHasReasons}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 14px; font-size: 12.5px; font-weight: 600">Reasons given when registration was not provided</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px">
+<sc-for list="{{sReasons}}" as="q" hint-placeholder-count="4"><button class="pbtn" style="padding: 3px 10px" onClick="{{q.pick}}">{{q.label}} · {{q.n}} ›</button></sc-for>
+</div>
+</sc-if>
+</div>
+<div class="tile" style="flex: 1 1 520px">
+<h3 class="vt">Data assurance at this site</h3>
+<p class="vs">General, hazardous waste, POPs and carrier checks together, worked out from the fields sites already submit. Select one to list the movements behind it.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px 24px">
+<sc-for list="{{sChecks}}" as="q" hint-placeholder-count="4">
+<div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px">
+<span style="font-size: 13px">{{q.label}}</span>
+<span class="badge" style="{{q.badge}}">{{q.value}}</span>
+</div>
+<div style="height: 8px; background: #F3F2F1; margin-top: 5px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{q.w}}; background: {{q.color}}"></div></div>
+<div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 4px; font-size: 11.5px; color: #605E5C">
+<span>{{q.limit}}</span>
+<sc-if value="{{q.canDrill}}" hint-placeholder-val="{{true}}"><button class="lnk" style="font-size: 12px; white-space: nowrap" onClick="{{q.pick}}">{{q.drill}}</button></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+</sc-if>
+
+<sc-if value="{{isMoves}}" hint-placeholder-val="{{false}}">
+
+<div class="tile" style="padding: 12px 16px">
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+<span class="lbl" style="margin-right: 4px">Drill-through filters</span>
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="2">
+<span style="display: inline-flex; align-items: center; gap: 6px; background: #EAF4FF; border: 1px solid #9DCBFF; border-radius: 2px; padding: 3px 4px 3px 10px; font-size: 12.5px"><span>{{c.label}}</span><button onClick="{{c.remove}}" aria-label="{{c.removeLabel}}" style="border: 0; background: transparent; cursor: pointer; font-size: 14px; line-height: 1; padding: 0 4px; color: #252423">×</button></span>
+</sc-for>
+<sc-if value="{{noChips}}" hint-placeholder-val="{{false}}"><span style="font-size: 12.5px; color: #605E5C">None: all movements matching the filters</span></sc-if>
+</div>
+</div>
+
+<div class="tile">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px">
+<div><h3 class="vt">Individual waste movements</h3><p class="vs">{{mvCount}}</p></div>
+</div>
+<sc-if value="{{hasSel}}" hint-placeholder-val="{{false}}">
+<div style="border: 2px solid #118DFF; border-radius: 4px; padding: 14px 16px; margin: 4px 0 12px; background: #F7FBFF">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap">
+<div><div style="font-size: 11.5px; color: #605E5C">Waste movement</div><div class="mono" style="font-size: 16px; font-weight: 600">{{selId}}</div></div>
+<button class="pbtn" onClick="{{closeSel}}">Close</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px 18px; margin-top: 10px">
+<sc-for list="{{selFields}}" as="sf" hint-placeholder-count="9">
+<div style="min-width: 0"><div style="font-size: 11.5px; color: #605E5C">{{sf.label}}</div><div style="font-size: 13px; font-weight: 600; margin-top: 1px; {{sf.style}}">{{sf.value}}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<div role="table" aria-label="Individual waste movements" style="overflow-x: auto">
+<div role="row" style="display: grid; grid-template-columns: 128px 104px minmax(190px, 1.6fr) 92px minmax(130px, 1fr) minmax(130px, 1.1fr) 96px 92px 96px 66px; min-width: 1260px">
+<div role="columnheader" class="th">Movement ID</div>
+<div role="columnheader" class="th">Received</div>
+<div role="columnheader" class="th">Receiving site</div>
+<div role="columnheader" class="th">EWC code</div>
+<div role="columnheader" class="th">Waste type</div>
+<div role="columnheader" class="th">Carrier registration (CBD)</div>
+<div role="columnheader" class="th num">{{wHead}}</div>
+<div role="columnheader" class="th"><span class="tip tipl" data-tip="Estimated weight: the receiving site estimated the weight instead of weighing the load, for example from the container size or a typical load. Estimates are allowed, but they are less precise than a weighbridge reading.">Weight basis <span class="ii" aria-hidden="true">i</span></span></div>
+<div role="columnheader" class="th">Disposal or recovery code</div>
+<div role="columnheader" class="th"><span class="sr">Action</span></div>
+</div>
+<sc-for list="{{moves}}" as="m" hint-placeholder-count="10">
+<div role="row" style="display: grid; grid-template-columns: 128px 104px minmax(190px, 1.6fr) 92px minmax(130px, 1fr) minmax(130px, 1.1fr) 96px 92px 96px 66px; min-width: 1260px; {{m.rowStyle}}">
+<div role="cell" class="td mono">{{m.id}}</div>
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><span>{{m.date}}</span><span style="font-size: 11.5px; color: #605E5C">{{m.time}}</span></div>
+<div role="cell" class="td" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 1px"><span>{{m.site}}</span><span class="mono" style="font-size: 11px; color: #605E5C">{{m.permit}}</span></div>
+<div role="cell" class="td mono"><span class="tip" tabindex="0" data-tip="{{m.name}}">{{m.code}}</span></div>
+<div role="cell" class="td" style="gap: 4px; flex-wrap: wrap"><span class="badge" style="{{m.htStyle}}">{{m.ht}}</span><sc-if value="{{m.pops}}" hint-placeholder-val="{{false}}"><span class="badge" style="background: #F3E8F5; color: #6B007B">POPs</span></sc-if></div>
+<div role="cell" class="td mono"><span style="{{m.carStyle}}">{{m.carrier}}</span></div>
+<div role="cell" class="td num">{{m.w}}</div>
+<div role="cell" class="td"><span class="badge" style="{{m.basisStyle}}">{{m.basis}}</span></div>
+<div role="cell" class="td"><span class="badge" style="{{m.drStyle}}">{{m.dr}}</span></div>
+<div role="cell" class="td" style="justify-content: flex-end"><button class="pbtn" style="padding: 3px 10px" onClick="{{m.view}}" aria-label="{{m.viewLabel}}">View</button></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px">
+<span style="font-size: 12px; color: #605E5C">Show</span>
+<sc-for list="{{limitBtns}}" as="b" hint-placeholder-count="3"><button aria-pressed="{{b.on}}" onClick="{{b.pick}}" style="padding: 3px 12px; font-size: 12.5px; border-radius: 2px; cursor: pointer; {{b.style}}">{{b.label}}</button></sc-for>
+<span style="font-size: 12px; color: #605E5C">The full list is available through Export data.</span>
+</div>
+</div>
+
+</sc-if>
+
+</main>
+
+<nav aria-label="Report pages" style="position: sticky; bottom: 0; z-index: 40; display: flex; gap: 2px; align-items: stretch; border-top: 1px solid #C8C6C4; background: #F3F2F1; padding: 0 20px">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button onClick="{{t.go}}" aria-current="{{t.cur}}" style="padding: 9px 18px; border: 0; cursor: pointer; font-size: 13px; {{t.style}}">{{t.label}}</button>
+</sc-for>
+<span style="margin-left: auto; align-self: center; font-size: 11.5px; color: #605E5C">User research prototype, version 1.1 · Site detail and Movements are drill-through pages</span>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":2600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 'summary', prev: 'summary', siteId: null,
+      f: { nation: [], region: [], la: [], site: [], permit: [], wtype: [], ewc: [], carrier: [] },
+      q: {}, open: null, metric: 'w', sel: null, sSort: 'w', sAll: false, usAll: false, eAll: false,
+      dF: {}, mvLimit: 10, mvSel: null,
+      dr: { from: 0, to: 91, preset: 'all' }, unit: 't', carMetric: 'w', about: false
+    };
+    this._m = null;
+  }
+
+  rng(seed) {
+    let a = seed >>> 0;
+    return () => {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  dims() {
+    return [
+      { k: 'nation', label: 'Nation', grp: 'loc', lvl: 'site' },
+      { k: 'region', label: 'Region', grp: 'loc', lvl: 'site' },
+      { k: 'la', label: 'Local authority', grp: 'loc', lvl: 'site' },
+      { k: 'permit', label: 'Permit number', grp: 'op', lvl: 'site' },
+      { k: 'wtype', label: 'Waste type', grp: 'mv', lvl: 'mv' },
+      { k: 'ewc', label: 'Waste code (EWC)', grp: 'mv', lvl: 'mv' },
+      { k: 'carrier', label: 'Carrier registration', grp: 'mv', lvl: 'mv' }
+    ];
+  }
+
+  sval(st, k) { return k === 'site' ? st.id : st[k]; }
+
+  mvals(m, k) {
+    const c = this.model().CODES[m.ci];
+    if (k === 'wtype') { const t = [c.h ? 'Hazardous' : 'Non-hazardous']; if (m.pop) t.push('Contains POPs'); return t; }
+    if (k === 'ewc') return [c.c];
+    if (k === 'carrier') return [m.car || 'Not provided'];
+    return [];
+  }
+
+  siteOk(st, f, upto) {
+    const D = this.dims();
+    for (let i = 0; i < Math.min(upto, D.length); i++) {
+      const d = D[i];
+      if (d.lvl !== 'site') continue;
+      const sel = f[d.k];
+      if (sel && sel.length && sel.indexOf(this.sval(st, d.k)) === -1) return false;
+    }
+    return true;
+  }
+
+  inRange(m) { const dr = this.state.dr; return m.d >= dr.from && m.d <= dr.to; }
+
+  mvOk(m, f, upto) {
+    if (!this.inRange(m)) return false;
+    const D = this.dims();
+    for (let i = 0; i < Math.min(upto, D.length); i++) {
+      const d = D[i];
+      if (d.lvl !== 'mv') continue;
+      const sel = f[d.k];
+      if (!sel || !sel.length) continue;
+      const vs = this.mvals(m, d.k);
+      if (!vs.some((v) => sel.indexOf(v) !== -1)) return false;
+    }
+    return true;
+  }
+
+  options(f, k) {
+    const M = this.model();
+    const D = this.dims();
+    const i = D.findIndex((d) => d.k === k);
+    const d = D[i];
+    const mp = new Map();
+    M.sites.forEach((st) => {
+      if (!this.siteOk(st, f, i)) return;
+      if (d.lvl === 'site') {
+        let sw = 0; let sn = 0;
+        st.moves.forEach((m) => { if (this.inRange(m)) { sw += m.w; sn++; } });
+        if (!sn) return;
+        const v = this.sval(st, k);
+        const o = mp.get(v) || { v, w: 0, n: 0 };
+        o.w += sw; o.n += sn;
+        mp.set(v, o);
+        return;
+      }
+      st.moves.forEach((m) => {
+        if (!this.mvOk(m, f, i)) return;
+        this.mvals(m, k).forEach((v) => {
+          const o = mp.get(v) || { v, w: 0, n: 0 };
+          o.w += m.w; o.n += 1;
+          mp.set(v, o);
+        });
+      });
+    });
+    return Array.from(mp.values());
+  }
+
+  setFilter(dim, vals) {
+    const D = this.dims();
+    const nf = {};
+    D.forEach((d) => { nf[d.k] = (this.state.f[d.k] || []).slice(); });
+    nf[dim] = vals;
+    const di = D.findIndex((d) => d.k === dim);
+    D.forEach((d, i) => {
+      if (i <= di || nf[d.k].length === 0) return;
+      const ok = {};
+      this.options(nf, d.k).forEach((o) => { ok[o.v] = true; });
+      nf[d.k] = nf[d.k].filter((v) => ok[v]);
+    });
+    this.setState({ f: nf, sAll: false, usAll: false, sel: null });
+  }
+
+  toggleVal(dim, v) {
+    const cur = (this.state.f[dim] || []).slice();
+    const i = cur.indexOf(v);
+    if (i === -1) cur.push(v); else cur.splice(i, 1);
+    this.setFilter(dim, cur);
+  }
+
+  setRange(e, which) {
+    const v = e && e.target ? e.target.value : '';
+    if (!v) return;
+    const M = this.model();
+    let d = Math.round((Date.parse(v + 'T00:00:00Z') - M.start) / 86400000);
+    if (!isFinite(d)) return;
+    d = Math.max(0, Math.min(M.DAYS - 1, d));
+    let from = this.state.dr.from;
+    let to = this.state.dr.to;
+    if (which === 'from') { from = d; if (to < from) to = from; } else { to = d; if (from > to) from = to; }
+    this.setState({ dr: { from, to }, sAll: false, usAll: false, mvLimit: 10, mvSel: null });
+  }
+
+  top() { try { window.scrollTo(0, 0); } catch (e) { /* ignore */ } }
+
+  go(page) { this.setState({ page, open: null }); this.top(); }
+
+  openSite(id) {
+    this.setState({ page: 'site', prev: 'summary', siteId: id, open: null });
+    this.top();
+  }
+
+  openMoves(dF) {
+    this.setState({ page: 'moves', prev: this.state.page === 'moves' ? this.state.prev : this.state.page, dF, open: null, mvLimit: 10, mvSel: null });
+    this.top();
+  }
+
+  model() {
+    if (this._m) return this._m;
+    const r = this.rng(20261016);
+    const LET = 'ABCDEFGHJKLMNOPRSTUVWXYZ';
+    const L = (n) => { let s = ''; for (let i = 0; i < n; i++) s += LET.charAt(Math.floor(r() * LET.length)); return s; };
+    const EA1 = 'EA: Greater Manchester, Merseyside and Cheshire';
+    const LAS = {
+      England: [
+        ['Manchester', 'M', EA1], ['Salford', 'M', EA1], ['Liverpool', 'L', EA1], ['Knowsley', 'L', EA1],
+        ['Leeds', 'LS', 'EA: Yorkshire'], ['Wakefield', 'WF', 'EA: Yorkshire'], ['Sheffield', 'S', 'EA: Yorkshire'], ['Rotherham', 'S', 'EA: Yorkshire'],
+        ['Newcastle upon Tyne', 'NE', 'EA: North East'], ['Gateshead', 'NE', 'EA: North East'], ['Birmingham', 'B', 'EA: West Midlands'], ['Sandwell', 'B', 'EA: West Midlands'],
+        ['Coventry', 'CV', 'EA: West Midlands'], ['Nottingham', 'NG', 'EA: East Midlands'], ['Wandsworth', 'SW', 'EA: Thames'], ['Newham', 'E', 'EA: Thames'],
+        ['Bristol', 'BS', 'EA: Wessex'], ['Southampton', 'SO', 'EA: Solent and South Downs'], ['Plymouth', 'PL', 'EA: Devon and Cornwall']
+      ],
+      Scotland: [['Glasgow City', 'G', 'SEPA: West'], ['North Lanarkshire', 'ML', 'SEPA: West'], ['City of Edinburgh', 'EH', 'SEPA: East'], ['West Lothian', 'EH', 'SEPA: East'], ['Aberdeen City', 'AB', 'SEPA: North'], ['Aberdeenshire', 'AB', 'SEPA: North']],
+      Wales: [
+        ['Blaenau Gwent', 'NP', 'NRW: South-East'], ['Caerphilly', 'CF', 'NRW: South-East'], ['Monmouthshire', 'NP', 'NRW: South-East'], ['Newport', 'NP', 'NRW: South-East'], ['Torfaen', 'NP', 'NRW: South-East'],
+        ['Bridgend', 'CF', 'NRW: South-Central'], ['Cardiff', 'CF', 'NRW: South-Central'], ['Merthyr Tydfil', 'CF', 'NRW: South-Central'], ['Rhondda Cynon Taf', 'CF', 'NRW: South-Central'], ['Vale of Glamorgan', 'CF', 'NRW: South-Central'],
+        ['Carmarthenshire', 'SA', 'NRW: South-West'], ['Neath Port Talbot', 'SA', 'NRW: South-West'], ['Pembrokeshire', 'SA', 'NRW: South-West'], ['Swansea', 'SA', 'NRW: South-West'],
+        ['Ceredigion', 'SY', 'NRW: Mid'], ['Powys', 'LD', 'NRW: Mid'], ['Denbighshire', 'LL', 'NRW: North-East'], ['Flintshire', 'CH', 'NRW: North-East'], ['Wrexham', 'LL', 'NRW: North-East'],
+        ['Conwy', 'LL', 'NRW: North-West'], ['Gwynedd', 'LL', 'NRW: North-West'], ['Isle of Anglesey', 'LL', 'NRW: North-West']
+      ],
+      'Northern Ireland': [['Belfast', 'BT', 'NIEA: Northern Ireland'], ['Lisburn and Castlereagh', 'BT', 'NIEA: Northern Ireland'], ['Armagh City, Banbridge and Craigavon', 'BT', 'NIEA: Northern Ireland']]
+    };
+    const NRW = ['NRW: South-East', 'NRW: South-Central', 'NRW: South-West', 'NRW: Mid', 'NRW: North-East', 'NRW: North-West'];
+    const ORGS = { England: ['Pennine Resource Group Ltd', 'Northgate Waste Solutions', 'Mersey Aggregates Ltd', 'Humber Reclamation Co', 'Wessex Environmental Services', 'Midlands Metal Recyclers', 'Thames Bulk Handling'], Scotland: ['Clyde Materials Recovery', 'Forth Waste Management'], Wales: ['Taff Valley Recycling', 'Severn Valley Recycling Ltd'], 'Northern Ireland': ['Lagan Recycling'] };
+    const TYPES = ['MRF', 'Transfer Station', 'Treatment Centre', 'Recycling Park', 'Landfill Site', 'Metals Yard', 'Hazardous Waste Facility', 'WEEE Treatment Facility', 'Energy Recovery Facility', 'Skip Yard'];
+    const MODS = ['Riverside', 'Canalside', 'North', 'Gate', 'Quay', 'Vale', 'Junction', 'Mill', 'Southside', 'Heath'];
+    const NATIONS = [
+      { n: 'England', share: 0.78, count: 46, pool: 200 }, { n: 'Scotland', share: 0.11, count: 9, pool: 40 },
+      { n: 'Wales', share: 0.07, count: 18, pool: 46 }, { n: 'Northern Ireland', share: 0.04, count: 5, pool: 26 }
+    ];
+    const CH = { '08': '08 Paints, varnishes, adhesives', '13': '13 Oil wastes', '15': '15 Packaging', '16': '16 Not otherwise specified', '17': '17 Construction and demolition', '19': '19 Waste and water treatment', '20': '20 Municipal wastes' };
+    const AH = 'Absolute hazardous';
+    const MH = 'Mirror hazardous';
+    const NH = 'Non-hazardous';
+    const CODES = [
+      { c: '17 05 04', g: 'n', ht: NH, mw: 22, base: 3.2, form: 'Solid' },
+      { c: '17 09 04', g: 'n', ht: NH, mw: 16, base: 4.0, form: 'Mixed' },
+      { c: '19 12 12', g: 'n', ht: NH, mw: 18, base: 2.6, form: 'Mixed' },
+      { c: '20 03 01', g: 'n', ht: NH, mw: 11, base: 2.4, form: 'Mixed' },
+      { c: '15 01 06', g: 'n', ht: NH, mw: 7, base: 1.8, form: 'Mixed' },
+      { c: '17 01 07', g: 'n', ht: NH, mw: 20, base: 1.4, form: 'Solid' },
+      { c: '19 12 02', g: 'n', ht: NH, mw: 12, base: 1.0, form: 'Solid' },
+      { c: '20 02 01', g: 'n', ht: NH, mw: 6, base: 0.9, form: 'Solid' },
+      { c: '20 01 01', g: 'n', ht: NH, mw: 5, base: 0.7, form: 'Solid' },
+      { c: '16 01 03', g: 'n', ht: NH, mw: 8, base: 0.6, form: 'Solid' },
+      { c: '19 12 11*', g: 'h', h: true, ht: MH, mw: 14, base: 3.0, hp: 'HP14, HP5', form: 'Solid', pairs: '19 12 12' },
+      { c: '17 05 03*', g: 'h', h: true, ht: MH, mw: 18, base: 2.4, hp: 'HP14, HP7', form: 'Solid', pairs: '17 05 04' },
+      { c: '17 06 05*', g: 'h', h: true, ht: AH, mw: 6, base: 1.8, hp: 'HP7, HP5', form: 'Solid' },
+      { c: '13 02 08*', g: 'h', h: true, ht: AH, mw: 3, base: 1.4, hp: 'HP14, HP3, HP5', form: 'Liquid' },
+      { c: '16 06 01*', g: 'h', h: true, ht: AH, mw: 5, base: 1.0, hp: 'HP8, HP10, HP14', form: 'Solid' },
+      { c: '20 01 35*', g: 'h', h: true, ht: MH, mw: 3, base: 1.2, hp: 'HP14, HP7', form: 'Mixed', pops: 0.7, pop: ['Polybrominated diphenyl ethers (PBDEs), incl. decaBDE'], pairs: '20 01 36' },
+      { c: '16 02 13*', g: 'h', h: true, ht: MH, mw: 2, base: 0.7, hp: 'HP14, HP6', form: 'Mixed', pops: 0.6, pop: ['Polybrominated diphenyl ethers (PBDEs), incl. decaBDE'], pairs: '16 02 14' },
+      { c: '17 06 03*', g: 'h', h: true, ht: MH, mw: 2, base: 0.6, hp: 'HP14, HP5', form: 'Solid', pops: 0.8, pop: ['Hexabromocyclododecane (HBCDD)'], pairs: '17 06 04' },
+      { c: '20 01 21*', g: 'h', h: true, ht: AH, mw: 1, base: 0.5, hp: 'HP6, HP14', form: 'Solid' },
+      { c: '08 01 11*', g: 'h', h: true, ht: MH, mw: 2, base: 0.6, hp: 'HP3, HP14', form: 'Liquid', pairs: '08 01 12' },
+      { c: '16 02 09*', g: 'h', h: true, ht: AH, mw: 4, base: 0.25, hp: 'HP7, HP14', form: 'Mixed', pops: 1, pop: ['Polychlorinated biphenyls (PCBs)'] },
+      { c: '20 03 07', g: 'p', ht: NH, mw: 4, base: 2.0, form: 'Solid', pops: 0.9, pop: ['Polybrominated diphenyl ethers (PBDEs), incl. decaBDE'] },
+      { c: '20 01 36', g: 'p', ht: NH, mw: 3, base: 1.0, form: 'Mixed', pops: 0.75, pop: ['Polybrominated diphenyl ethers (PBDEs), incl. decaBDE'] },
+      { c: '17 06 04', g: 'p', ht: NH, mw: 2, base: 0.8, form: 'Solid', pops: 0.7, pop: ['Hexabromocyclododecane (HBCDD)'] },
+      { c: '19 12 04', g: 'p', ht: NH, mw: 5, base: 1.0, form: 'Solid', pops: 0.65, pop: ['Polybrominated diphenyl ethers (PBDEs), incl. decaBDE', 'Short-chain chlorinated paraffins (SCCPs)'] }
+    ];
+    const NAMES = {
+      '17 05 04': ['Soil and stones other than those mentioned in 17 05 03', 'Excavated clay and stone from groundworks', 'Topsoil and subsoil, no visible contamination'],
+      '17 09 04': ['Mixed construction and demolition wastes other than those mentioned in 17 09 01, 17 09 02 and 17 09 03', 'Mixed C&D waste from site clearance', 'Mixed builders waste in skip'],
+      '19 12 12': ['Other wastes (including mixtures of materials) from mechanical treatment of wastes other than those mentioned in 19 12 11', 'Trommel fines from waste processing', 'Residual waste after sorting'],
+      '20 03 01': ['Mixed municipal waste', 'Mixed general waste from commercial premises', 'Household residual waste'],
+      '15 01 06': ['Mixed packaging', 'Mixed cardboard and plastic packaging', 'Mixed dry recyclables'],
+      '17 01 07': ['Mixtures of concrete, bricks, tiles and ceramics other than those mentioned in 17 01 06', 'Broken concrete and brick rubble', 'Hardcore from demolition'],
+      '19 12 02': ['Ferrous metal', 'Ferrous metal recovered from shredding', 'Mixed steel offcuts'],
+      '20 02 01': ['Biodegradable waste', 'Green waste: grass and hedge cuttings', 'Garden waste from civic amenity site'],
+      '20 01 01': ['Paper and cardboard', 'Baled cardboard', 'Office paper'],
+      '16 01 03': ['End-of-life tyres', 'Car and van tyres', 'Mixed tyres from garage'],
+      '19 12 11*': ['Other wastes (including mixtures of materials) from mechanical treatment of waste containing hazardous substances', 'Contaminated fines from treatment', 'Treated residues, hazardous'],
+      '17 05 03*': ['Soil and stones containing hazardous substances', 'Hydrocarbon-contaminated soil', 'Contaminated made ground from brownfield site'],
+      '17 06 05*': ['Construction materials containing asbestos', 'Asbestos cement sheets, double wrapped', 'Bonded asbestos roofing'],
+      '13 02 08*': ['Other engine, gear and lubricating oils', 'Waste engine oil from garage', 'Mixed lubricating oils'],
+      '16 06 01*': ['Lead batteries', 'Lead acid vehicle batteries', 'Car batteries on pallet'],
+      '20 01 35*': ['Discarded electrical and electronic equipment other than those mentioned in 20 01 21 and 20 01 23 containing hazardous components', 'Televisions and monitors', 'Display equipment from household waste recycling centre'],
+      '16 02 13*': ['Discarded equipment containing hazardous components other than those mentioned in 16 02 09 to 16 02 12', 'Commercial electronic equipment with hazardous components', 'Mixed IT equipment'],
+      '17 06 03*': ['Other insulation materials consisting of or containing hazardous substances', 'Polystyrene insulation boards from demolition', 'Foam insulation panels'],
+      '20 01 21*': ['Fluorescent tubes and other mercury-containing waste', 'Fluorescent tubes', 'Mercury lamps'],
+      '08 01 11*': ['Waste paint and varnish containing organic solvents or other hazardous substances', 'Solvent-based paint tins', 'Part-used paints and varnishes'],
+      '16 02 09*': ['Transformers and capacitors containing PCBs', 'Old transformer from substation', 'Capacitors from fluorescent fittings'],
+      '20 03 07': ['Bulky waste', 'Upholstered domestic seating', 'Sofas and armchairs from bulky waste collection'],
+      '20 01 36': ['Discarded electrical and electronic equipment other than those mentioned in 20 01 21, 20 01 23 and 20 01 35', 'Small household appliances', 'Mixed small electricals'],
+      '17 06 04': ['Insulation materials other than those mentioned in 17 06 01 and 17 06 03', 'Mineral wool insulation', 'Mixed insulation offcuts'],
+      '19 12 04': ['Plastic and rubber', 'Shredded plastics from electrical recycling', 'Mixed rigid plastics']
+    };
+    CODES.forEach((c) => { c.chl = CH[c.c.slice(0, 2)]; c.h = !!c.h; c.pops = c.pops || 0; const nm = NAMES[c.c]; c.name = nm[0]; c.descs = nm.slice(1); });
+    const DRG = ['R13', 'R5', 'R3', 'R4', 'R12', 'R1', 'D1', 'D10'];
+    const DRH = ['D9', 'D10', 'R13', 'R4', 'R5', 'D15', 'R1', 'D5'];
+    const REASONS = [['One-off movement', 0.32], ['Waste producer carrying own waste', 0.24], ['Exempt from registration', 0.18], ['Registration applied for', 0.11], ['Other', 0.15]];
+    const pickReason = () => { let v = r(); for (let i = 0; i < REASONS.length; i++) { v -= REASONS[i][1]; if (v <= 0) return REASONS[i][0]; } return 'Other'; };
+    const FREE = ['Local skip firm', 'Collected by customer', 'Driver - cash job', '[Unknown haulier]', 'Own vehicle', 'Man with van', 'N/A', 'Various', 'Self', 'TBC'];
+    const SRC = ['Household', 'Commercial and industrial', 'Construction and demolition', 'Treatment process'];
+    const W1 = ['Pennine', 'Northway', 'Calder', 'Ridings', 'Kestrel', 'Dalesway', 'Brightwater', 'Tidewater', 'Moorland', 'Severn', 'Mersey', 'Tyne', 'Clyde', 'Forth', 'Lagan', 'Taff', 'Humber', 'Wessex', 'Solent', 'Trent', 'Cheviot', 'Mendip', 'Fenland', 'Wolds', 'Marches', 'Cambrian', 'Grampian', 'Antrim', 'Mourne', 'Gower', 'Hall', 'Greenway', 'Redline', 'Swift', 'Ironbridge'];
+    const W2 = ['Haulage', 'Logistics', 'Transport', 'Waste Carriers', 'Skip Hire', 'Freight', 'Bulk Transport', 'Recycling Services', 'Tipper Hire', 'Waste Management'];
+    const PRE = ['', '', '', '', 'A1 ', 'J & M ', 'R. ', 'Hall & Sons ', 'D & S ', 'K. '];
+
+    const vehToCar = {};
+    const newVeh = () => { for (;;) { const v = L(2) + String(10 + Math.floor(r() * 66)) + ' ' + L(3); if (!vehToCar[v]) return v; } };
+    const usedIds = {};
+    const usedNames = {};
+    const carriers = {};
+    const pools = {};
+    NATIONS.forEach((nat) => {
+      pools[nat.n] = [];
+      for (let i = 0; i < nat.pool; i++) {
+        let id;
+        do { id = 'CBDU' + (100000 + Math.floor(r() * 899999)); } while (usedIds[id]);
+        usedIds[id] = true;
+        let base;
+        do { base = PRE[Math.floor(r() * PRE.length)] + W1[Math.floor(r() * W1.length)] + ' ' + W2[Math.floor(r() * W2.length)]; } while (usedNames[base]);
+        usedNames[base] = true;
+        const canon = base + (r() < 0.6 ? ' Ltd' : '');
+        const vars = [{ t: canon, p: 6 }];
+        const nv = Math.floor(Math.pow(r(), 1.6) * 3);
+        const forms = [base.toUpperCase(), base, canon + '.'];
+        for (let j = 0; j < nv; j++) vars.push({ t: forms[j % forms.length], p: 1 + r() * 2 });
+        if (r() < 0.2) vars.push({ t: r() < 0.5 ? base.split(' ')[0] + '**' : '[' + canon + ']', p: 0.6 + r() });
+        const vSum = vars.reduce((a, v) => a + v.p, 0);
+        const nVeh = 1 + Math.floor(Math.pow(r(), 1.5) * 7);
+        const veh = [];
+        for (let j = 0; j < nVeh; j++) { const v = newVeh(); vehToCar[v] = id; veh.push(v); }
+        const c = { id, name: canon, vars, vSum, veh, mode: r() < 0.94 ? 'Road' : (r() < 0.5 ? 'Rail' : 'Inland waterway') };
+        carriers[id] = c;
+        pools[nat.n].push(c);
+      }
+    });
+    const pickVar = (c) => { let v = r() * c.vSum; for (let i = 0; i < c.vars.length; i++) { v -= c.vars[i].p; if (v <= 0) return c.vars[i].t; } return c.name; };
+
+    const sites = [];
+    let idc = 0;
+    NATIONS.forEach((nat) => {
+      const las = LAS[nat.n];
+      const raws = [];
+      const mine = [];
+      for (let i = 0; i < nat.count; i++) {
+        let row;
+        if (nat.n === 'Wales' && i < NRW.length) { const wp = las.filter((x) => x[2] === NRW[i]); row = wp[Math.floor(r() * wp.length)]; }
+        else row = las[Math.floor(Math.pow(r(), 1.25) * las.length)];
+        let name = row[0] + ' ' + MODS[Math.floor(r() * MODS.length)] + ' ' + TYPES[Math.floor(r() * TYPES.length)];
+        while (sites.some((x) => x.name === name) || mine.some((x) => x.name === name)) name = name + ' 2';
+        const pre = nat.n === 'Scotland' ? 'SCA' : (nat.n === 'Northern Ireland' ? 'NIEA' : 'EPR');
+        const permit = pre === 'NIEA' ? 'NIEA/' + L(2) + (1000 + Math.floor(r() * 8999)) : pre + '/' + L(2) + (1000 + Math.floor(r() * 8999)) + L(2);
+        const og = ORGS[nat.n];
+        raws.push(Math.pow(r(), 2.2) + 0.05);
+        mine.push({
+          name, permit, nation: nat.n, region: row[2], la: row[0], org: og[Math.floor(r() * og.length)],
+          postcode: row[1] + (1 + Math.floor(r() * 28)) + ' ' + (1 + Math.floor(r() * 9)) + L(2),
+          address: (10 + Math.floor(r() * 90)) + ' ' + ['Quarry Road', 'Mill Lane', 'Canal Wharf', 'Foundry Street', 'Dock Road', 'Station Works'][Math.floor(r() * 6)],
+          hazShare: 0.03 + Math.pow(r(), 1.3) * 0.2, popsShare: 0.002 + r() * 0.012,
+          est: 4 + r() * 36, miss: 5 + r() * 38, cons: 0.02 + Math.pow(r(), 1.5) * 0.22, noConc: 0.02 + Math.pow(r(), 1.6) * 0.25, nonDest: 0.03 + Math.pow(r(), 1.5) * 0.3,
+          regMiss: 0.02 + Math.pow(r(), 1.5) * 0.22
+        });
+      }
+      const rs = raws.reduce((a, b) => a + b, 0);
+      mine.forEach((st, i) => { st.wT = (612400 * (92 / 84) * nat.share * raws[i]) / rs; st.id = idc++; sites.push(st); });
+    });
+
+    const idxOf = (g) => CODES.map((c, i) => (c.g === g ? i : -1)).filter((i) => i >= 0);
+    const profile = (idx, minN, maxN) => {
+      const out = [];
+      idx.forEach((ci, j) => { if (j < minN || r() < 0.55) out.push({ ci, p: CODES[ci].base * (0.3 + r()) }); });
+      while (out.length > maxN) out.splice(minN + Math.floor(r() * (out.length - minN)), 1);
+      const t = out.reduce((a, o) => a + o.p, 0);
+      let acc = 0;
+      out.forEach((o) => { acc += o.p / t; o.cum = acc; });
+      return out;
+    };
+    const pick = (arr) => { const v = r(); for (let i = 0; i < arr.length; i++) if (v <= arr[i].cum) return arr[i].ci; return arr[arr.length - 1].ci; };
+
+    sites.forEach((st) => {
+      const own = pools[st.nation];
+      const nc = 8 + Math.floor(r() * 9);
+      const sc = [];
+      const taken = {};
+      while (sc.length < nc) {
+        const pool = r() < 0.08 ? pools[st.nation === 'England' ? 'Wales' : 'England'] : own;
+        const c = pool[Math.floor(r() * pool.length)];
+        if (!taken[c.id]) { taken[c.id] = true; sc.push({ c, p: Math.pow(r(), 1.7) + 0.06 }); }
+      }
+      const pSum = sc.reduce((a, x) => a + x.p, 0);
+      const pickC = () => { let v = r() * pSum; for (let i = 0; i < sc.length; i++) { v -= sc[i].p; if (v <= 0) return sc[i].c; } return sc[0].c; };
+      const mk = (ci, forcePop) => {
+        const c = CODES[ci];
+        const d = Math.min(91, Math.floor(92 * Math.pow(r(), 0.92)));
+        const isPop = c.pops > 0 && (forcePop ? r() < 0.97 : r() < c.pops);
+        const pop = isPop ? c.pop[Math.floor(r() * c.pop.length)] : '';
+        const miss = r() * 100 < st.miss;
+        let dr = '';
+        if (!miss) dr = pop ? (r() < st.nonDest ? ['R13', 'D15', 'R3', 'R5'][Math.floor(r() * 4)] : (r() < 0.6 ? 'D10' : 'R1')) : (c.h ? DRH[Math.floor(r() * DRH.length)] : DRG[Math.floor(r() * DRG.length)]);
+        let cons = '';
+        let consIssue = false;
+        if (c.h) {
+          const good = L(3) + (100 + Math.floor(r() * 899)) + '/' + L(3) + (10 + Math.floor(r() * 89));
+          consIssue = r() < st.cons;
+          cons = consIssue ? (r() < 0.5 ? good.replace('/', '') : good.slice(0, 6)) : good;
+        }
+        const m = {
+          d, ci, w: c.mw * (0.45 + 1.1 * r()), est: r() * 100 < st.est, miss, dr, cons, consIssue, pop,
+          conc: pop ? (r() < st.noConc ? null : Math.round((pop.indexOf('PCBs') !== -1 ? 60 : 600) + r() * 8000)) : null,
+          src: SRC[Math.floor(r() * SRC.length)], id: 'DWT-' + (10000000 + Math.floor(r() * 89999999)), s: st.id
+        };
+        if (r() >= st.regMiss) {
+          const cr = pickC();
+          m.car = cr.id; m.name = pickVar(cr); m.tr = cr.mode;
+          m.veh = cr.mode === 'Road' ? (r() < 0.02 ? '' : cr.veh[Math.floor(r() * cr.veh.length)]) : '';
+          m.reason = '';
+        } else {
+          const hidden = r() < 0.55 ? pickC() : null;
+          m.car = null; m.reason = pickReason();
+          m.tr = r() < 0.94 ? 'Road' : 'Rail';
+          m.name = hidden && r() < 0.55 ? pickVar(hidden) : FREE[Math.floor(r() * FREE.length)];
+          m.veh = m.tr === 'Road' ? (hidden && hidden.mode === 'Road' && r() < 0.75 ? hidden.veh[Math.floor(r() * hidden.veh.length)] : (r() < 0.6 ? newVeh() : '')) : '';
+        }
+        return m;
+      };
+      const moves = [];
+      const grp = (g, wTarget, avg, minN, maxN, minC) => {
+        const pr = profile(idxOf(g), minC, maxN);
+        const n = Math.max(minN, Math.round(wTarget / avg));
+        const arr = [];
+        let sw = 0;
+        for (let k = 0; k < n; k++) { const m = mk(pick(pr), g === 'p'); sw += m.w; arr.push(m); }
+        const fct = wTarget / sw;
+        arr.forEach((m) => { m.w *= fct; moves.push(m); });
+      };
+      const hazW = st.wT * st.hazShare;
+      const popW = st.wT * st.popsShare;
+      grp('n', st.wT - hazW - popW, 13, 20, 10, 2);
+      grp('h', hazW, 7.5, 6, 7, 2);
+      grp('p', popW, 3.5, 3, 3, 1);
+      moves.forEach((m, k) => { m.k = k; });
+      moves.sort((p, q) => (q.d - p.d) || (q.k - p.k));
+      st.moves = moves;
+    });
+
+    const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const start = Date.UTC(2026, 6, 1);
+    const dayLabel = (d, yr) => { const dt = new Date(start + d * 86400000); return dt.getUTCDate() + ' ' + MON[dt.getUTCMonth()] + (yr ? ' ' + dt.getUTCFullYear() : ''); };
+    const iso = (d) => new Date(start + d * 86400000).toISOString().slice(0, 10);
+    const DAYS = 92;
+    // v1.1 fields come from their own sequence so the v1.0 records are unchanged
+    const r2 = this.rng(20261101);
+    const BW1 = ['Apex', 'Northern', 'Central', 'Prime', 'Allied', 'Crown', 'Meridian', 'Summit', 'Unity', 'Keystone', 'Atlas', 'Beacon'];
+    const BW2 = ['Waste Brokers Ltd', 'Environmental Ltd', 'Waste Solutions Ltd', 'Resource Brokers', 'Recycling Brokers Ltd', 'Waste Services'];
+    const brokers = [];
+    for (let i = 0; i < 28; i++) {
+      let id;
+      do { id = 'CBDU' + (100000 + Math.floor(r2() * 899999)); } while (usedIds[id]);
+      usedIds[id] = true;
+      brokers.push({ id, name: BW1[Math.floor(r2() * BW1.length)] + ' ' + BW2[Math.floor(r2() * BW2.length)], role: r2() < 0.6 ? 'Broker' : 'Dealer' });
+    }
+    sites.forEach((st) => {
+      const bShare = Math.pow(r2(), 1.4) * 0.35;
+      const own = [brokers[Math.floor(r2() * brokers.length)], brokers[Math.floor(r2() * brokers.length)]];
+      st.moves.forEach((m) => {
+        const c = CODES[m.ci];
+        const v = r2();
+        const mins = 6 * 60 + 30 + Math.floor((v < 0.85 ? r2() * 600 : r2() * 900));
+        m.t = Math.min(mins, 23 * 60 + 40);
+        m.desc = c.descs[Math.floor(r2() * c.descs.length)];
+        m.broker = r2() < bShare ? own[r2() < 0.7 ? 0 : 1] : null;
+      });
+      st.moves.sort((p, q) => (q.d - p.d) || (q.t - p.t) || (q.k - p.k));
+    });
+    this._m = { sites, CODES, carriers, vehToCar, dayLabel, iso, DAYS, start, NRW, AH, MH, NH, REASONS };
+    return this._m;
+  }
+
+  niceMax(v) {
+    if (v <= 0) return 4;
+    const q = v / 4;
+    const p = Math.pow(10, Math.floor(Math.log10(q)));
+    const m = q / p;
+    const n = [1, 2, 2.5, 5, 10].find((x) => m <= x) || 10;
+    return n * p * 4;
+  }
+
+  renderVals() {
+    const s = this.state;
+    const M = this.model();
+    const U = M.sites;
+    const C = M.CODES;
+    const D = this.dims();
+    const f = s.f;
+    const fmt = (n) => Math.round(n).toLocaleString('en-GB');
+    const fmt1 = (n) => (Math.round(n * 10) / 10).toLocaleString('en-GB', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const pct = (n) => (isFinite(n) ? (Math.round(n * 10) / 10).toFixed(1) : '0.0') + '%';
+    const isKg = s.unit === 'kg';
+    const UL = isKg ? 'kg' : 'tonnes';
+    const fw = (t) => (isKg ? fmt(t * 1000) : fmt(t));
+    const fw1 = (t) => (isKg ? fmt(t * 1000) : fmt1(t));
+    const wv = (t) => fw(t) + ' ' + UL;
+    const tm = (mins) => String(Math.floor(mins / 60)).padStart(2, '0') + ':' + String(mins % 60).padStart(2, '0');
+    const EST_TIP = 'Estimated weight: the receiving site estimated the weight instead of weighing the load, for example from the container size or a typical load. Estimates are allowed, but they are less precise than a weighbridge reading.';
+    const labelOf = (k, v) => (k === 'site' ? U[v].name : v);
+    const AMBER = 'background:#FFF4CE;color:#6B4E00';
+    const RED = 'background:#FDE7E9;color:#A80000';
+    const OK = 'background:#DFF6DD;color:#0E700E';
+    const SEL_ROW = 'background:#EAF4FF;box-shadow:inset 3px 0 0 #118DFF';
+    const flag = (v, lim, red) => ({ text: pct(v) + (v > lim ? ' high' : ''), style: v > lim ? (red ? RED : AMBER) : '' });
+    const htStyle = (ht) => (ht === M.AH ? 'background:#FDECE5;color:#A4401B' : (ht === M.MH ? 'background:#FFF4CE;color:#6B4E00' : 'background:#E8F3FF;color:#0B5CAD'));
+    const htColor = (c) => (c.g === 'p' ? '#6B007B' : (c.ht === M.AH ? '#E66C37' : (c.ht === M.MH ? '#D9B300' : '#118DFF')));
+    const isND = (m) => !!m.pop && !!m.dr && m.dr !== 'D10' && m.dr !== 'R1';
+    const isMatch = (m) => !m.car && !!m.veh && !!M.vehToCar[m.veh];
+    const card = (label, value, note, tip, level) => ({
+      label, value, note: note || '', tip: tip || '', hasTip: !!tip,
+      valStyle: level === 'amber' ? 'color:#8A6100' : (level === 'red' ? 'color:#A80000' : 'color:#252423'),
+      noteStyle: level === 'amber' ? 'color:#8A6100;font-weight:600' : (level === 'red' ? 'color:#A80000;font-weight:600' : 'color:#605E5C')
+    });
+    const lvl = (v, lim, red) => (v > lim ? (red ? 'red' : 'amber') : '');
+    const mkq = (label, v, lim, red, count, limText, dF) => {
+      const high = lim != null && v > lim;
+      return {
+        label, value: pct(v) + (high ? ' high' : ''), w: Math.min(100, (v / 60) * 100).toFixed(1) + '%',
+        color: high ? (red ? '#C50F1F' : '#D9B300') : '#118DFF',
+        badge: lim == null ? 'background:#F3F2F1;color:#252423' : (high ? (red ? RED : AMBER) : OK),
+        limit: limText || ('Threshold ' + lim + '%'), canDrill: count > 0,
+        drill: fmt(count) + ' movement' + (count === 1 ? '' : 's') + ' ›',
+        pick: () => this.openMoves(dF)
+      };
+    };
+    const tabStyle = (on) => (on ? 'background:#FFFFFF;font-weight:600;color:#252423;box-shadow:inset 0 3px 0 #118DFF' : 'background:transparent;color:#605E5C');
+    const setD = D.filter((d) => f[d.k].length > 0);
+    const listOf = (k) => {
+      const vals = f[k].map((v) => labelOf(k, v));
+      return vals.length > 3 ? vals.slice(0, 3).join(', ') + ' and ' + (vals.length - 3) + ' more' : vals.join(', ');
+    };
+    const filterText = setD.map((d) => d.label + ': ' + listOf(d.k)).join(' · ');
+    const scopeSites = U.filter((st) => this.siteOk(st, f, 99));
+    const ok = (m) => this.mvOk(m, f, 99);
+
+    const dr = s.dr;
+    const span = dr.to - dr.from + 1;
+    const daily = span <= 31;
+    const edges = [];
+    if (daily) { for (let d = dr.from; d <= dr.to; d++) edges.push([d, d]); } else {
+      let e = dr.to;
+      while (e >= dr.from) { const a = Math.max(dr.from, e - 6); edges.unshift([a, e]); e = a - 1; }
+      if (edges.length > 1 && edges[0][1] - edges[0][0] < 3) { edges[1][0] = edges[0][0]; edges.shift(); }
+    }
+    const nb = edges.length;
+    const bOf = {};
+    edges.forEach((x, i) => { for (let d = x[0]; d <= x[1]; d++) bOf[d] = i; });
+    const step = Math.ceil(nb / 12);
+    const bucketName = (i) => {
+      const a = edges[i][0];
+      const b = edges[i][1];
+      const len = b - a + 1;
+      return a === b ? M.dayLabel(a, true) : M.dayLabel(a, false) + ' to ' + M.dayLabel(b, true) + (len !== 7 ? ' (' + len + ' days)' : '');
+    };
+    const trendFor = (moves, keyFn, series, prefix) => {
+      const wk = [];
+      for (let i = 0; i < nb; i++) wk.push(series.map(() => 0));
+      moves.forEach((m) => { const j = keyFn(m); const b = bOf[m.d]; if (j >= 0 && b != null) wk[b][j] += s.metric === 'w' ? (isKg ? m.w * 1000 : m.w) : 1; });
+      const tot = wk.map((x) => x.reduce((a, b) => a + b, 0));
+      const mx = Math.max.apply(null, tot.concat([1]));
+      const yMax = this.niceMax(mx);
+      const unit = s.metric === 'w' ? ' ' + UL : ' movements';
+      out[prefix + 'Grid'] = [0, 0.25, 0.5, 0.75, 1].map((q) => ({ pos: (q * 100) + '%', label: fmt(yMax * q), line: q === 0 ? '#8A8886' : '#EDEBE9' }));
+      out[prefix + 'Gap'] = nb > 20 ? '3px' : (nb > 14 ? '6px' : '12px');
+      out[prefix] = wk.map((x, i) => ({ label: i % step === 0 ? M.dayLabel(edges[i][0], false) : '', tip: bucketName(i) + ': ' + fmt(tot[i]) + unit, segs: x.map((v, j) => ({ h: ((v / yMax) * 100).toFixed(2) + '%', bg: series[j].color })) }));
+      out[prefix + 'Explain'] = (daily ? 'Each bar shows the waste received on one day of the date range.' : 'Each bar shows the waste received in one week, counting back from the last day of the date range. Choose a date range of a month or less to see one bar per day.') + ' Hover over a bar to see its total.';
+      return { mx, pk: bucketName(tot.indexOf(mx)), unit, what: daily ? 'Busiest day' : 'Busiest week' };
+    };
+
+    const out = {
+      isSummary: s.page === 'summary',
+      isSite: s.page === 'site' && s.siteId != null,
+      isMoves: s.page === 'moves',
+      showBack: s.page !== 'summary',
+      backLabel: s.page === 'moves' && s.prev === 'site' ? 'Back to Site detail' : 'Back to Summary',
+      back: () => this.go(s.page === 'moves' && s.prev === 'site' && s.siteId != null ? 'site' : 'summary'),
+      goSummary: () => this.go('summary'),
+      isW: s.metric === 'w', isN: s.metric === 'n',
+      setW: () => this.setState({ metric: 'w' }), setN: () => this.setState({ metric: 'n' }),
+      wBtn: s.metric === 'w' ? 'background:#252423;color:#FFFFFF' : 'background:#FFFFFF;color:#252423',
+      nBtn: s.metric === 'n' ? 'background:#252423;color:#FFFFFF' : 'background:#FFFFFF;color:#252423',
+      drLabel: M.dayLabel(dr.from, true) + ' to ' + M.dayLabel(dr.to, true),
+      drFrom: M.iso(dr.from), drTo: M.iso(dr.to), drMin: M.iso(0), drMax: M.iso(M.DAYS - 1),
+      onFrom: (e) => this.setRange(e, 'from'), onTo: (e) => this.setRange(e, 'to'),
+      unitNote: 'Weights shown in ' + (isKg ? 'kilograms' : 'tonnes'),
+      wHead: 'Weight (' + UL + ')',
+      showAbout: !!s.about, toggleAbout: () => this.setState({ about: !s.about }), aboutLabel: s.about ? 'Close About this data' : 'About this data',
+      tabs: [
+        { label: 'Summary', go: () => this.go('summary'), cur: s.page === 'summary' ? 'page' : 'false', style: tabStyle(s.page === 'summary') },
+        { label: 'Site detail', go: () => this.go('site'), cur: s.page === 'site' ? 'page' : 'false', style: tabStyle(s.page === 'site') },
+        { label: 'Movements', go: () => this.openMoves(s.dF || {}), cur: s.page === 'moves' ? 'page' : 'false', style: tabStyle(s.page === 'moves') }
+      ]
+    };
+    const pill = (on) => (on ? 'background:#252423;color:#FFFFFF;border:1px solid #252423' : 'background:#FFFFFF;color:#252423;border:1px solid #8A8886');
+    const PRESETS = [['Last 7 days', 85, 91], ['Last 4 weeks', 64, 91], ['July', 0, 30], ['August', 31, 61], ['September', 62, 91], ['All 3 months', 0, 91]];
+    out.drPresets = PRESETS.map((x) => { const on = dr.from === x[1] && dr.to === x[2]; return { label: x[0], on, style: pill(on), pick: () => this.setState({ dr: { from: x[1], to: x[2] }, sAll: false, usAll: false, mvLimit: 10, mvSel: null }) }; });
+    out.unitBtns = [['t', 'Tonnes'], ['kg', 'Kilograms']].map((x) => ({ label: x[1], on: s.unit === x[0], style: pill(s.unit === x[0]), pick: () => this.setState({ unit: x[0] }) }));
+    out.isEmpty = s.page === 'site' && s.siteId == null;
+    out.emptyTitle = 'No receiving site selected';
+    out.emptyText = 'Site detail is a drill-through page. Open it from a receiving site on the Summary page.';
+    if (out.isEmpty) { out.pageTitle = 'Site detail'; out.showing = 'Nothing selected'; out.showingSub = ''; }
+
+    if (s.page === 'summary') {
+      out.pageTitle = 'Receipt of Waste: combined site view';
+      out.showing = filterText || 'All of the UK: all four nations combined';
+      out.showingSub = 'User research prototype, version 1.1, combining reports R-01, R-02 and R-03. Location filters use the location of the receiving site.';
+      out.anyOpen = !!s.open;
+      out.closeOpen = () => this.setState({ open: null, q: {} });
+      out.clearAll = () => this.setState({ f: { nation: [], region: [], la: [], site: [], permit: [], wtype: [], ewc: [], carrier: [] }, q: {}, open: null, sel: null });
+
+      const mkSlicer = (d, i, n, grp) => {
+        const sel = f[d.k];
+        const isSet = sel.length > 0;
+        const isOpen = s.open === d.k;
+        const optStyle = (on) => ({ bg: on ? '#EAF4FF' : '#FFFFFF', tick: on ? '✓' : '', box: on ? 'border:1px solid #252423;background:#252423' : 'border:1px solid #605E5C;background:#FFFFFF' });
+        let opts = [];
+        let noMatch = false;
+        const qs = ((s.q || {})[d.k] || '').trim().toLowerCase();
+        if (isOpen) {
+          const permitSite = {};
+          if (d.k === 'permit') U.forEach((st) => { permitSite[st.permit] = st.name; });
+          const subOf = (o) => (d.k === 'permit' ? permitSite[o.v] : (d.k === 'carrier' ? (o.v === 'Not provided' ? fmt(o.n) + ' movements' : M.carriers[o.v].name) : (d.lvl === 'mv' ? fmt(o.n) + ' movements' : wv(o.w))));
+          let all = this.options(f, d.k);
+          const ro = (v) => M.NRW.indexOf(v);
+          all.sort((p, q) => {
+            if (d.k === 'carrier') { if (p.v === 'Not provided') return -1; if (q.v === 'Not provided') return 1; return q.n - p.n; }
+            if (d.k === 'nation' || d.k === 'wtype') return q.n - p.n;
+            if (d.k === 'region' && ro(p.v) !== -1 && ro(q.v) !== -1) return ro(p.v) - ro(q.v);
+            return String(labelOf(d.k, p.v)).localeCompare(String(labelOf(d.k, q.v)));
+          });
+          if (qs) all = all.filter((o) => (String(labelOf(d.k, o.v)) + ' ' + (subOf(o) || '')).toLowerCase().indexOf(qs) !== -1);
+          noMatch = !!qs && all.length === 0;
+          const allSt = optStyle(!isSet);
+          opts = (qs ? [] : [{ label: 'Select all', sub: '', labelStyle: 'font-weight: 600', on: !isSet, bg: allSt.bg, tick: allSt.tick, box: allSt.box, pick: () => this.setFilter(d.k, []) }]).concat(all.slice(0, 300).map((o) => {
+            const on = sel.indexOf(o.v) !== -1;
+            const st2 = optStyle(on);
+            return {
+              label: labelOf(d.k, o.v), sub: subOf(o),
+              labelStyle: ((d.k === 'permit' || d.k === 'ewc' || d.k === 'carrier') && o.v !== 'Not provided') ? 'font-family: Consolas, Menlo, monospace; font-size: 12.5px' : (o.v === 'Not provided' ? 'font-weight: 600' : ''),
+              on, bg: st2.bg, tick: st2.tick, box: st2.box, pick: () => this.toggleVal(d.k, o.v)
+            };
+          }));
+        }
+        return {
+          label: d.label,
+          value: !isSet ? 'All' : (sel.length === 1 ? labelOf(d.k, sel[0]) : sel.length + ' selected'),
+          isSet, clearLabel: 'Clear ' + d.label + ' filter', clear: () => this.setFilter(d.k, []),
+          open: isOpen, toggle: () => this.setState({ open: isOpen ? null : d.k, q: {} }),
+          boxStyle: isSet ? 'background:#FFFFFF;border:1px solid #118DFF;color:#252423;font-weight:600' : 'background:#FFFFFF;border:1px solid #8A8886;color:#252423',
+          pos: (grp === 'mv' && i === n - 1) ? 'right: 0' : 'left: 0',
+          searchable: true, q: (s.q || {})[d.k] || '',
+          placeholder: d.k === 'permit' ? 'Search permit or site' : (d.k === 'carrier' ? 'Search registration or name' : 'Search ' + d.label.toLowerCase()),
+          searchLabel: 'Search ' + d.label + ' filter',
+          onKey: (e) => { if (e && e.key === 'Escape') this.setState({ open: null, q: {} }); },
+          onSearch: (e) => { const v = e && e.target ? e.target.value : ''; this.setState({ q: Object.assign({}, this.state.q, { [d.k]: v }) }); },
+          noMatch, opts
+        };
+      };
+      ['loc', 'op', 'mv'].forEach((g) => {
+        const ds = D.filter((d) => d.grp === g);
+        out[g + 'Slicers'] = ds.map((d, i) => mkSlicer(d, i, ds.length, g));
+      });
+
+      const T = { n: 0, w: 0, hazW: 0, hazN: 0, popsN: 0, estW: 0, missN: 0, un: 0, unW: 0, match: 0, matchW: 0, cons: 0, mirW: 0, noConc: 0, nd: 0, popDr: 0 };
+      const car = {};
+      const codes = {};
+      const reasons = {};
+      const reasonsW = {};
+      const pops = {};
+      const siteAgg = [];
+      const siteUn = [];
+      const scopeMoves = [];
+      scopeSites.forEach((st) => {
+        let a = null;
+        let sn = 0; let su = 0; let sw = 0; let suw = 0;
+        const rs = {};
+        st.moves.forEach((m) => {
+          if (!ok(m)) return;
+          const c = C[m.ci];
+          scopeMoves.push(m);
+          sn++; sw += m.w; T.n++; T.w += m.w;
+          if (c.h) { T.hazW += m.w; T.hazN++; if (m.consIssue) T.cons++; if (c.ht === M.MH) T.mirW += m.w; }
+          if (m.pop) { T.popsN++; if (m.conc == null) T.noConc++; if (m.dr) { T.popDr++; if (isND(m)) T.nd++; } const p = pops[m.pop] || (pops[m.pop] = { n: 0, w: 0 }); p.n++; p.w += m.w; }
+          if (m.est) T.estW += m.w;
+          if (m.miss) T.missN++;
+          if (m.car) car[m.car] = 1;
+          else { T.un++; T.unW += m.w; su++; suw += m.w; reasons[m.reason] = (reasons[m.reason] || 0) + 1; reasonsW[m.reason] = (reasonsW[m.reason] || 0) + m.w; rs[m.reason] = (rs[m.reason] || 0) + 1; if (isMatch(m)) { T.match++; T.matchW += m.w; } }
+          const g = codes[m.ci] || (codes[m.ci] = { n: 0, w: 0, estW: 0, miss: 0, pops: 0, sites: {} });
+          g.n++; g.w += m.w; if (m.est) g.estW += m.w; if (m.miss) g.miss++; if (m.pop) g.pops++; g.sites[st.id] = 1;
+          if (!s.sel || m.ci === s.sel) {
+            a = a || { st, n: 0, w: 0, hazW: 0, pops: 0, un: 0, estW: 0, miss: 0 };
+            a.n++; a.w += m.w; if (c.h) a.hazW += m.w; if (m.pop) a.pops++; if (!m.car) a.un++; if (m.est) a.estW += m.w; if (m.miss) a.miss++;
+          }
+        });
+        if (a) siteAgg.push(a);
+        if (su) siteUn.push({ st, un: su, n: sn, unW: suw, w: sw, rs });
+      });
+      const sitesWith = new Set(scopeMoves.map((m) => m.s)).size;
+      out.scopeLine = fmt(sitesWith) + ' receiving sites · ' + fmt(T.n) + ' movements in scope';
+      const onlySite = scopeSites.length === 1 && f.permit.length ? scopeSites[0] : null;
+      out.oneSite = !!onlySite;
+      out.oneSiteName = onlySite ? onlySite.name + ' (' + onlySite.permit + ')' : '';
+      out.openOneSite = () => { if (onlySite) this.openSite(onlySite.id); };
+
+      const eP = T.w ? (T.estW / T.w) * 100 : 0;
+      const mP = T.n ? (T.missN / T.n) * 100 : 0;
+      out.kpis = [
+        card('Weight received', wv(T.w), ''),
+        card('Movements', fmt(T.n), ''),
+        card('Receiving sites', fmt(sitesWith), ''),
+        card('Carriers identified', fmt(Object.keys(car).length), 'Distinct carrier registration numbers'),
+        card('Hazardous share of weight', pct(T.w ? (T.hazW / T.w) * 100 : 0), wv(T.hazW) + ' hazardous'),
+        card('Movements containing persistent organic pollutants (POPs)', fmt(T.popsN), pct(T.n ? (T.popsN / T.n) * 100 : 0) + ' of movements'),
+        card('Weight that is estimated', pct(eP), eP > 30 ? 'High: above the 30% threshold' : 'Threshold 30%', EST_TIP, lvl(eP, 30, false)),
+        card('Movements missing a disposal or recovery code', pct(mP), mP > 35 ? 'High: above the 35% threshold' : 'Threshold 35%', '', lvl(mP, 35, true))
+      ];
+
+      const series = [{ label: 'Non-hazardous', color: '#118DFF' }, { label: 'Hazardous', color: '#E66C37' }, { label: 'Contains POPs', color: '#6B007B' }];
+      const tr = trendFor(scopeMoves.filter((m) => !s.sel || m.ci === s.sel), (m) => (m.pop ? 2 : (C[m.ci].h ? 1 : 0)), series, 'trend');
+      out.trendLegend = series.map((x) => ({ color: x.color, label: x.label, style: '' }));
+      out.trendTitle = 'Waste received over time' + (s.metric === 'w' ? ' (' + UL + ')' : ' (movements)');
+      out.trendNote = (s.sel != null ? 'Filtered to EWC code ' + C[s.sel].c + '. ' : '') + tr.what + ': ' + tr.pk + ', ' + fmt(tr.mx) + tr.unit + '.';
+
+      const cl = Object.keys(codes).map(Number).sort((p, q) => codes[q].w - codes[p].w);
+      const cmax = cl.length ? codes[cl[0]].w : 1;
+      out.ewcNote = cl.length + ' European Waste Catalogue (EWC) codes in this scope, largest first. Hover over a code to see its name. Hazardous codes end with an asterisk.';
+      const el = s.eAll ? cl.length : 12;
+      out.ewcMore = cl.length > 12;
+      out.ewcMoreLabel = s.eAll ? 'Show top 12 only' : 'Show all ' + cl.length + ' codes';
+      out.ewcToggle = () => this.setState({ eAll: !s.eAll });
+      out.ewcRows = cl.slice(0, el).map((ci) => {
+        const g = codes[ci];
+        const c = C[ci];
+        const on = s.sel === ci;
+        return {
+          code: c.c, name: c.name, chapter: c.chl, ht: c.ht, htStyle: htStyle(c.ht), pops: g.pops > 0,
+          w: fw(g.w), bar: ((g.w / cmax) * 100).toFixed(1) + '%', barColor: htColor(c), n: fmt(g.n), sites: String(Object.keys(g.sites).length),
+          est: flag(g.w ? (g.estW / g.w) * 100 : 0, 30, false), miss: flag(g.n ? (g.miss / g.n) * 100 : 0, 35, true),
+          on, rowStyle: on ? SEL_ROW : '', pickLabel: (on ? 'Clear filter for EWC code ' : 'Filter by EWC code ') + c.c,
+          pick: () => this.setState({ sel: on ? null : ci, sAll: false }),
+          movesLabel: 'Movements for EWC code ' + c.c, moves: () => this.openMoves({ ewc: ci })
+        };
+      });
+
+      const cP = T.hazN ? (T.cons / T.hazN) * 100 : 0;
+      out.hazNote = fmt(T.hazN) + ' hazardous movements, ' + wv(T.hazW) + ' (' + pct(T.w ? (T.hazW / T.w) * 100 : 0) + ' of all weight).';
+      out.hazChecks = [
+        mkq('Weight under mirror entries', T.hazW ? (T.mirW / T.hazW) * 100 : 0, null, false, scopeMoves.filter((m) => C[m.ci].ht === M.MH).length, 'Informational: classified by assessment', { mirror: true }),
+        mkq('Consignment codes not in the expected format', cP, 10, false, T.cons, 'Threshold 10% · a format check only', { cons: true }),
+        mkq('All hazardous movements', T.n ? (T.hazN / T.n) * 100 : 0, null, false, T.hazN, 'Share of all movements', { haz: true })
+      ];
+      const ncP = T.popsN ? (T.noConc / T.popsN) * 100 : 0;
+      const ndP = T.popDr ? (T.nd / T.popDr) * 100 : 0;
+      out.popNote = fmt(T.popsN) + ' movements declare a persistent organic pollutant (POP), in hazardous and non-hazardous EWC codes.';
+      out.popChecks = [
+        mkq('POPs movements without a concentration', ncP, 10, false, T.noConc, '', { noconc: true }),
+        mkq('Not sent for destruction (D10 incineration or R1 energy recovery)', ndP, 15, true, T.nd, 'Threshold 15% · includes storage codes R13 and D15', { nondest: true })
+      ];
+      out.popRows = Object.keys(pops).sort((p, q) => pops[q].n - pops[p].n).map((name) => ({ name, n: fmt(pops[name].n), w: fw(pops[name].w), moves: () => this.openMoves({ pop: name }) }));
+
+      const cw = s.carMetric === 'w';
+      out.carIsW = cw; out.carIsN = !cw;
+      out.setCarW = () => this.setState({ carMetric: 'w' }); out.setCarN = () => this.setState({ carMetric: 'n' });
+      out.carWBtn = cw ? 'background:#252423;color:#FFFFFF' : 'background:#FFFFFF;color:#252423';
+      out.carNBtn = !cw ? 'background:#252423;color:#FFFFFF' : 'background:#FFFFFF;color:#252423';
+      const REG_TIP = 'Carrier registration details are not mandatory. A receiving site can submit a movement without them if it gives a reason, so this is not a measure of carrier compliance.';
+      const MATCH_TIP = 'A movement without carrier registration details whose vehicle registration is also recorded against a registered carrier.';
+      const unPick = () => this.openMoves({ noReg: true });
+      const shW = pct(T.w ? (T.unW / T.w) * 100 : 0);
+      const shN = pct(T.n ? (T.un / T.n) * 100 : 0);
+      out.carCards = cw ? [
+        { label: 'Weight in movements without carrier registration details', value: wv(T.unW), note: shW + ' of all weight. Not a mandatory field if the site gives a reason.', tip: REG_TIP, canDrill: T.un > 0, drill: 'View ' + fmt(T.un) + ' movements ›', pick: unPick },
+        { label: 'Number of those movements', value: fmt(T.un), note: shN + ' of all movements.', tip: '', canDrill: false, drill: '', pick: () => {} },
+        { label: 'Weight in possible carrier matches', value: wv(T.matchW), note: fmt(T.match) + ' movements whose vehicle registration also appears on movements with a carrier registration.', tip: MATCH_TIP, canDrill: T.match > 0, drill: 'View ' + fmt(T.match) + ' movements ›', pick: () => this.openMoves({ match: true }) }
+      ] : [
+        { label: 'Number of movements without carrier registration details', value: fmt(T.un), note: shN + ' of all movements. Not a mandatory field if the site gives a reason.', tip: REG_TIP, canDrill: T.un > 0, drill: 'View ' + fmt(T.un) + ' movements ›', pick: unPick },
+        { label: 'Weight in those movements', value: wv(T.unW), note: shW + ' of all weight.', tip: '', canDrill: false, drill: '', pick: () => {} },
+        { label: 'Possible carrier matches', value: fmt(T.match), note: 'The vehicle registration also appears on movements that carry a carrier registration.', tip: MATCH_TIP, canDrill: T.match > 0, drill: 'View ' + fmt(T.match) + ' movements ›', pick: () => this.openMoves({ match: true }) }
+      ];
+      const rv = (k) => (cw ? reasonsW[k] : reasons[k]);
+      const rTot = cw ? T.unW : T.un;
+      const rk = M.REASONS.map((x) => x[0]).filter((k) => reasons[k]).sort((p, q) => rv(q) - rv(p));
+      const rMax = Math.max.apply(null, rk.map(rv).concat([cw ? 0.001 : 1]));
+      out.reasons = rk.map((k) => ({ label: k, n: cw ? wv(rv(k)) : fmt(rv(k)) + ' movements', pct: pct(rTot ? (rv(k) / rTot) * 100 : 0), bar: ((rv(k) / rMax) * 100).toFixed(1) + '%', pick: () => this.openMoves({ noReg: true, reason: k }) }));
+      out.unHead = cw ? 'Weight (' + UL + ')' : 'Movements';
+      out.unShareHead = cw ? "Share of site's weight" : "Share of site's movements";
+      siteUn.sort((p, q) => (cw ? q.unW - p.unW : q.un - p.un));
+      const ul = s.usAll ? siteUn.length : 8;
+      out.unSitesMore = siteUn.length > 8;
+      out.unSitesMoreLabel = s.usAll ? 'Show top 8 only' : 'Show all ' + siteUn.length + ' sites';
+      out.unSitesToggle = () => this.setState({ usAll: !s.usAll });
+      out.unSitesNote = siteUn.length + ' receiving sites reported at least one movement without carrier registration details.';
+      out.unSites = siteUn.slice(0, ul).map((x) => {
+        const top = Object.keys(x.rs).sort((p, q) => x.rs[q] - x.rs[p])[0];
+        return { name: x.st.name, permit: x.st.permit, un: cw ? fw(x.unW) : fmt(x.un), pct: pct(cw ? (x.w ? (x.unW / x.w) * 100 : 0) : (x.un / x.n) * 100), reason: top, openLabel: 'Movements without registration details at ' + x.st.name, open: () => this.openMoves({ site: x.st.id, noReg: true }) };
+      });
+
+      const keyOf = { w: (x) => x.w, n: (x) => x.n, h: (x) => (x.w ? x.hazW / x.w : 0), p: (x) => x.pops, u: (x) => (x.n ? x.un / x.n : 0), e: (x) => (x.w ? x.estW / x.w : 0), m: (x) => (x.n ? x.miss / x.n : 0) };
+      siteAgg.sort((p, q) => keyOf[s.sSort](q) - keyOf[s.sSort](p));
+      ['W', 'N', 'H', 'P', 'U', 'E', 'M'].forEach((Lt) => { const k = Lt.toLowerCase(); out['sort' + Lt] = () => this.setState({ sSort: k }); out['arr' + Lt] = s.sSort === k ? ' ▼' : ''; });
+      out.hasSumSel = s.sel != null;
+      out.sumSelLabel = s.sel != null ? 'EWC code ' + C[s.sel].c : '';
+      out.clearSumSel = () => this.setState({ sel: null });
+      out.sitesTitle = 'Receiving sites (' + siteAgg.length + ')';
+      out.sitesNote = (s.sel != null ? 'Sites that received EWC code ' + C[s.sel].c + '; figures are for that code only. ' : '') + 'Select a column heading to re-sort.';
+      const lim = s.sAll ? siteAgg.length : 15;
+      out.showMore = siteAgg.length > 15;
+      out.moreLabel = s.sAll ? 'Show top 15 only' : 'Show all ' + siteAgg.length + ' sites';
+      out.toggleAll = () => this.setState({ sAll: !s.sAll });
+      const smax = Math.max.apply(null, siteAgg.map((x) => x.w).concat([1]));
+      out.siteRows = siteAgg.slice(0, lim).map((x) => ({
+        name: x.st.name, permit: x.st.permit, postcode: x.st.postcode, la: x.st.la,
+        w: fw(x.w), bar: ((x.w / smax) * 100).toFixed(1) + '%', n: fmt(x.n),
+        haz: pct(x.w ? (x.hazW / x.w) * 100 : 0), pops: fmt(x.pops), un: pct(x.n ? (x.un / x.n) * 100 : 0),
+        est: flag(x.w ? (x.estW / x.w) * 100 : 0, 30, false), miss: flag(x.n ? (x.miss / x.n) * 100 : 0, 35, true),
+        openLabel: 'Open Site detail for ' + x.st.name, open: () => this.openSite(x.st.id)
+      }));
+    }
+
+    if (out.isSite) {
+      const x = U[s.siteId];
+      const all = x.moves.filter(ok);
+      out.pageTitle = 'Site detail: ' + x.name;
+      out.showing = 'Receiving site: ' + x.name + ' (' + x.permit + ', ' + x.postcode + ') · drill-through';
+      const carried = setD.filter((d) => d.k !== 'site' && d.k !== 'permit').map((d) => d.label + ': ' + listOf(d.k));
+      out.showingSub = carried.length ? 'Filters carried over from the Summary page: ' + carried.join(' · ') : 'All waste, hazardous waste, POPs and carrier information for this site.';
+      out.profile = [
+        { label: 'Permit number', value: x.permit }, { label: 'Organisation', value: x.org },
+        { label: 'Address', value: x.address }, { label: 'Postcode', value: x.postcode },
+        { label: 'Nation', value: x.nation }, { label: 'Region', value: x.region }, { label: 'Local authority', value: x.la }
+      ];
+      out.siteAllLabel = 'View all ' + fmt(all.length) + ' movements ›';
+      out.siteAllMoves = () => this.openMoves({ site: x.id });
+      let w = 0; let hazW = 0; let hazN = 0; let popsN = 0; let estW = 0; let estN = 0; let missN = 0; let un = 0; let match = 0; let cons = 0; let noConc = 0; let nd = 0; let popDr = 0;
+      const codes = {};
+      const cars = {};
+      const rs = {};
+      all.forEach((m) => {
+        const c = C[m.ci];
+        w += m.w;
+        if (c.h) { hazW += m.w; hazN++; if (m.consIssue) cons++; }
+        if (m.pop) { popsN++; if (m.conc == null) noConc++; if (m.dr) { popDr++; if (isND(m)) nd++; } }
+        if (m.est) { estW += m.w; estN++; }
+        if (m.miss) missN++;
+        const ck = m.car || 'Not provided';
+        const ca = cars[ck] || (cars[ck] = { n: 0, w: 0 });
+        ca.n++; ca.w += m.w;
+        if (!m.car) { un++; rs[m.reason] = (rs[m.reason] || 0) + 1; if (isMatch(m)) match++; }
+        const g = codes[m.ci] || (codes[m.ci] = { n: 0, w: 0, estW: 0, miss: 0, pops: 0 });
+        g.n++; g.w += m.w; if (m.est) g.estW += m.w; if (m.miss) g.miss++; if (m.pop) g.pops++;
+      });
+      const n = all.length;
+      const eP = w ? (estW / w) * 100 : 0;
+      const mP = n ? (missN / n) * 100 : 0;
+      const carIds = Object.keys(cars).filter((k) => k !== 'Not provided');
+      out.sKpis = [
+        card('Weight received', wv(w), ''), card('Movements', fmt(n), ''),
+        card('EWC codes received', String(Object.keys(codes).length), ''), card('Carriers delivering', String(carIds.length), 'Distinct carrier registration numbers'),
+        card('Hazardous share of weight', pct(w ? (hazW / w) * 100 : 0), wv(hazW) + ' hazardous'),
+        card('Movements containing persistent organic pollutants (POPs)', fmt(popsN), pct(n ? (popsN / n) * 100 : 0) + ' of movements'),
+        card('Without carrier registration details', fmt(un), pct(n ? (un / n) * 100 : 0) + ' of movements', 'Not a mandatory field if the site gives a reason.'),
+        card('Movements missing a disposal or recovery code', pct(mP), mP > 35 ? 'High: above the 35% threshold' : 'Threshold 35%', '', lvl(mP, 35, true))
+      ];
+      const cl = Object.keys(codes).map(Number).sort((p, q) => codes[q].w - codes[p].w);
+      const top = cl.slice(0, 5);
+      const PAL = ['#118DFF', '#12239E', '#E66C37', '#6B007B', '#E044A7'];
+      const series = top.map((ci, i) => ({ label: C[ci].c, color: PAL[i] })).concat(cl.length > 5 ? [{ label: 'Other', color: '#B3B0AD' }] : []);
+      const tr = trendFor(all, (m) => { const j = top.indexOf(m.ci); return j === -1 ? series.length - 1 : j; }, series, 'sTrend');
+      out.sLegend = series.map((z) => ({ color: z.color, label: z.label, style: 'font-family: Consolas, Menlo, monospace; font-size: 12px' }));
+      out.sTrendTitle = 'Waste received over time by EWC code' + (s.metric === 'w' ? ' (' + UL + ')' : ' (movements)');
+      out.sTrendNote = 'The five largest EWC codes are shown; the rest are grouped as Other. ' + tr.what + ': ' + tr.pk + ', ' + fmt(tr.mx) + tr.unit + '.';
+      const cmax = cl.length ? codes[cl[0]].w : 1;
+      out.sEwcRows = cl.map((ci) => {
+        const g = codes[ci];
+        const c = C[ci];
+        return {
+          code: c.c, name: c.name, chapter: c.chl, ht: c.ht, htStyle: htStyle(c.ht), pops: g.pops > 0,
+          w: fw1(g.w), bar: ((g.w / cmax) * 100).toFixed(1) + '%', barColor: htColor(c), n: fmt(g.n), share: pct((g.w / w) * 100),
+          est: flag(g.w ? (g.estW / g.w) * 100 : 0, 30, false), miss: flag(g.n ? (g.miss / g.n) * 100 : 0, 35, true),
+          movesLabel: 'Movements for EWC code ' + c.c + ' at this site', moves: () => this.openMoves({ site: x.id, ewc: ci })
+        };
+      });
+      const cl2 = Object.keys(cars).sort((p, q) => cars[q].n - cars[p].n);
+      let topC = cl2.filter((k) => k !== 'Not provided').slice(0, 8);
+      if (cars['Not provided']) topC = topC.concat(['Not provided']);
+      const cMax = Math.max.apply(null, cl2.map((k) => cars[k].n).concat([1]));
+      out.sCarNote = carIds.length + ' carriers identified by their carrier, broker or dealer (CBD) registration number. Movements with no registration are grouped as Not provided.';
+      out.sCarRows = topC.map((k, i) => ({
+        rank: k === 'Not provided' ? '–' : String(i + 1), reg: k,
+        regStyle: k === 'Not provided' ? AMBER + ';padding:1px 6px;font-family:inherit;font-size:12px;font-weight:600' : 'font-weight:600',
+        n: fmt(cars[k].n), bar: ((cars[k].n / cMax) * 100).toFixed(1) + '%', w: fw1(cars[k].w),
+        movesLabel: 'Movements for carrier ' + k, moves: () => this.openMoves(k === 'Not provided' ? { site: x.id, noReg: true } : { site: x.id, car: k })
+      }));
+      const rk = Object.keys(rs).sort((p, q) => rs[q] - rs[p]);
+      out.sHasReasons = rk.length > 0;
+      out.sReasons = rk.map((k) => ({ label: k, n: fmt(rs[k]), pick: () => this.openMoves({ site: x.id, noReg: true, reason: k }) }));
+      out.sChecks = [
+        mkq('Weight that is estimated', eP, 30, false, estN, '', { site: x.id, est: true }),
+        mkq('Movements missing a disposal or recovery code', mP, 35, true, missN, '', { site: x.id, miss: true }),
+        mkq('Without carrier registration details', n ? (un / n) * 100 : 0, null, false, un, 'Informational: not mandatory with a reason', { site: x.id, noReg: true }),
+        mkq('Possible carrier matches', un ? (match / un) * 100 : 0, null, false, match, 'Share of movements without registration', { site: x.id, match: true }),
+        mkq('Consignment codes not in the expected format', hazN ? (cons / hazN) * 100 : 0, 10, false, cons, hazN ? 'Threshold 10% · hazardous movements only' : 'No hazardous movements', { site: x.id, cons: true }),
+        mkq('POPs movements without a concentration', popsN ? (noConc / popsN) * 100 : 0, 10, false, noConc, popsN ? '' : 'No POPs movements', { site: x.id, noconc: true }),
+        mkq('POPs not sent for destruction (D10 or R1)', popDr ? (nd / popDr) * 100 : 0, 15, true, nd, popsN ? 'Threshold 15% · includes storage codes' : 'No POPs movements', { site: x.id, nondest: true })
+      ];
+    }
+
+    if (out.isMoves) {
+      const dF = s.dF || {};
+      const sites = dF.site != null ? [U[dF.site]] : scopeSites;
+      const test = (m) => {
+        const c = C[m.ci];
+        if (dF.ewc != null && m.ci !== dF.ewc) return false;
+        if (dF.noReg && m.car) return false;
+        if (dF.reason && m.reason !== dF.reason) return false;
+        if (dF.match && !isMatch(m)) return false;
+        if (dF.car && m.car !== dF.car) return false;
+        if (dF.est && !m.est) return false;
+        if (dF.miss && !m.miss) return false;
+        if (dF.cons && !m.consIssue) return false;
+        if (dF.mirror && c.ht !== M.MH) return false;
+        if (dF.haz && !c.h) return false;
+        if (dF.pop && m.pop !== dF.pop) return false;
+        if (dF.noconc && !(m.pop && m.conc == null)) return false;
+        if (dF.nondest && !isND(m)) return false;
+        return true;
+      };
+      let list = [];
+      sites.forEach((st) => st.moves.forEach((m) => { if (ok(m) && test(m)) list.push(m); }));
+      list.sort((p, q) => (q.d - p.d) || (q.t - p.t) || (q.s - p.s) || (q.k - p.k));
+      out.pageTitle = 'Movements';
+      out.showing = (dF.site != null ? 'Receiving site: ' + U[dF.site].name : (filterText || 'All of the UK: all four nations combined'));
+      out.showingSub = 'Drill-through page. ' + (filterText && dF.site != null ? 'Filters carried over: ' + filterText + '.' : 'Remove a drill-through filter below to widen the list.');
+      const chipDefs = [
+        ['site', dF.site != null ? 'Receiving site: ' + U[dF.site].name : ''], ['ewc', dF.ewc != null ? 'EWC code ' + C[dF.ewc].c : ''],
+        ['noReg', dF.noReg ? 'Without carrier registration details' : ''], ['reason', dF.reason ? 'Reason: ' + dF.reason : ''],
+        ['match', dF.match ? 'Possible carrier match' : ''], ['car', dF.car ? 'Carrier ' + dF.car : ''],
+        ['est', dF.est ? 'Weight estimated' : ''], ['miss', dF.miss ? 'Disposal or recovery code missing' : ''],
+        ['cons', dF.cons ? 'Consignment code not in expected format' : ''], ['mirror', dF.mirror ? 'Mirror hazardous entries' : ''],
+        ['haz', dF.haz ? 'Hazardous' : ''], ['pop', dF.pop ? 'POP: ' + dF.pop : ''],
+        ['noconc', dF.noconc ? 'POPs without a concentration' : ''], ['nondest', dF.nondest ? 'POPs not sent for destruction' : '']
+      ];
+      out.chips = chipDefs.filter((c) => c[1]).map((c) => ({
+        label: c[1], removeLabel: 'Remove filter ' + c[1],
+        remove: () => { const nd2 = Object.assign({}, this.state.dF); delete nd2[c[0]]; if (c[0] === 'noReg') { delete nd2.reason; } this.setState({ dF: nd2, mvSel: null }); }
+      }));
+      out.noChips = out.chips.length === 0;
+      const shown = list.slice(0, s.mvLimit);
+      out.mvCount = 'Showing ' + shown.length + ' of ' + fmt(list.length) + ' movements, newest first. Select View to see every field.';
+      out.limitBtns = [10, 25, 100].map((k) => ({
+        label: String(k), on: s.mvLimit === k,
+        style: s.mvLimit === k ? 'background:#252423;color:#FFFFFF;border:1px solid #252423' : 'background:#FFFFFF;color:#252423;border:1px solid #8A8886',
+        pick: () => this.setState({ mvLimit: k })
+      }));
+      out.moves = shown.map((m) => {
+        const c = C[m.ci];
+        return {
+          id: m.id, date: M.dayLabel(m.d, true), time: tm(m.t), site: U[m.s].name, permit: U[m.s].permit, code: c.c, name: c.name,
+          ht: c.ht, htStyle: htStyle(c.ht), pops: !!m.pop,
+          carrier: m.car || 'Not provided', carStyle: m.car ? '' : AMBER + ';padding:1px 6px;font-family:inherit;font-size:12px;font-weight:600',
+          w: fw1(m.w), basis: m.est ? 'Estimated' : 'Actual', basisStyle: m.est ? AMBER : OK,
+          dr: m.miss ? 'Missing' : m.dr, drStyle: m.miss ? RED : (isND(m) ? AMBER : OK),
+          rowStyle: s.mvSel === m.id ? SEL_ROW : '', viewLabel: 'View movement ' + m.id, view: () => this.setState({ mvSel: m.id })
+        };
+      });
+      const sm = s.mvSel ? list.find((m) => m.id === s.mvSel) : null;
+      out.hasSel = !!sm;
+      out.selId = sm ? sm.id : '';
+      out.closeSel = () => this.setState({ mvSel: null });
+      if (sm) {
+        const c = C[sm.ci];
+        const st = U[sm.s];
+        const amb = 'color:#8A6100';
+        const mc = isMatch(sm) ? M.vehToCar[sm.veh] : null;
+        out.selFields = [
+          { label: 'Received', value: M.dayLabel(sm.d, true) + ', ' + tm(sm.t), style: '' },
+          { label: 'Receiving site', value: st.name + ' · ' + st.permit + ' · ' + st.postcode, style: '' },
+          { label: 'Waste description (as entered)', value: sm.desc, style: '' },
+          { label: 'EWC code', value: c.c, style: '' },
+          { label: 'EWC code name', value: c.name, style: '' },
+          { label: 'Hazard type', value: c.ht + (c.pairs ? ' (pair: ' + c.pairs + ')' : ''), style: '' },
+          { label: 'Hazardous property (HP) codes', value: c.h ? c.hp : 'Not applicable', style: '' },
+          { label: 'Hazardous consignment code', value: c.h ? sm.cons + (sm.consIssue ? ' (not in expected format)' : ' (expected format)') : 'Not required', style: sm.consIssue ? amb : '' },
+          { label: 'POP declared', value: sm.pop ? sm.pop + (sm.conc == null ? ', no concentration given' : ', ' + fmt(sm.conc) + ' mg/kg') : 'None', style: sm.pop && sm.conc == null ? amb : '' },
+          { label: 'Physical form', value: c.form, style: '' },
+          { label: 'Source of components', value: sm.src + ' · definition to be confirmed', style: '' },
+          { label: 'Weight', value: fw1(sm.w) + ' ' + UL + ' (' + (sm.est ? 'estimated by the site, not weighed' : 'actual') + ')', style: sm.est ? amb : '' },
+          { label: 'Disposal or recovery code', value: sm.miss ? 'Missing' : sm.dr + (isND(sm) ? ' (not a destruction route)' : ''), style: sm.miss ? 'color:#A80000' : (isND(sm) ? amb : '') },
+          { label: 'Carrier registration (CBD)', value: sm.car || ('Not provided · reason: ' + sm.reason), style: sm.car ? '' : amb },
+          { label: 'Carrier name as entered', value: sm.name, style: /\*\*|\[|\]/.test(sm.name) ? amb : '' },
+          { label: 'Means of transport and vehicle', value: sm.tr + (sm.veh ? ' · ' + sm.veh : (sm.tr === 'Road' ? ' · vehicle registration missing' : '')), style: '' },
+          { label: 'Broker or dealer', value: sm.broker ? sm.broker.name + ' · ' + sm.broker.id + ' (' + sm.broker.role.toLowerCase() + ')' : 'None recorded', style: '' },
+          { label: 'Possible carrier match', value: mc ? mc + ' (' + M.carriers[mc].name + ')' : (sm.car ? 'Not applicable' : 'None found'), style: mc ? 'color:#0B5CAD' : '' }
+        ];
+      } else {
+        out.selFields = [];
+      }
+    }
+    return out;
+  }
+}
+</script>
+
+</body>
+</html>
