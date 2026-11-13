@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+  <meta charset="utf-8">
+  <title>Pages by level of detail, November 2026 - DWT regulator reports prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/govuk-frontend/govuk-frontend.min.css">
+</head>
+<body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+  <header>
+    <section class="govuk-service-navigation" aria-label="Service information" data-module="govuk-service-navigation">
+      <div class="govuk-width-container">
+        <div class="govuk-service-navigation__container">
+          <span class="govuk-service-navigation__service-name">
+            <a href="/" class="govuk-service-navigation__link">DWT regulator reports</a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <div class="govuk-width-container">
+    <a href="/" class="govuk-back-link">Back to all versions</a>
+
+    <main class="govuk-main-wrapper" id="main-content">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Design exploration</span>
+          <h1 class="govuk-heading-xl">Pages by level of detail, November 2026 <strong class="govuk-tag govuk-tag--blue">Latest</strong></h1>
+
+          <p class="govuk-body">
+            <span class="govuk-!-font-weight-bold">Date of last change:</span> 13 November 2026<br>
+            <span class="govuk-!-font-weight-bold">User research status:</span> Not for research. For team and stakeholder feedback
+          </p>
+
+          <p class="govuk-body">Most regulator questions sit at a level of zoom: national, area, site or individual movement. This exploration tests whether arranging the report pages by those levels makes the pages and filters easier to find and use. It starts from the <a class="govuk-link" href="/versions/ur-v2">round 2 draft</a>.</p>
+
+          <a href="/v3/" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            View prototype<span class="govuk-visually-hidden">: pages by level of detail</span>
+          </a>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-l">Changes in this version</h2>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-visually-hidden">Changes in pages by level of detail, November 2026</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Area</th>
+            <th scope="col" class="govuk-table__header">Change</th>
+            <th scope="col" class="govuk-table__header">Reason for change</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Navigation</td><td class="govuk-table__cell">Top navigation arranged by level: Home, National summary, Sites to review (area), Site, Movements, and Explore data (all levels). Each item shows its level. The 7 round 2 pages sit under Explore data in a second row</td><td class="govuk-table__cell">Team proposal: the information architecture should follow the level of zoom of the user's question</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Home (new)</td><td class="govuk-table__cell">A start page with Find a site first, then the national, area and Explore data entry points, each with who usually uses it</td><td class="govuk-table__cell">Frontline officers probably need a site-first way in, not a dashboard they have to filter down</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Find a site (new)</td><td class="govuk-table__cell">Search by site name or permit number on Home and on the Site page. Results show the permit number and local authority</td><td class="govuk-table__cell">Officers preparing a visit know the site, so they shouldn't have to use filters to reach it</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">National summary (new)</td><td class="govuk-table__cell">UK totals, trend, the region with the highest value for each check, a comparison by region and waste received by EWC chapter. No filters except the date range</td><td class="govuk-table__cell">Senior regulators and policy advisors need a summary first, with comparisons across regions and waste types, and rarely drill down</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Sites to review (new)</td><td class="govuk-table__cell">Location filters only. Sites ranked by the number of flags (checks above threshold), with the checks listed in each row and the rules for flags shown on the page</td><td class="govuk-table__cell">Area and team managers need ranked lists to target inspections. Showing the rules explains why a site is high on the list</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Site (was Site detail)</td><td class="govuk-table__cell">One reusable page template. Order: profile, permit compared with reported data, checks, gaps in submissions, the 10 most recent movements, then the round 2 content (totals, trend, EWC codes and carriers)</td><td class="govuk-table__cell">Frontline officers need one focused page with the permit, recent movements and gaps first. The same page is reached from every level</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Site</td><td class="govuk-table__cell">Only the site and the date range carry over to the Site page. Filters from Explore data no longer apply</td><td class="govuk-table__cell">A reusable template should show the same figures wherever someone arrives from</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Permit compared with reported data (new)</td><td class="govuk-table__cell">A placeholder panel with a dashed border and a "Needs permit data" label. It compares an invented annual tonnage limit, permitted EWC codes and permitted D&amp;R codes with what the site reported, with links to the movements that don't match</td><td class="govuk-table__cell">To test whether the comparison is useful before anyone asks for permit data. DWT does not hold it</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Gaps in submissions (new)</td><td class="govuk-table__cell">Runs of 7 days or more with no movements, and the date of the last movement received. A gap is also a flag on Sites to review</td><td class="govuk-table__cell">Frontline officers need to see gaps before a visit</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Carriers and receiving sites (new, Explore data)</td><td class="govuk-table__cell">Carriers ranked by how many receiving sites they deliver to, and the number of nations. Selecting a carrier lists the sites it delivered to</td><td class="govuk-table__cell">Intelligence analysts need cross-site links: who takes waste where</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Breadcrumbs</td><td class="govuk-table__cell">On Site and Movements, the breadcrumb shows where you are by level (National summary, region, site, Movements), not the route you took. The back button still returns to the previous page</td><td class="govuk-table__cell">Show the levels, so users can move up a level from wherever they arrived</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Data</td><td class="govuk-table__cell">Some invented sites now have gaps of 8 to 21 days with no movements, so totals differ slightly from the round 2 draft</td><td class="govuk-table__cell">To show what a gap looks like</td></tr>
+        </tbody>
+      </table>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l" id="design-rationale">Design rationale</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The 4 user groups (senior regulator or policy advisor, data analyst, area or team manager, frontline or compliance officer) are a draft, not research findings. The labels on Home ("Usually used by...") are there to test whether people recognise themselves in them.</li>
+            <li>Analysts don't fit neatly into one level, so Explore data sits across all levels with every filter. Senior users and analysts share the same data but get different pages: a summary for one and exploration for the other.</li>
+            <li>The flags reuse the round 2 checks and thresholds, which are still placeholders. POPs and consignment code checks only count at sites with 10 or more relevant movements, so a site with 2 movements doesn't get flagged on a single record.</li>
+            <li>"Movements without carrier registration details" is a flag, although registration details aren't mandatory if the site gives a reason. This conflicts with the R-02 wording that it isn't a measure of compliance. The team needs to decide whether it belongs in the ranking.</li>
+            <li>Even with these rules, a high share of the invented sites have 3 or more flags. Real thresholds would need to be set with regulators so the list separates sites usefully.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Research questions</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Do users understand the levels, and do they pick the right starting point for their task?</li>
+            <li>Would frontline officers use Find a site before a visit, and is the Site page enough on its own?</li>
+            <li>Is a permit comparison worth the cost of getting permit data? Which permit conditions matter most?</li>
+            <li>Do area managers trust a ranking by number of flags, or do some checks matter more than others?</li>
+            <li>Do senior users want anything else at national level, for example change compared with the previous period?</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">To check with a Power BI developer</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Find a site: a single-select slicer with search, on a column that joins site name and permit number, plus a drill-through button that is only active when 1 site is selected. Check how slicer search matches text, and how it performs with thousands of sites.</li>
+            <li>Site page: drill-through with "Keep all filters" turned off, so only the site and the date range pass through.</li>
+            <li>Sync slicers per page: none on National summary, location only on Sites to review, all on the Explore data pages.</li>
+            <li>Flags and "Checks above threshold" as DAX measures, including a measure for the longest gap in days. Check performance with real volumes.</li>
+            <li>Breadcrumbs by level would be text and buttons. The region link would drill through to Sites to review with the region filter set.</li>
+            <li>A phone layout for the Site page, as officers may use it on site. Power BI phone layouts are separate and don't reflow.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Not possible with current data</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Permit limits: DWT does not hold permit data. The comparison needs data from the Environment Agency, SEPA, Natural Resources Wales and NIEA.</li>
+            <li>Where waste came from: Receipt of Waste data has the carrier and receiving site, but not the producer or the site the waste left. "Who sends waste to whom" is limited to carrier and receiving site.</li>
+            <li>Late submissions: the prototype data has no submission date, so this can't be a flag yet.</li>
+            <li>A network diagram of carriers and sites would need a custom visual, which may be blocked in the Defra tenant. Tables with cross-filtering are used instead.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Not changed yet</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>All "Not changed yet" items from the round 2 draft still apply, including details only shown on hover (WCAG 1.4.13).</li>
+            <li>The Site page is long. A frontline version might stop after the most recent movements.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/govuk-frontend/govuk-frontend.min.js"></script>
+  <script type="module">import { initAll } from '/govuk-frontend/govuk-frontend.min.js'; initAll()</script>
+</body>
+</html>

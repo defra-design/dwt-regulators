@@ -18,6 +18,9 @@ Contents
   ur-v2/support.js    Runtime the prototype needs (keep it next to index.html)
   ur-v2/defra-logo.svg  Defra logo used in the report header
   v2/r01-r04/         Design exploration: Mural recommendations, November 2026 (one folder per report)
+  v3/index.html       Design exploration: pages by level of detail, November 2026
+  v3/support.js       Runtime the prototype needs (keep it next to index.html)
+  v3/defra-logo.svg   Defra logo used in the report header
   start.html          Original landing page (/start)
   versions/           What changed in each version, and why
 
