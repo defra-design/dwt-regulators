@@ -1,52 +1,232 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DWT Regulator Report Prototypes</title>
-<style>
-body{margin:0;background:#F3F2F1;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;color:#252423}
-header{background:#252423;color:#fff;padding:14px 20px;font-size:14px}
-main{max-width:860px;margin:0 auto;padding:28px 20px 40px}
-h1{font-size:26px;margin:0 0 6px}
-p{font-size:15px;line-height:1.5;color:#3B3A39;margin:0 0 14px}
-.note{background:#FFF4CE;color:#5C4400;padding:10px 14px;border-radius:2px;font-size:14px;margin:0 0 22px}
-.source{background:#fff;border:1px solid #E1DFDD;border-left:4px solid #12239E;border-radius:4px;padding:14px 18px;margin:0 0 14px}
-.source-h{font-size:15px;font-weight:600;margin:0 0 6px}
-.source p{margin:0;font-size:14.5px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-a.card{display:block;background:#fff;border:1px solid #E1DFDD;border-radius:4px;padding:18px 20px;text-decoration:none;color:#252423;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-a.card:hover,a.card:focus-visible{border-color:#118DFF;outline:none;box-shadow:0 0 0 2px #118DFF}
-.tag{font-size:12px;font-weight:600;color:#12239E;letter-spacing:.04em;text-transform:uppercase}
-.t{font-size:18px;font-weight:600;margin:6px 0 8px}
-.d{font-size:14px;color:#605E5C;line-height:1.45;margin:0}
-h2{font-size:18px;margin:28px 0 10px}
-a.card.ur{border-top:4px solid #5C2D91}
-a.card.ur .tag{color:#5C2D91}
-</style>
+  <meta charset="utf-8">
+  <title>DWT regulator reports prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/govuk-frontend/govuk-frontend.min.css">
 </head>
-<body>
-<header>DWT Regulator Reports</header>
-<main>
-<h1>Power BI report prototypes</h1>
-<p>Clickable mock-ups for co-design and user research. They show layout, filters and drill-down, not the final Power BI build.</p>
-<div class="source">
-<div class="source-h">Data source: Receipt of Waste submissions only</div>
-<p>All the reports are built solely on data submitted to Digital Waste Tracking through the Receipt of Waste service (the API and spreadsheet upload) by receiving sites. They do not include data from other sources, such as permit records, the carrier, broker and dealer register, consignee returns, waste returns or producer and collection data. Where a report refers to these, for example a carrier registration number or a consignment code, it shows what the receiving site submitted, not a check against another system.</p>
-</div>
-<p class="note">Illustrative only: every site, carrier, permit and figure in these prototypes is invented sample data.</p>
-<h2>Individual reports</h2>
-<div class="cards">
-<a class="card" href="r01/"><div class="tag">R-01</div><div class="t">Receiving Site Intake Dashboard</div><p class="d">Waste received from DWT national down to a single receiving site and its individual waste movements.</p></a>
-<a class="card" href="r02/"><div class="tag">R-02</div><div class="t">Carrier Activity &amp; Registration Report</div><p class="d">Carriers by registration number, movements without carrier registration details, and drill-down to a carrier and its movements.</p></a>
-<a class="card" href="r03/"><div class="tag">R-03</div><div class="t">Hazardous Waste &amp; POPs Intake Report</div><p class="d">Hazardous waste and POPs received, with a view switch, data assurance checks and drill-down to a site and its movements.</p></a>
-<a class="card" href="r04/"><div class="tag">R-04</div><div class="t">Receiver Submission Activity Report</div><p class="d">For policy leads and senior users: who is submitting data, periods of inactivity and changes in reporting, with drill-down to a receiver and its submissions.</p></a>
-</div>
-<h2>For user research</h2>
-<div class="cards">
-<a class="card ur" href="ur-v1-1/"><div class="tag">User research prototype · version 1.1</div><div class="t">Receipt of Waste: combined site view</div><p class="d">The latest version, updated after round 1 of research with regulatory officers: a date range, tonnes or kilograms, terms spelled out, EWC code names on hover, and time, description and broker details on each movement.</p></a>
-<a class="card ur" href="ur/"><div class="tag">User research prototype · version 1.0</div><div class="t">Receipt of Waste: combined site view</div><p class="d">R-01, R-02 and R-03 combined into one report, navigated from a site-level perspective. Kept as used in round 1 of research.</p></a>
-</div>
-</main>
+<body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+  <header>
+    <section class="govuk-service-navigation" aria-label="Service information" data-module="govuk-service-navigation">
+      <div class="govuk-width-container">
+        <div class="govuk-service-navigation__container">
+          <span class="govuk-service-navigation__service-name">
+            <a href="/" class="govuk-service-navigation__link">DWT regulator reports</a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <div class="govuk-width-container">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Prototype</strong>
+        <span class="govuk-phase-banner__text">This is a prototype. It is not a real service.</span>
+      </p>
+    </div>
+
+    <main class="govuk-main-wrapper" id="main-content">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-xl">DWT regulator reports</h1>
+
+          <p class="govuk-body">This page is the index for different versions of the Power BI report prototypes for regulators. They show layout, filters and drill-down, not the final Power BI build.</p>
+
+          <ul class="govuk-list">
+            <li><a class="govuk-link" href="/start">Report prototypes start page</a> (the page the team has been using)</li>
+          </ul>
+
+          <div class="govuk-inset-text">
+            <p class="govuk-body">All the reports use data submitted to Digital Waste Tracking through the Receipt of Waste service (the API and spreadsheet upload) by receiving sites. They do not include permit records, the carrier, broker and dealer register, consignee returns, waste returns or producer and collection data.</p>
+            <p class="govuk-body">Where a report refers to these, for example a carrier registration number or a consignment code, it shows what the receiving site submitted, not a check against another system.</p>
+          </div>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              Every site, carrier, permit and figure in these prototypes is invented sample data.
+            </strong>
+          </div>
+
+          <h2 class="govuk-heading-l">Research prototypes</h2>
+          <p class="govuk-body">Combined site views of R-01 to R-03, for research with regulatory officers. Named by research round.</p>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title govuk-!-font-size-24">
+                Round 2 draft: design recommendations
+                <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-1">Latest</strong>
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <div>
+                <a href="/ur-v2/" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  View prototype<span class="govuk-visually-hidden">: research round 2 draft</span>
+                </a>
+              </div>
+
+              <p class="govuk-body-s">For team discussion first. It may become the prototype for round 2 of research. Applies the Mural recommendations from the November 2026 design exploration to the combined site view, with Defra branding.</p>
+
+              <p class="govuk-body-s">
+                <span class="govuk-!-font-weight-bold">Date of last change:</span> 13 November 2026<br>
+                <span class="govuk-!-font-weight-bold">User research status:</span> Not yet used in research
+              </p>
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-s">
+                <li><a class="govuk-link" href="/versions/ur-v2">Changes and design rationale for research round 2 draft</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title govuk-!-font-size-24">
+                Round 1, updated after research
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <div>
+                <a href="/ur-v1-1/" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  View prototype<span class="govuk-visually-hidden">: research round 1, updated after research</span>
+                </a>
+              </div>
+
+              <p class="govuk-body-s">Updated after round 1 of research with regulatory officers: a date range, tonnes or kilograms, terms spelled out, EWC code names on hover, and time, description and broker details on each movement.</p>
+
+              <p class="govuk-body-s">
+                <span class="govuk-!-font-weight-bold">Date of last change:</span> 30 October 2026<br>
+                <span class="govuk-!-font-weight-bold">User research status:</span> To be confirmed
+              </p>
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-s">
+                <li><a class="govuk-link" href="/versions/ur-v1-1">Changes and design rationale for research round 1, updated after research</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title govuk-!-font-size-24">
+                Round 1, as tested
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <div>
+                <a href="/ur/" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  View prototype<span class="govuk-visually-hidden">: research round 1, as tested</span>
+                </a>
+              </div>
+
+              <p class="govuk-body-s">R-01, R-02 and R-03 combined into one report, navigated from a site-level perspective. Kept as used in round 1 of research.</p>
+
+              <p class="govuk-body-s">
+                <span class="govuk-!-font-weight-bold">Date of last change:</span> 20 October 2026<br>
+                <span class="govuk-!-font-weight-bold">User research status:</span> Used in round 1 of research with regulatory officers
+              </p>
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-s">
+                <li><a class="govuk-link" href="/versions/ur-v1-0">Changes and design rationale for research round 1, as tested</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="govuk-heading-l">Design explorations</h2>
+          <p class="govuk-body">Mock-ups of possible future views, to get feedback from stakeholders. Not for research. Named by topic and date.</p>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title govuk-!-font-size-24">
+                Mural recommendations, November 2026
+                <strong class="govuk-tag govuk-tag--blue govuk-!-margin-left-1">Latest</strong>
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body-s">The individual reports with the interaction and content design recommendations from the Mural board applied to all 4 reports.</p>
+
+              <p class="govuk-body-s">
+                <span class="govuk-!-font-weight-bold">Date of last change:</span> 12 November 2026<br>
+                <span class="govuk-!-font-weight-bold">User research status:</span> Not for research
+              </p>
+
+              <table class="govuk-table govuk-body-s">
+                <caption class="govuk-table__caption govuk-visually-hidden">Mural recommendations, November 2026</caption>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Report</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="/v2/r01/">R-01 Receiving site intake<span class="govuk-visually-hidden">, Mural recommendations</span></a></td></tr>
+                  <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="/v2/r02/">R-02 Carrier activity and registration<span class="govuk-visually-hidden">, Mural recommendations</span></a></td></tr>
+                  <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="/v2/r03/">R-03 Hazardous waste and POPs intake<span class="govuk-visually-hidden">, Mural recommendations</span></a></td></tr>
+                  <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="/v2/r04/">R-04 Receiver submission activity<span class="govuk-visually-hidden">, Mural recommendations</span></a></td></tr>
+                </tbody>
+              </table>
+
+              <ul class="govuk-list govuk-list--bullet govuk-body-s">
+                <li><a class="govuk-link" href="/versions/v2">Changes, design rationale and research questions for Mural recommendations, November 2026</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h3 class="govuk-summary-card__title govuk-!-font-size-24">
+                Original individual reports, October 2026
+              </h3>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p class="govuk-body-s">The first reports, one for each regulator need. Combined into one site view for research.</p>
+
+              <p class="govuk-body-s">
+                <span class="govuk-!-font-weight-bold">Date of last change:</span> 20 October 2026<br>
+                <span class="govuk-!-font-weight-bold">User research status:</span> To be confirmed
+              </p>
+
+              <table class="govuk-table govuk-body-s">
+                <caption class="govuk-table__caption govuk-visually-hidden">Original individual reports, October 2026</caption>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Report</th>
+                    <th scope="col" class="govuk-table__header">What it shows</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/r01/">R-01 Receiving site intake</a></td>
+                    <td class="govuk-table__cell">Waste received, from national level down to a single receiving site and its waste movements</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/r02/">R-02 Carrier activity and registration</a></td>
+                    <td class="govuk-table__cell">Carriers by registration number, and movements without carrier registration details</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/r03/">R-03 Hazardous waste and POPs intake</a></td>
+                    <td class="govuk-table__cell">Hazardous waste and persistent organic pollutants (POPs) received, with data assurance checks</td>
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"><a class="govuk-link" href="/r04/">R-04 Receiver submission activity</a></td>
+                    <td class="govuk-table__cell">For policy leads and senior users: who is submitting data, periods of inactivity and changes in reporting</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/govuk-frontend/govuk-frontend.min.js"></script>
+  <script type="module">import { initAll } from '/govuk-frontend/govuk-frontend.min.js'; initAll()</script>
 </body>
 </html>

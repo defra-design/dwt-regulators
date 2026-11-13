@@ -1,0 +1,38 @@
+---
+description: How to work in this repo, Git practice, and the checklist before proposing a change
+alwaysApply: true
+---
+
+# Working practices
+
+- Each report's `index.html` is an exported snapshot. Before editing one, ask whether the change should be made in the design tool instead, as the next export would overwrite edits made here.
+- Never edit `support.js`. It's a shared runtime, replaced as a whole.
+- Match the existing patterns (inline styles, Power BI look) rather than "correcting" them. Flag inconsistencies instead of silently fixing them.
+- Don't rename, move or delete reports or folders as a side effect of another task. Ask first.
+- Keep scope tight. Touch only the files the task needs.
+
+## Versions
+
+- There are 2 tracks, each with its own section on `public/index.html` and `public/start.html`:
+  - **Research prototypes** (combined site view, for research): name by research round, e.g. "Round 1, as tested", "Round 2 draft: design recommendations".
+  - **Design explorations** (possible future views, for stakeholder feedback, not research): name by topic and date, e.g. "Mural recommendations, November 2026".
+- Don't use version numbers in user-facing labels. Folder names (`ur`, `ur-v1-1`, `ur-v2`, `v2`) are internal and stay as they are, so links don't break.
+- A new version is a new folder. Never edit an earlier version, except to fix a bug, and say so.
+- Each version gets a summary card at the top of its section on `public/index.html` (date of last change, user research status, link to its version page) and a page in `public/versions/` (copy an existing one) with a "Changes in this version" table and a "Design rationale" section. Move the blue "Latest" tag to the newest card and page in that track.
+- Hub pages use plain GOV.UK Frontend HTML (no Nunjucks in this repo). Copy the markup from an existing hub page.
+- Keep `public/README.txt` up to date when reports are added. (The root `README.txt` is an older copy, and only lists R-01 and R-02.)
+
+## Git
+
+- One designer commits straight to `main` on `defra-design/dwt-regulators`. Check `git status` first and only commit the files the task touched.
+- Commit messages: short, plain English, sentence case (e.g. "Add filter reset to R-02").
+- Never commit `.env` or the prototype password.
+
+## Before proposing a change
+
+- [ ] Buildable in Power BI with native visuals
+- [ ] Meets the accessibility checklist, with Power BI limitations flagged
+- [ ] Content follows the GOV.UK style guide and uses the agreed terms
+- [ ] Charts and colours follow the data visualisation rule
+- [ ] Invented data only
+- [ ] What changed and why is recorded, as evidence for assessment

@@ -1,0 +1,19 @@
+---
+description: Choosing and designing charts, tables and summary figures in reports
+globs: public/**/*.html
+alwaysApply: false
+---
+
+# Data visualisation
+
+Follow the Analysis Function guidance: <https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-charts/>
+
+- Start from the user's question. Each page answers one main question, with the summary first and the detail below or through drill-through.
+- Use a table when users need exact values or to look up a record. Use a chart to show a pattern or comparison.
+- Prefer bar and line charts. Avoid pie, doughnut, gauge, 3D and dual-axis charts.
+- Bar charts start at zero. Sort bars by value unless the categories have a natural order (such as months).
+- Label directly where possible, instead of a separate legend.
+- Use few colours, each with one meaning across all reports (for example the same colour for "hazardous" everywhere). Use the Analysis Function palette or the agreed Power BI theme. Don't invent new colours per report.
+- Summary cards show the figure, the unit and the period it covers.
+- Show data quality (estimated weights, missing codes) beside the figures it affects, not only on a separate page.
+- Filters show their current state, and there's a clear way to reset them.

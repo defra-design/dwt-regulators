@@ -1,0 +1,15 @@
+---
+description: Keeping report designs buildable in Power BI
+globs: public/**/*.html
+alwaysApply: false
+---
+
+# Power BI feasibility
+
+The prototype is a promise of what the Power BI report will do. Don't design anything a Power BI developer can't build with native features.
+
+- Use native visuals: cards, tables, matrices, bar, column and line charts, slicers, buttons, bookmarks, tooltips and drill-through pages. Avoid custom visuals from AppSource. They may be blocked in the Defra tenant and their accessibility is unknown.
+- Design for a fixed 16:9 report page, with a separate mobile layout if needed. Power BI pages don't reflow like web pages.
+- Interactions that are hard or impossible in Power BI: free-text search across all fields, inline editing, multi-step forms, custom popups, animations, and layout that changes with the content. Flag these if they appear in a design.
+- Conditional formatting (cell colour, icons, data bars) is available in tables and matrices.
+- If you aren't sure whether Power BI supports something, say so and suggest the team checks with a Power BI developer.

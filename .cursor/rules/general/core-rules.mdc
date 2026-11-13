@@ -1,0 +1,13 @@
+---
+description: Core non-negotiable rules for the DWT regulator report prototypes
+alwaysApply: true
+---
+
+# Core rules
+
+1. These are prototypes of **Power BI reports**, not GOV.UK services. The final build is Power BI. Only design what Power BI can do with native visuals and features (see `project/power-bi-feasibility.mdc`). If something can't be built in Power BI, say so. Don't improvise a workaround silently.
+2. Accessibility is not optional. WCAG 2.2 AA applies to internal tools and Power BI reports, as it does to public services.
+3. Plain English and the GOV.UK style guide apply to every word in a report: titles, visual titles, labels, tooltips and empty states.
+4. Follow the Government Analysis Function data visualisation guidance for charts, tables and colour (see `general/data-visualisation.mdc`).
+5. GOV.UK Frontend is only used for the password page in `server.js` and the hub pages (`public/index.html`, `public/versions/`). Don't add GOV.UK components to the report pages. They would show users something Power BI can't produce.
+6. Use invented data only. Never put real site names, permit numbers, carrier registrations or people's names into a prototype, ticket or screenshot.

@@ -14,6 +14,12 @@ Contents
   ur/support.js     Runtime the prototype needs (keep it next to index.html)
   ur-v1-1/index.html  Receipt of Waste: combined site view, version 1.1 (User Research prototype)
   ur-v1-1/support.js  Runtime the prototype needs (keep it next to index.html)
+  ur-v2/index.html    Research prototype: round 2 draft, design recommendations (for team discussion)
+  ur-v2/support.js    Runtime the prototype needs (keep it next to index.html)
+  ur-v2/defra-logo.svg  Defra logo used in the report header
+  v2/r01-r04/         Design exploration: Mural recommendations, November 2026 (one folder per report)
+  start.html          Original landing page (/start)
+  versions/           What changed in each version, and why
 
 Data source
   All reports use Receipt of Waste submissions only. All data in these

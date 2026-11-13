@@ -1,0 +1,11 @@
+---
+description: Defra-specific content style and terminology
+globs: public/**/*.html
+alwaysApply: false
+---
+
+# Defra content
+
+Follow the GOV.UK style guide, plus the Defra style guide: <https://digital.defra.gov.uk/content/defra-style-guide>
+
+That guide doesn't cover waste terms. Agree waste terms once with the team (and the regulators, as wording varies between England, Scotland, Wales and Northern Ireland), and record them in `project/regulators-project-context.mdc` rather than inventing phrasing per report.

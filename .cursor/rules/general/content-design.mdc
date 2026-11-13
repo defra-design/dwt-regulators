@@ -1,0 +1,30 @@
+---
+description: GOV.UK plain English and content style, adapted for reports and dashboards
+globs: public/**/*.html,server.js
+alwaysApply: false
+---
+
+# Content design
+
+Plain English is mandatory, including for specialist content.
+
+| Instead of | Use |
+| --- | --- |
+| purchase, assist, commence, utilise, terminate, facilitate | buy, help, start, use, end, help |
+| approximately, prior to, in order to, subsequently, regarding | about, before, to, then, about |
+
+Avoid: **Please**, **Please note**, **Click** (use "select"), **Ensure** (use "make sure"), **Via**, **i.e./e.g.**
+
+Sentence case except proper nouns, including report and visual titles. Use "and", not "&". Front-load titles and labels with the key word.
+
+## Reports
+
+- A visual title says what the visual shows, for example "Waste received by month (tonnes)". Put the unit in the title or column header, not repeated in every cell.
+- Spell out each acronym the first time it appears on a page, or give it in a tooltip or glossary, for example "European Waste Catalogue (EWC) code". Regulators know most terms. Policy and senior users may not.
+- Numbers: digits throughout tables and cards. Use commas for thousands (1,250). Keep the same number of decimal places within a column. Right-align numbers.
+- Dates: "5 October 2026" in text. Abbreviated months ("5 Oct 2026", no full stop) are fine in tables, axes and filters where space is tight. Be consistent within a report.
+- Empty states say what's missing and why, for example "No hazardous waste received in this period". Don't show a blank visual.
+- Data quality labels ("Estimated", "Missing", "Not provided") use the same words in every report.
+- Each report states its data source and when the data was last refreshed.
+
+Error messages and hint text follow the GOV.UK Design System guidance.

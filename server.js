@@ -11,6 +11,10 @@ const govukDist = path.join(__dirname, 'node_modules/govuk-frontend/dist/govuk')
 app.set('trust proxy', 1) // Heroku terminates https, so this lets req.secure work
 app.use(express.urlencoded({ extended: false }))
 
+// GOV.UK Frontend assets are public: the login page and the prototype index use them
+app.use('/govuk-frontend', express.static(govukDist))
+app.use('/assets', express.static(path.join(govukDist, 'assets')))
+
 // Password gate: only active if PROTOTYPE_PASSWORD is set
 if (password) {
   // Stateless cookie: a hash of the password, so changing the password logs everyone out
@@ -77,10 +81,6 @@ if (password) {
 </body>
 </html>`
 
-  // Login page assets are public
-  app.use('/govuk-frontend', express.static(govukDist))
-  app.use('/assets', express.static(path.join(govukDist, 'assets')))
-
   app.get('/login', (req, res) => res.send(page(safeNext(req.query.next))))
 
   app.post('/login', (req, res) => {
@@ -102,6 +102,6 @@ if (password) {
   })
 }
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }))
 
 app.listen(port, () => console.log(`Prototype running at http://localhost:${port}`))

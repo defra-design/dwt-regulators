@@ -1,0 +1,12 @@
+---
+description: Defra-specific accessibility standards and support
+globs: public/**/*.html,server.js
+alwaysApply: false
+---
+
+# Defra accessibility
+
+- WCAG 2.2 AA is mandatory for all Defra services, including internal tools and Power BI reports.
+- Defra accessibility guidance: <https://digital.defra.gov.uk/accessibility> and <https://defra-design.github.io/accessibility/>
+- Third-party products such as Power BI must comply with the Technology Code of Practice. Known Power BI gaps go in the report's accessibility statement.
+- Defra Accessibility Team, for guidance or an audit: **accessibility@defra.gov.uk**

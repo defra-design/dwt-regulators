@@ -1,0 +1,25 @@
+---
+description: Writing Jira tickets for Power BI report work (user stories, data definitions, acceptance criteria, accessibility criteria). Use when asked to draft or refine Jira tickets or backlog items for the regulator reports.
+alwaysApply: false
+---
+
+# Writing Jira tickets
+
+Plain, specific, British English, GOV.UK style. Invented data only. If the user, the outcome or the evidence isn't known, ask the designer rather than guessing.
+
+## Ticket structure
+
+1. **Title**: short, action-led, describes the outcome.
+2. **Prototype link**: which report prototype shows the design (e.g. `/r01/`), and how to reach the relevant view.
+3. **User story**: **As a** [named user, e.g. "Environment Agency waste officer"], **I want** [action], **so that** [real outcome]. Don't prescribe the design.
+4. **Context**: what the story covers and why, in a few short paragraphs.
+5. **Visuals**: each visual by Power BI type (card, table, matrix, clustered bar chart, slicer, drill-through page), with its title.
+6. **Data definitions**: for each measure or field, what it counts, the Receipt of Waste field it comes from, filters applied, and how missing or estimated values are treated. Ask the team if the definition isn't agreed.
+7. **Colours**: if specified, a table of name, hex, source (Power BI theme, Analysis Function or Defra) and use.
+8. **Design acceptance criteria**: numbered (D1, D2...), what has changed only, each a plain pass or fail statement. End with "The report page matches the prototype".
+9. **Acceptance criteria**: numbered, Given / When / Then, behaviour only (filtering, drill-through, sorting, totals).
+10. **Accessibility acceptance criteria**: 5 to 8, specific to this work, each with its WCAG number (see `accessibility.mdc`). Always cover alt text, "Show as a table", tab order, keyboard use and not relying on colour.
+11. **How to test**: Power BI accessibility checker, keyboard only, a screen reader, Windows high contrast mode.
+12. **Out of scope**
+
+Avoid vague words ("easy", "intuitive", "clearly"). Don't give contrast ratios for colours from the agreed theme.

@@ -1,0 +1,38 @@
+---
+description: What the regulator report prototypes are, who they're for, and how they're built
+alwaysApply: true
+---
+
+# DWT regulator reports: project context
+
+Digital Waste Tracking (DWT) digitises waste records across the UK to reduce waste crime and improve data on material flows. This repo holds clickable prototypes of **Power BI reports for regulators**, used for co-design and user research. They show layout, filters and drill-down, not the final Power BI build.
+
+## Reports
+
+| Folder | Report |
+| --- | --- |
+| `public/r01/` | R-01 Receiving site intake dashboard |
+| `public/r02/` | R-02 Carrier activity and registration report |
+| `public/r03/` | R-03 Hazardous waste and POPs intake report |
+| `public/r04/` | R-04 Receiver submission activity report (policy leads and senior users) |
+| `public/ur/` | Research prototype "Round 1, as tested": R-01 to R-03 in one site-level view |
+| `public/ur-v1-1/` | Research prototype "Round 1, updated after research" |
+| `public/ur-v2/` | Research prototype "Round 2 draft: design recommendations" (for team discussion first) |
+| `public/v2/` | Design exploration "Mural recommendations, November 2026" (R-01 to R-04) |
+| `public/index.html` | Prototype index: research prototypes and design explorations, one card per version |
+| `public/start.html` | The original landing page (`/start`), kept because the team uses it. Add new versions to it as well as to the index |
+| `public/versions/` | What changed in each version, and why |
+
+All reports use **Receipt of Waste submissions only** (API and spreadsheet upload). They don't check against permits, the carrier, broker and dealer register or other systems. All data is invented and generated in the browser.
+
+## Terms
+
+EWC code (European Waste Catalogue), D&R code (disposal or recovery code), CBD (carrier, broker, dealer) registration, POPs (persistent organic pollutants), hazardous consignment code, permit number.
+
+## Tech
+
+- Each report is a self-contained `index.html` exported from a design tool, with `support.js` (a bundled React runtime, identical in every folder). Page markup uses `{{ }}` bindings, `<sc-if>` and `<sc-for>`, with logic in the `<script type="text/x-dc">` block at the end.
+- Styling is inline and mimics Power BI (Segoe UI, Power BI default theme colours). This is deliberate. Don't convert it to GOV.UK styles.
+- `server.js` (Express) serves `public/` (`.html` extensions optional in URLs) and GOV.UK Frontend from `node_modules`, and adds a GOV.UK-styled password page when `PROTOTYPE_PASSWORD` is set. Run with `npm start`. Hosted on Heroku (`Procfile`).
+
+**Not yet documented:** where the source of the exported reports lives; the hosting URL; product owner and team contact; confirmed user groups (likely Environment Agency, SEPA, Natural Resources Wales and NIEA staff, plus Defra policy leads); whether an agreed Power BI theme exists; Welsh language needs for Natural Resources Wales users. Don't guess these. Ask.

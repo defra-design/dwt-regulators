@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+  <meta charset="utf-8">
+  <title>Research round 2 draft - DWT regulator reports prototype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/govuk-frontend/govuk-frontend.min.css">
+</head>
+<body class="govuk-template__body">
+  <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');</script>
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+  <header>
+    <section class="govuk-service-navigation" aria-label="Service information" data-module="govuk-service-navigation">
+      <div class="govuk-width-container">
+        <div class="govuk-service-navigation__container">
+          <span class="govuk-service-navigation__service-name">
+            <a href="/" class="govuk-service-navigation__link">DWT regulator reports</a>
+          </span>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <div class="govuk-width-container">
+    <a href="/" class="govuk-back-link">Back to all versions</a>
+
+    <main class="govuk-main-wrapper" id="main-content">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Research prototype</span>
+          <h1 class="govuk-heading-xl">Round 2 draft: design recommendations <strong class="govuk-tag govuk-tag--blue">Latest</strong></h1>
+
+          <p class="govuk-body">
+            <span class="govuk-!-font-weight-bold">Date of last change:</span> 13 November 2026<br>
+            <span class="govuk-!-font-weight-bold">User research status:</span> Not yet used in research. For team discussion first
+          </p>
+
+          <a href="/ur-v2/" role="button" draggable="false" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            View prototype<span class="govuk-visually-hidden">: research round 2 draft</span>
+          </a>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-l">Changes in this version</h2>
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-visually-hidden">Changes in research round 2 draft</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Area</th>
+            <th scope="col" class="govuk-table__header">Change</th>
+            <th scope="col" class="govuk-table__header">Reason for change</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row"><td class="govuk-table__cell">All pages</td><td class="govuk-table__cell">The same content and visual changes as the <a class="govuk-link" href="/versions/v2">Mural recommendations design exploration</a>: sentence case, no capitals, "filters" not "slicers", no "scope", numbers as digits, units spelled out, years on dates, abbreviations spelled out on first use, Analysis Function colours, darker text, 16px minimum text size and prototype notes kept apart from text for users</td><td class="govuk-table__cell">Mural recommendations, and consistency with the design exploration</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Summary</td><td class="govuk-table__cell">One long page split into report pages: Overview, Hazardous waste and POPs, Carrier registration, Waste streams, Receiving sites and Data quality. Filters show on every page</td><td class="govuk-table__cell">Break content over several pages rather than one long scrolling page</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Filters</td><td class="govuk-table__cell">The standard filter explanation, and "78 receiving sites and 56,682 movements match the filters"</td><td class="govuk-table__cell">Use one pattern for explaining the filters</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Filters</td><td class="govuk-table__cell">The "Permit number" filter is now "Site name and permit number". Each option shows the site name first with the permit number in brackets, sorted A to Z by site name. Search finds either</td><td class="govuk-table__cell">Long permit numbers and site names overlapped and could not be read. Users are more likely to scan for a site by name</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Tonnes or kilograms</td><td class="govuk-table__cell">Kept from round 1, with the selected unit spelled out in labels, headings and chart titles</td><td class="govuk-table__cell">Units should not be abbreviated</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Waste streams and Site detail</td><td class="govuk-table__cell">EWC code names shown under each code, not only on hover. Asterisk explained</td><td class="govuk-table__cell">Show EWC code labels alongside codes, and explain the asterisks</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Waste streams</td><td class="govuk-table__cell">Selecting an EWC code opens Receiving sites filtered to that code. It no longer filters the Overview chart</td><td class="govuk-table__cell">Power BI can't filter visuals on another page except through drill-through</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Data quality (new page)</td><td class="govuk-table__cell">Data quality by EWC code and by receiving site, with thresholds in the column headings. Columns moved here from Waste streams and Site detail</td><td class="govuk-table__cell">Show thresholds, and avoid tables that scroll sideways</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Hazardous waste and POPs</td><td class="govuk-table__cell">POP names written in full, and check names match R-03</td><td class="govuk-table__cell">Spell out terms consistently on first use (R-03)</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Carrier registration</td><td class="govuk-table__cell">Plain English explanations, with singular and plural counts</td><td class="govuk-table__cell">Wording should be grammatically correct when there is only 1, and the explanation was hard to understand (R-02)</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Movements</td><td class="govuk-table__cell">6 columns, so the table fits. The movement ID opens the detail, replacing the View button</td><td class="govuk-table__cell">Avoid tables that scroll sideways</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Site detail and Movements</td><td class="govuk-table__cell">Back buttons return to the page you came from</td><td class="govuk-table__cell">Needed after splitting the summary page</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Navigation</td><td class="govuk-table__cell">Page tabs moved from the bottom of the page to a navigation bar under the header, like the GOV.UK service navigation. The current page is in bold with a Defra green underline</td><td class="govuk-table__cell">Government services normally have navigation at the top of the page</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Navigation</td><td class="govuk-table__cell">Site detail and Movements are in the navigation again, so they can be found. Site detail says "Select a receiving site on the Receiving sites page, then choose Site detail" until a site is selected. A breadcrumb line sits above the heading on both pages</td><td class="govuk-table__cell">Hiding them made them hard to discover</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Buttons and links</td><td class="govuk-table__cell">Blue (Power BI default) replaced: "Open Site detail" and "View all movements" are secondary buttons, "Site detail ›" and "Movements ›" in table rows are links in GOV.UK link blue, selected rows and filters are grey, and the focus outline is GOV.UK yellow</td><td class="govuk-table__cell">Get closer to GOV.UK and Defra colours, so it is clearer to users</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">All pages</td><td class="govuk-table__cell">Font changed from Segoe UI to Arial</td><td class="govuk-table__cell">Defra branding: services not on GOV.UK must use Helvetica or Arial</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Report header</td><td class="govuk-table__cell">White header with the Defra logo and a Defra green border underneath, replacing the dark grey header</td><td class="govuk-table__cell">Defra branding: use the Defra header and logo, and Defra green sparingly in headers</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">Report pages (tabs)</td><td class="govuk-table__cell">The selected page tab is marked with a Defra green line instead of Power BI blue</td><td class="govuk-table__cell">Defra branding: Defra green can be used in navigation borders</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">All pages</td><td class="govuk-table__cell">A line at the bottom of every page gives the data source and a contact</td><td class="govuk-table__cell">Power BI has no footer. This stands in for the Defra footer</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">About this data</td><td class="govuk-table__cell">"What is new in version 1.1" is now "What changed after round 1 of research"</td><td class="govuk-table__cell">Version numbers are no longer used in labels</td></tr>
+        </tbody>
+      </table>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-l" id="design-rationale">Design rationale</h2>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>This draft starts from "Round 1, updated after research" and keeps its research-driven changes. The new changes come from the Mural design review, not from research findings. Link them to round 1 findings where they exist before using this draft in research.</li>
+            <li>Moving data quality onto its own page avoids sideways scrolling, but it separates data quality from the figures it affects. The team needs to decide if that's acceptable.</li>
+            <li>Replacing the View button with a link on the movement ID changes something round 1 participants used. Watch for this in round 2.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Defra branding</h3>
+          <p class="govuk-body">Based on the <a class="govuk-link" href="https://digital.defra.gov.uk/design/branding">Defra branding guidance</a>, limited to what Power BI can do. In Power BI this would be a report theme file (font, colours and text styles), an image visual for the logo and shapes for the header.</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Defra green (#00A33B) has a contrast ratio of about 3.3:1 against white. That's enough for lines and borders (3:1), but not for normal-sized text (4.5:1), so it is only used for lines.</li>
+            <li>Data colours stay on the Analysis Function palette. Green would clash with the green status colour.</li>
+            <li>Power BI blue is still used for buttons, selection and focus outlines.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Questions for the team</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Do Defra or the regulators already have a Power BI theme or report template we should use instead?</li>
+            <li>Whose logo should the header show? Users are likely to include staff from the Environment Agency, SEPA, Natural Resources Wales and NIEA.</li>
+            <li>Who should the contact at the bottom of each page be?</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">To check with a Power BI developer</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Whether an image can be marked as decorative, so screen readers ignore the logo crest. For now it has the alt text "Department for Environment, Food and Rural Affairs".</li>
+            <li>Codes such as EWC codes and permit numbers still use a monospaced font (Consolas). Decide whether to keep it or use Arial.</li>
+            <li>The top navigation would be a page navigator (buttons). Site detail and Movements stay visible in it, so opened directly they show unfiltered or blank data. The empty state needs a measure that checks whether 1 site is selected. Check whether Power BI's own page list can be hidden where the report is published, so users don't see 2 sets of navigation.</li>
+            <li>The breadcrumb line would be text and buttons, as Power BI has no breadcrumb visual. Check that keyboard focus reaches the navigation first and that screen readers announce the current page.</li>
+            <li>Research question: do regulators who use other Power BI reports expect the standard bottom tabs?</li>
+            <li>Cells that stack 2 or 3 values need a matrix or a combined text measure.</li>
+          </ul>
+
+          <h3 class="govuk-heading-m">Not changed yet</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Some details are still only on hover (WCAG 1.4.13): chart column totals, some card explanations and EWC names in the Movements list.</li>
+            <li>Filters apply to every page (synced slicers in Power BI). This is unusual and may confuse users. Research question: do users notice and understand that filters carry across pages?</li>
+            <li>The box that appears when 1 site matches the filters is odd and needs rethinking.</li>
+            <li>Power BI controls the focus outline on its own visuals, so the yellow focus style only applies to custom buttons.</li>
+            <li>Absolute and mirror hazardous are both orange, and only the badge text tells them apart.</li>
+            <li>Site detail chart colours reuse the hazardous orange and POPs pink for ordinary EWC codes.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/govuk-frontend/govuk-frontend.min.js"></script>
+  <script type="module">import { initAll } from '/govuk-frontend/govuk-frontend.min.js'; initAll()</script>
+</body>
+</html>

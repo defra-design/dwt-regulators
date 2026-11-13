@@ -1,0 +1,11 @@
+---
+description: Defra departmental design process and pattern sources
+alwaysApply: true
+---
+
+# Defra design and patterns
+
+- Internal tools must be visually and functionally consistent across Defra. Before designing a new report pattern, ask whether Defra or the regulators already have a Power BI theme or report template to reuse.
+- Defra components and patterns: <https://digital.defra.gov.uk/design/components-and-patterns>. Defra branding: <https://digital.defra.gov.uk/design/branding>
+- `DEFRA/pattern-library` on GitHub is archived (since 2019). Don't use it.
+- Prototyping is mandatory for Defra service assessments: <https://digital.defra.gov.uk/design/prototyping>. When a report prototype changes, record what changed and which research finding or decision drove it. That's the evidence an assessment panel will ask to see.

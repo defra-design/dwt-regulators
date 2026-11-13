@@ -1,0 +1,31 @@
+---
+description: WCAG 2.2 AA checklist for Power BI report designs and their HTML prototypes
+globs: public/**/*.html,server.js
+alwaysApply: false
+---
+
+# Accessibility
+
+Design for what the Power BI report must do, not only for the HTML prototype. Raise anything that Power BI can't meet as a risk instead of designing round it.
+
+## In the report design
+
+- [ ] Nothing relies on colour alone (1.4.1). Status badges have text ("Missing", "Estimated"). Line charts use markers or direct labels as well as colour.
+- [ ] Text and chart elements meet contrast: 4.5:1 for text, 3:1 for bars, lines and focus outlines (1.4.3, 1.4.11).
+- [ ] Every chart has a table alternative ("Show as a table" in Power BI) and alt text that gives the main finding, not a description of the chart type (1.1.1).
+- [ ] Every visual has a title. Tab order follows the reading order: filters, then summary cards, then charts and tables (1.3.2, 2.4.3).
+- [ ] Every function, including filters, sorting and drill-through, works with a keyboard (2.1.1).
+- [ ] Information shown only in tooltips is also available another way (1.4.13).
+- [ ] Text is no smaller than 12px. Avoid the 11px labels in the current prototypes.
+- [ ] Tables have column headers and a clear sort state.
+- [ ] Reflow at 320px and 200% zoom is a known Power BI limitation (1.4.4, 1.4.10). Flag it. Don't claim it passes.
+
+## In the HTML prototype
+
+The prototype should be usable by research participants who use assistive technology.
+
+- [ ] One `<h1>`, headings in order, landmarks (`<main>`, `<header>`).
+- [ ] Buttons for actions, links for navigation. Focus styles never removed.
+- [ ] Results that update after a filter change are announced (`aria-live="polite"`).
+
+For research, recruit at least some participants with access needs, and test with a screen reader (NVDA or JAWS on Windows, as most regulator staff use Windows).

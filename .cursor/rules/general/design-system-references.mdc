@@ -1,0 +1,25 @@
+---
+description: Canonical references for Power BI, data visualisation and GOV.UK guidance
+alwaysApply: true
+---
+
+# References
+
+Check the live documentation rather than relying on memory. If live browsing isn't available and something isn't covered in these rules, say so rather than stating a Power BI feature, keyboard shortcut or hex value with false confidence.
+
+## Reports (Power BI)
+
+- Power BI accessibility overview: <https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-accessibility-overview>
+- Designing accessible Power BI reports: <https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-accessibility-creating-reports>
+- Analysis Function data visualisation guidance (charts, tables, colour): <https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-charts/>
+- Analysis Function colours in charts: <https://analysisfunction.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/>
+
+## Content, accessibility and process
+
+- GOV.UK style guide: <https://www.gov.uk/guidance/style-guide/a-to-z>
+- GOV.UK Service Manual: <https://www.gov.uk/service-manual>
+- WCAG 2.2: <https://www.w3.org/TR/WCAG22/>
+
+## GOV.UK Design System
+
+Only for the password page in `server.js`, and as a reference for patterns such as error messages and tables: <https://design-system.service.gov.uk/>
